@@ -1,0 +1,6 @@
+Credentials cache: API:EDDFEE31-41E2-445E-91B6-A0C44D41AF3D
+        Principal: oel-ayad@42.FR
+
+  Issued                Expires               Principal
+Jul 30 10:12:11 2018  Aug  6 10:12:11 2018  krbtgt/42.FR@42.FR
+Jul 30 11:47:32 2018  Aug  6 10:12:11 2018  host/vgs-fn1.42.fr@42.FR
