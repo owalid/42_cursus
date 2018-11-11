@@ -19,6 +19,8 @@ char		*ft_strrchr(const char *s, int c)
 
 	find = -1;
 	i = -1;
+	if (!c)
+		return (&((char*)s)[ft_strlen(s)]);
 	while (s[++i])
 		if (s[i] == c)
 			find = i;

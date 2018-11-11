@@ -17,7 +17,7 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 	unsigned int	i;
 
 	i = 0;
-	while (i <= n)
+	while (i < n)
 	{
 		((char*)dst)[i] = ((char*)src)[i];
 		i++;

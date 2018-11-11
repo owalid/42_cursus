@@ -18,7 +18,9 @@ char	*ft_strchr(char *str, int c)
 
 	i = -1;
 	while (str[++i])
-		if (str[i] == c)
+		if (str[i] == (unsigned char)c)
 			return (&str[i]);
+	if (!c)
+		return (&str[i]);
 	return (NULL);
 }
