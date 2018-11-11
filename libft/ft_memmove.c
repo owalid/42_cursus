@@ -6,21 +6,22 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:17:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/08 19:12:11 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 19:02:33 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		*ft_memmove(void *dest, const void *src, size_t n)
+#include "libft.h"
+
+void		*ft_memmove(void *dst, const void *src, size_t n)
 {
-	int 	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i <= n)
 	{
-		if (dest < src)
-		{
-			ft_memcpy(dest, src, n);
-		}
+		if (dst < src)
+			ft_memcpy(dst, src, n);
 		i++;
 	}
+	return (dst);
 }

@@ -6,20 +6,20 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:18:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:31:12 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 16:53:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char 	*ft_strnew(size_t size)
+char		*ft_strnew(size_t size)
 {
-	char 			*result;
+	char			*result;
 	unsigned int	i;
 
 	i = 0;
 	if ((result = (char*)malloc(sizeof(char*) * size)) == NULL)
-			return (NULL);
+		return (NULL);
 	while (i <= size)
 		result[i] = '\0';
 	return (result);

@@ -6,19 +6,20 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:20:26 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:11:23 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:13:37 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int             ft_is_separator(char c)
+static int			ft_is_separator(char const c)
 {
-        if (c == ' ' || c == '\t' || c == '\n')
-                return (1);
-        return (0);
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
 }
-int			ft_calc_blank(char *str)
+
+static int			ft_calc_blank(char const *str)
 {
 	int		i;
 	int		nb_blank;
@@ -33,7 +34,8 @@ int			ft_calc_blank(char *str)
 	}
 	return (nb_blank);
 }
-char		*no_blank(char *s)
+
+char				*ft_strtrim(char const *s)
 {
 	int		i;
 	int		j;
@@ -41,7 +43,8 @@ char		*no_blank(char *s)
 
 	i = -1;
 	j = 0;
-	if ((result = (char*)malloc(sizeof(char) * (ft_strlen(s) - ft_calc_blank(s)))) == NULL)
+	if ((result = (char*)malloc(sizeof(char)
+					* (ft_strlen(s) - ft_calc_blank(s)))) == NULL)
 		return (NULL);
 	while (s[j])
 	{
@@ -52,4 +55,3 @@ char		*no_blank(char *s)
 	result[i] = '\0';
 	return (result);
 }
-

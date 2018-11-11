@@ -6,11 +6,12 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:10:13 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 13:10:49 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 17:05:45 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);

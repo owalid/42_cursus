@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:11:19 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:24:52 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:08:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putstr_fd(const char *str, int fd)
+void		ft_putendl_fd(const char *str, int fd)
 {
 	write(fd, &str, ft_strlen(str));
 	write(fd, "\n", 1);

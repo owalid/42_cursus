@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:03:47 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:26:22 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 19:55:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned int	i;
 
 	i = 0;
-	while (i <= n)
+	while (i < n)
 	{
 		((char *)s)[i] = (unsigned char)c;
 		i++;

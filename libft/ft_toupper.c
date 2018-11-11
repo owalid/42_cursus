@@ -6,16 +6,12 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:57:13 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 13:21:12 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 19:53:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_toupper(char *str)
+void		ft_toupper(int c)
 {
-	int i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
 }

@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:28:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 16:51:30 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:43:20 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_listadd(t_list **alst, t_list *new)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	*alst->next = new;
+	(*alst)->next = new;
 }

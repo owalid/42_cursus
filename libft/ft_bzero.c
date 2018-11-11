@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:58:50 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:30:39 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 16:35:45 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int 	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i <= n)

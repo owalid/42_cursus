@@ -1,6 +1,5 @@
 NAME = libft.a
-SRCS = 	main.c \
-		ft_memset.c \
+SRCS =	ft_memset.c \
 		ft_bzero.c \
 		ft_memset.c \
 		ft_bzero.c \
@@ -49,7 +48,17 @@ SRCS = 	main.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c 
+		ft_putnbr_fd.c \
+		ft_strequ.c \
+		ft_strnequ.c \
+		ft_lstadd.c \
+		ft_lstdel.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_lstnew.c \
+		ft_memcpy.c \
+		ft_memmove.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

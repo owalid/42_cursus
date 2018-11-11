@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:16:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:26:04 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:06:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	char		*result;
 	int			i;
@@ -20,7 +20,8 @@ char		*strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if ((result = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)))) == NULL)
+	if ((result = (char*)malloc(sizeof(char)
+					* (ft_strlen(s1) + ft_strlen(s2)))) == NULL)
 		return (NULL);
 	while (s1[j])
 	{

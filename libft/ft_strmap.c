@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:17:31 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:02:14 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 16:59:21 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ char		*ft_strmap(char const *s, char (*f)(char))
 		result[i] = f(s[i]);
 	result[i] = '\0';
 	return (result);
-		
 }

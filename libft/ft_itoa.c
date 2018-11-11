@@ -6,19 +6,19 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:07:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 13:07:48 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 19:03:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		nb_ofnb(int nb)
+static int		nb_ofnb(int nb)
 {
-	int 	size;
+	int		size;
 
 	size = 0;
 	if (nb == 0)
-		return(1);
+		return (1);
 	while (nb > 0)
 	{
 		nb /= 10;
@@ -27,7 +27,7 @@ int		nb_ofnb(int nb)
 	return (size);
 }
 
-void	is_neg(int *nb, int *neg, int *size)
+static void		is_neg(int *nb, int *neg, int *size)
 {
 	if (*nb < 0)
 	{
@@ -37,9 +37,9 @@ void	is_neg(int *nb, int *neg, int *size)
 	}
 }
 
-char	*ft_itoa(int nb)
+char			*ft_itoa(int nb)
 {
-	char 	*result;
+	char	*result;
 	int		i;
 	int		size;
 	int		neg;
@@ -48,13 +48,13 @@ char	*ft_itoa(int nb)
 	i = 0;
 	size = 0;
 	if (nb == -2147483648)
-		return (strdup("-2147483648"));
+		return (ft_strdup("-2147483648"));
 	is_neg(&nb, &neg, &size);
 	size += nb_ofnb(nb) + 1;
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	result[--size] = '\0';
-	while(size-- > 0)
+	while (size-- > 0)
 	{
 		result[size] += nb % 10 + '0';
 		nb /= 10;

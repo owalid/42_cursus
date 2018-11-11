@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:36:07 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 16:52:44 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:57:41 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*result;
 
-	if ((result = (t_list)malloc(sizeof(t_list)) == NULL)
+	if ((result = (t_list*)malloc(sizeof(t_list))) == NULL)
 			return (NULL);
 	result->next = NULL;
-	result->content = content;
+	result->content = (void*)content;
 	if (content != NULL)
 		result->content_size = content_size;
 	else

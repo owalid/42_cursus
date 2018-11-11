@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:26:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 20:29:03 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/11 18:06:32 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_cal_nb_word(const char *str, char c)
+static int			ft_cal_nb_word(const char *str, char c)
 {
 	int		i;
 	int		nb_words;
@@ -35,8 +35,7 @@ int		ft_cal_nb_word(const char *str, char c)
 	return (nb_words);
 }
 
-
-int		ft_calc_size_words(const char *str, int i, char c)
+static int			ft_calc_size_words(const char *str, int i, char c)
 {
 	int		size_words;
 
@@ -46,7 +45,7 @@ int		ft_calc_size_words(const char *str, int i, char c)
 	return (size_words + 1);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char				**ft_strsplit(char const *s, char c)
 {
 	int			nb_words;
 	int			k;
@@ -56,21 +55,19 @@ char	**ft_strsplit(char const *s, char c)
 
 	nb_words = 0;
 	nb_words = ft_cal_nb_word(s, c);
-	if ((result = (char**)malloc(sizeof(char**) * (nb_words + 1))) == NULL)
-	{
+	if ((result = (char**)malloc(sizeof(char**)
+					* (nb_words + 1))) == NULL)
 		return (NULL);
-	}
 	i = 0;
 	k = 0;
 	while (i < nb_words)
-	{	
+	{
 		j = 0;
 		while (s[k] == c)
 			k++;
-		if ((result[i] = (char*)malloc(sizeof(char) * (ft_calc_size_words(s, k, c) + 1))) == NULL)
-		{
+		if ((result[i] = (char*)malloc(sizeof(char)
+						* (ft_calc_size_words(s, k, c) + 1))) == NULL)
 			return (NULL);
-		}
 		while (s[k] != c && s[k])
 		{
 			result[i][j++] = s[k++];
