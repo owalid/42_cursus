@@ -50,16 +50,23 @@ char			*ft_itoa(int nb)
 	if (nb == -2147483648)
 		return (ft_strdup("-2147483648"));
 	is_neg(&nb, &neg, &size);
-	size += nb_ofnb(nb) + 1;
+	size += nb_ofnb((long)nb) + 1;
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	result[--size] = '\0';
-	while (size-- > 0)
+	while (size--)
 	{
-		result[size] += nb % 10 + '0';
+		printf("%d\n", nb);
+		result[size] += ((nb % 10) + '0');
 		nb /= 10;
 	}
 	if (neg)
 		result[0] = '-';
 	return (result);
+}
+
+int		main(int arc, char **argv)
+{
+	(void)arc;
+	printf("%s", ft_itoa(ft_atoi(argv[1])));
 }
