@@ -58,7 +58,26 @@ SRCS =	ft_memset.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_memcpy.c \
-		ft_memmove.c
+		ft_memmove.c \
+		ft_strcapitalize.c \
+		ft_isxdigit.c \
+		ft_isspace.c \
+		ft_isupper.c \
+		ft_isgraph.c \
+		ft_isblank.c \
+		ft_itoa_base.c \
+		ft_str_is_alpha.c \
+		ft_str_is_lowercase.c \
+		ft_str_is_numeric.c \
+		ft_str_is_printable.c \
+		ft_str_is_uppercase.c \
+		ft_strcasecmp.c \
+		ft_strcasetr.c \
+		ft_strlowcase.c \
+		ft_strncasecmp.c \
+		ft_strndup.c \
+		ft_strtok.c \
+		ft_strupcase.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

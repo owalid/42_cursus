@@ -6,11 +6,11 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 20:19:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 13:18:15 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/12 19:00:33 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, int nb)
+char	*ft_strncat(char *dest, const char *src, int nb)
 {
 	int		size;
 	int		i;

@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 18:16:43 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 18:44:04 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+int		ft_isxdigit(int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f')
+			|| (c >= 'A' && c <= 'F'))
+		return (1);
+	return (0);
 }

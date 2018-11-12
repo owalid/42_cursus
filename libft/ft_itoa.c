@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:07:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/11 19:03:02 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/12 18:08:21 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char			*ft_itoa(int nb)
 	size = 0;
 	if (nb == -2147483648)
 		return (ft_strdup("-2147483648"));
+	if (nb == 2147483647)
+		return (ft_strdup("2147483647"));
 	is_neg(&nb, &neg, &size);
 	size += nb_ofnb((long)nb) + 1;
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
@@ -56,17 +58,10 @@ char			*ft_itoa(int nb)
 	result[--size] = '\0';
 	while (size--)
 	{
-		printf("%d\n", nb);
 		result[size] += ((nb % 10) + '0');
 		nb /= 10;
 	}
 	if (neg)
 		result[0] = '-';
 	return (result);
-}
-
-int		main(int arc, char **argv)
-{
-	(void)arc;
-	printf("%s", ft_itoa(ft_atoi(argv[1])));
 }

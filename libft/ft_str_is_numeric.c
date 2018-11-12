@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 19:11:44 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 19:20:30 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+int			ft_str_is_numeric(const char *str)
 {
-	unsigned int	i;
+	int			i;
 
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
-	{
-		if (s1[i] != s2[i])
+	i = -1;
+	while (str[++i])
+		if (!(ft_isdigit(str[i])))
 			return (0);
-		i++;
-	}
 	return (1);
 }

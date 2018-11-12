@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:20:26 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 18:06:50 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/08/07 13:52:21 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/08/09 00:12:05 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int			ft_is_separator(char c)
+int			ft_is_alpha_and_numeric(char *str, int i)
 {
-	if (c == ' ' || c == '\t' || c == '\n')
+	if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')
+			|| (str[i] >= '0' && str[i] <= '9'))
 		return (1);
 	return (0);
 }
 
-char				*ft_strtrim(char const *s)
+char		*ft_strcapitalize(char *str)
 {
-	int		start;
-	int		size;
+	int		i;
 	char	*result;
 
-	start = 0;
-	while (ft_is_separator(s[start]))
-		start++;
-	size = ft_strlen(s + start) - 1;
-	while (ft_is_separator(s[size + start]))
-		size--;
-	size++;
-	if ((result = (char*)malloc(sizeof(char) * (size - start))) == NULL)
-		return (ft_strdup(""));
-	result = ft_strsub(s, start, size);
+	i = 0;
+	result = str;
+	while (result[i] != '\0')
+	{
+		if (i == 0 || ft_is_alpha_and_numeric(result, i - 1) == 0)
+		{
+			if (result[i] >= 'a' && result[i] <= 'z')
+				result[i] -= 32;
+		}
+		else if (result[i] >= 'A' && result[i] <= 'Z')
+			result[i] += 32;
+		i++;
+	}
 	return (result);
 }

@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 18:14:45 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 18:16:29 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+int		ft_isspace(int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\r' || c == '\f'
+			|| c == ' ')
+		return (1);
+	return (0);
 }

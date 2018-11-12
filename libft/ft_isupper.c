@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 18:14:02 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 18:14:32 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+int			ft_isupper(int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }

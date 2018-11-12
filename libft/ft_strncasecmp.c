@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strncasecmp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 19:36:10 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 21:28:11 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+int			ft_strncasecmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
+	char		*tmp_s1;
+	char		*tmp_s2;
 
-	i = 0;
-	while (i < n && (s1[i] || s2[i]))
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	tmp_s1 = ft_strdup(s1);
+	tmp_s2 = ft_strdup(s2);
+	tmp_s1 = ft_strntolower(tmp_s1, n);
+	tmp_s2 = ft_strtolower(tmp_s2);
+	return (ft_strcmp((const char*)tmp_s1, (const char *)tmp_s2));
 }

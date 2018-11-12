@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 01:05:00 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/11 19:02:46 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/12 21:18:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*str;
 	int		i;

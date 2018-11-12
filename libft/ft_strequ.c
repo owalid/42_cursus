@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 17:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/11 17:55:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/12 15:13:57 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@ int		ft_strequ(char const *s1, char const *s2)
 	unsigned int		i;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (1);
 }

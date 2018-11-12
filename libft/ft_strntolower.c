@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strntolower.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/11 17:48:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:17:47 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 19:38:40 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 21:35:07 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+char		*ft_strntolower(char *str, size_t n)
 {
-	unsigned int	i;
+	size_t		i;
 
 	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	while (str[i] && i < n)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		str[i] = ft_tolower(str[i]);
 	}
-	return (1);
+	return (str);
 }
