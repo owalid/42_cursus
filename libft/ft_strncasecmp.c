@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:36:10 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 21:28:11 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 19:36:01 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int			ft_strncasecmp(const char *s1, const char *s2, size_t n)
 {
-	char		*tmp_s1;
-	char		*tmp_s2;
+	size_t		i;
 
-	tmp_s1 = ft_strdup(s1);
-	tmp_s2 = ft_strdup(s2);
-	tmp_s1 = ft_strnlowcase(tmp_s1, n);
-	tmp_s2 = ft_strlowcase(tmp_s2);
-	return (ft_strcmp((const char*)tmp_s1, (const char *)tmp_s2));
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (ft_tolower(s1[i]) != ft_tolower(s2[i]))
+			return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
+		i++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 14:41:52 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 15:48:16 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ char				*ft_itoa_base(int nb, int base);
 char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
+void				ft_lst_pushback(t_list **beginlst, t_list *lst);
 #endif

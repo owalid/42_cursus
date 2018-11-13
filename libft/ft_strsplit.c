@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:26:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/11 18:06:32 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 18:11:22 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,14 @@ char				**ft_strsplit(char const *s, char c)
 		j = 0;
 		while (s[k] == c)
 			k++;
-		if ((result[i] = (char*)malloc(sizeof(char)
+		if ((result[i] = (char*)malloc(sizeof(char*)
 						* (ft_calc_size_words(s, k, c) + 1))) == NULL)
 			return (NULL);
 		while (s[k] != c && s[k])
-		{
 			result[i][j++] = s[k++];
-			result[i][j] = '\0';
-			i++;
-		}
-		result[i] = NULL;
+		result[i][j] = '\0';
+		i++;
 	}
+	result[i] = NULL;
 	return (result);
 }
