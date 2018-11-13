@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/13 14:40:05 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/13 14:40:22 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ft_strndup(const char *src, size_t size)
 {
-	char 		*str;
+	char		*str;
 	size_t		i;
 
 	i = 0;
-	if((str = (char*)malloc(sizeof(char) * size)) == NULL)
+	if ((str = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	while (src[i] && i < size)
 	{

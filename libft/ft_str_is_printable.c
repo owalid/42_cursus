@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:13:36 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 19:18:51 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:39:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_str_is_printable(const char *str)
 {
-	int 		i;
+	int		i;
 
 	i = -1;
 	while (str[++i])

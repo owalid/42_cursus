@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 21:34:44 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:41:52 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
-void				*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void				*ft_memcpy(void *restrict dst, const void *restrict src,
+size_t n);
 int					ft_isblank(int c);
 int					ft_iscntrl(int c);
 int					ft_isgraph(int c);
@@ -103,7 +104,7 @@ char				*ft_strntolower(char *str, size_t n);
 int					ft_strncasecmp(const char *s1, const char *s2, size_t n);
 int					ft_strcasecmp(const char *s1, const char *s2);
 char				*ft_strupcase(char *str);
-char				*ft_strcapitalize(char *str);		
+char				*ft_strcapitalize(char *str);
 char				*ft_itoa_base(int nb, int base);
 char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);

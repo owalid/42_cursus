@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:01:31 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 21:27:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/13 14:38:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_str_is_lowercase(const char *str)
 {
-	int 	i;
+	int		i;
 
 	i = -1;
 	while (str[++i])
