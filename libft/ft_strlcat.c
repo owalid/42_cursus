@@ -14,16 +14,16 @@
 
 size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int		size_dst;
-	unsigned int		i;
-	unsigned int		i_max;
+	size_t		size_dst;
+	size_t		i;
+	size_t		i_max;
 
 	i = 0;
 	size_dst = ft_strlen(dst);
 	i_max = size_dst + size;
 	if (size < size_dst)
 		return (ft_strlen(src) + size);
-	while (src[i] && i < (i_max - 1))
+	while (src[i] && (size_dst + i) < (size - 1))
 	{
 		dst[size_dst + i] = src[i];
 		i++;
@@ -31,5 +31,5 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 	dst[size_dst + i] = '\0';
 	while (src[i])
 		i++;
-	return (size_dst + i);
+	return ((size_dst + i));
 }

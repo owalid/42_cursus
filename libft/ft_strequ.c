@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int		ft_strequ(char const *s1, char const *s2)
 {
-	unsigned int		i;
+	size_t		i;
 
 	i = 0;
 	while (s1[i] || s2[i])

@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(char *str, char *tofind, size_t n)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (!str[i] && !tofind[i])

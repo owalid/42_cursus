@@ -20,6 +20,7 @@ char		*ft_strntolower(char *str, size_t n)
 	while (str[i] && i < n)
 	{
 		str[i] = ft_tolower(str[i]);
+		i++;
 	}
 	return (str);
 }

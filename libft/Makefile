@@ -77,7 +77,11 @@ SRCS =	ft_memset.c \
 		ft_strncasecmp.c \
 		ft_strndup.c \
 		ft_strtok.c \
-		ft_strupcase.c
+		ft_strupcase.c \
+		ft_islower.c \
+		ft_strncasecmp.c \
+		ft_strtolower.c \
+		ft_strntolower.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

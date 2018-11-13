@@ -18,7 +18,7 @@ char		*ft_strupcase(char *str)
 
 	i = -1;
 	while (str[++i])
-		if (ft_isupper(str[i]))
-			str[i] -= 32;
+		if (!(ft_isupper(str[i])))
+			str[i] = ft_toupper(str[i]);
 	return (str);
 }
