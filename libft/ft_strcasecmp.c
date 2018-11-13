@@ -20,7 +20,7 @@ int			ft_strcasecmp(const char *s1, const char *s2)
 
 	tmp_s1 = ft_strdup(s1);
 	tmp_s2 = ft_strdup(s2);
-	tmp_s1 = ft_strtolower(tmp_s1);
-	tmp_s2 = ft_strtolower(tmp_s2);
+	tmp_s1 = ft_strlowcase(tmp_s1);
+	tmp_s2 = ft_strlowcase(tmp_s2);
 	return (ft_strcmp((const char*)tmp_s1, (const char *)tmp_s2));
 }

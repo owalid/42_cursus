@@ -80,8 +80,9 @@ SRCS =	ft_memset.c \
 		ft_strupcase.c \
 		ft_islower.c \
 		ft_strncasecmp.c \
-		ft_strtolower.c \
-		ft_strntolower.c
+		ft_strlowcase.c \
+		ft_strnlowcase.c \
+		ft_strndup.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

@@ -19,7 +19,7 @@ int			ft_strncasecmp(const char *s1, const char *s2, size_t n)
 
 	tmp_s1 = ft_strdup(s1);
 	tmp_s2 = ft_strdup(s2);
-	tmp_s1 = ft_strntolower(tmp_s1, n);
-	tmp_s2 = ft_strtolower(tmp_s2);
+	tmp_s1 = ft_strnlowcase(tmp_s1, n);
+	tmp_s2 = ft_strlowcase(tmp_s2);
 	return (ft_strcmp((const char*)tmp_s1, (const char *)tmp_s2));
 }
