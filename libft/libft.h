@@ -110,4 +110,10 @@ char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
 void				ft_lst_pushback(t_list **beginlst, t_list *lst);
+char				*ft_strrev(char *str);
+void				ft_sort_intger_table(int *tab, int size);
+int					ft_lstsize(t_list *begin_list);
+t_list				*ft_lstget_at(t_list *begin_list, size_t nbr);
+t_list				*ft_lstfind(t_list *begin_list, void *data);
+void				ft_swap(int *a, int *b);
 #endif

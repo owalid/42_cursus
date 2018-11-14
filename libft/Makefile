@@ -83,7 +83,13 @@ SRCS =	ft_memset.c \
 		ft_strlowcase.c \
 		ft_strnlowcase.c \
 		ft_strndup.c \
-		ft_lst_pushback.c
+		ft_lst_pushback.c \
+		ft_strrev.c \
+		ft_sort_integer_table.c \
+		ft_lstsize.c \
+		ft_lstget_at.c \
+		ft_lstfind.c \
+		ft_swap.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

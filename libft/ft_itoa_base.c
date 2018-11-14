@@ -19,6 +19,11 @@ static int		ft_verif_base(int base)
 	return (0);
 }
 
+static int				get_second_nb(long long a)
+{
+	return (a % 10);
+}
+
 static int		nb_ofnb(long long nb, int base)
 {
 	int		i;
@@ -36,11 +41,15 @@ static int		nb_ofnb(long long nb, int base)
 
 static void		is_neg(long long *nb, int *neg, int *size, int base)
 {
-	if (base == 10 && *nb < 0)
+	if (*nb < 0)
 	{
+		if (base == 10)
+		{
+			*neg = 1;
+			*size += 1;
+
+		}
 		*nb *= -1;
-		*neg = 1;
-		*size += 1;
 	}
 }
 
@@ -63,9 +72,10 @@ char		*ft_itoa_base(int nb, int base)
 	result[--size] = '\0';
 	while (size--)
 	{
-		if ((nb_long % base) > 9)
-			result[size] = 65 + ((nb_long % base) % 10);
-		result[size] = ((nb_long % base) + '0');
+		if (nb_long % base > 9)
+			result[size] = 65  + get_second_nb(nb_long % base);
+		else
+			result[size] = nb_long % base + '0';
 		nb_long /= base;
 	}
 	if (neg)
