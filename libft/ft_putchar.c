@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:31:19 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 15:32:01 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 16:22:48 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+void	ft_putchar(int c)
 {
 	write(1, &c, 1);
 }

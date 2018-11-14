@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 21:31:10 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 14:52:24 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-static int		ft_verif_base(int base)
+
+static int				ft_verif_base(int base)
 {
 	if (base >= 2 && base <= 16)
 		return (1);
@@ -24,7 +24,7 @@ static int				get_second_nb(long long a)
 	return (a % 10);
 }
 
-static int		nb_ofnb(long long nb, int base)
+static int				nb_ofnb(long long nb, int base)
 {
 	int		i;
 
@@ -39,7 +39,7 @@ static int		nb_ofnb(long long nb, int base)
 	return (i);
 }
 
-static void		is_neg(long long *nb, int *neg, int *size, int base)
+static void				is_neg(long long *nb, int *neg, int *size, int base)
 {
 	if (*nb < 0)
 	{
@@ -47,13 +47,13 @@ static void		is_neg(long long *nb, int *neg, int *size, int base)
 		{
 			*neg = 1;
 			*size += 1;
-
 		}
 		*nb *= -1;
 	}
+	*size += nb_ofnb(*nb, base) + 1;
 }
 
-char		*ft_itoa_base(int nb, int base)
+char					*ft_itoa_base(int nb, int base)
 {
 	char				*result;
 	long long			nb_long;
@@ -66,14 +66,13 @@ char		*ft_itoa_base(int nb, int base)
 	if (!ft_verif_base(base))
 		return (ft_strdup(""));
 	is_neg(&nb_long, &neg, &size, base);
-	size += nb_ofnb(nb_long, base) + 1;
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	result[--size] = '\0';
 	while (size--)
 	{
 		if (nb_long % base > 9)
-			result[size] = 65  + get_second_nb(nb_long % base);
+			result[size] = 65 + get_second_nb(nb_long % base);
 		else
 			result[size] = nb_long % base + '0';
 		nb_long /= base;

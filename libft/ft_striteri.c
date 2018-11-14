@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:16:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/09 13:16:16 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 18:21:15 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void		ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
+	if (s && f)
+	{
 	while (s[i])
 	{
 		f(i, &s[i]);
 		i++;
+	}
 	}
 }

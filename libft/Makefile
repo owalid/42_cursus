@@ -72,11 +72,9 @@ SRCS =	ft_memset.c \
 		ft_str_is_printable.c \
 		ft_str_is_uppercase.c \
 		ft_strcasecmp.c \
-		ft_strcasetr.c \
 		ft_strlowcase.c \
 		ft_strncasecmp.c \
 		ft_strndup.c \
-		ft_strtok.c \
 		ft_strupcase.c \
 		ft_islower.c \
 		ft_strncasecmp.c \

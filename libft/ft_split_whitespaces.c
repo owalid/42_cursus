@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/14 14:53:13 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/14 15:02:00 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_is_separator(char c)
+static int			ft_is_separator(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
 	return (0);
 }
 
-int		ft_cal_nb_word(char *str)
+static int			ft_cal_nb_word(char *str)
 {
 	int		i;
 	int		nb_words;
@@ -31,7 +42,7 @@ int		ft_cal_nb_word(char *str)
 	return (nb_words);
 }
 
-int		ft_calc_size_words(char *str, int i)
+static int			ft_calc_size_words(char *str, int i)
 {
 	int		size_words;
 
@@ -41,7 +52,7 @@ int		ft_calc_size_words(char *str, int i)
 	return (size_words + 1);
 }
 
-char	**ft_split_whitespaces(char *str)
+char				**ft_split_whitespaces(char *str)
 {
 	int			nb_words;
 	int			k;

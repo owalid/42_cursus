@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:20:00 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 15:45:38 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 18:43:04 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char	*ft_strsub(char const *s, size_t start, size_t len)
 {
 	char		*result;
 
-	if (len > 0)
+	if (len > 0 && start < len)
 	{
-		if ((result = (char*)malloc(sizeof(char*) * (len - start))) == NULL)
+		if ((result = (char*)malloc(sizeof(char) * len + 1)) == NULL)
 			return (NULL);
-		ft_strncat(result, s + start, len);
+		result = ft_strncat(result, s + start, len + 1);
 		return (result);
 	}
 	result = ft_strdup("");

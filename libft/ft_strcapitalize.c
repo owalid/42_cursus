@@ -6,11 +6,11 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 13:52:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/08/09 00:12:05 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 15:02:32 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			ft_is_alpha_and_numeric(char *str, int i)
+static int			ft_is_alpha_and_numeric(char *str, int i)
 {
 	if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')
 			|| (str[i] >= '0' && str[i] <= '9'))
@@ -18,7 +18,7 @@ int			ft_is_alpha_and_numeric(char *str, int i)
 	return (0);
 }
 
-char		*ft_strcapitalize(char *str)
+char				*ft_strcapitalize(char *str)
 {
 	int		i;
 	char	*result;

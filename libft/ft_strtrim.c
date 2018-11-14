@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:20:26 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 18:06:50 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 19:52:37 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char				*ft_strtrim(char const *s)
 	int		size;
 	char	*result;
 
+	if (!s)
+		return (NULL);
 	start = 0;
 	while (ft_is_separator(s[start]))
 		start++;
@@ -32,8 +34,8 @@ char				*ft_strtrim(char const *s)
 	while (ft_is_separator(s[size + start]))
 		size--;
 	size++;
-	if ((result = (char*)malloc(sizeof(char) * (size - start))) == NULL)
+	if ((result = (char*)malloc(sizeof(char) * size + start + 1)) == NULL)
 		return (ft_strdup(""));
-	result = ft_strsub(s, start, size);
+	result = ft_strncat(result, s + start, size + start + 1);
 	return (result);
 }

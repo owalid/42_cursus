@@ -6,9 +6,11 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 20:19:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/12 19:00:33 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/14 19:52:45 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strncat(char *dest, const char *src, int nb)
 {
@@ -19,8 +21,7 @@ char	*ft_strncat(char *dest, const char *src, int nb)
 	i = 0;
 	size = 0;
 	result = dest;
-	while (result[i++])
-		size++;
+	size = ft_strlen(result);
 	i = 0;
 	while (src[i] && i < nb)
 	{
