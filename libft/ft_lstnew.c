@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 15:36:07 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 18:28:18 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/15 17:21:35 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 	{
 		result->content = NULL;
 		result->content_size = 0;
-	}	
+	}
 	else
 	{
 		result->content = ft_memalloc(content_size);

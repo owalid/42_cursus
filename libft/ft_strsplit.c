@@ -6,13 +6,13 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:26:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 13:05:35 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/15 20:48:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_cal_nb_word(const char *str, char c)
+static int			nb_word(const char *str, char c)
 {
 	int		i;
 	int		nb_words;
@@ -42,29 +42,28 @@ static int			word(const char *str, int i, char c)
 	size_words = 0;
 	while (str[i++] && str[i] != c)
 		size_words++;
-	return (size_words + 1);
+	return (size_words);
 }
 
 char				**ft_strsplit(char const *s, char c)
 {
-	int			nb_words;
 	int			k;
 	int			i;
 	int			j;
 	char		**r;
 
-	nb_words = 0;
-	nb_words = ft_cal_nb_word(s, c);
-	if ((r = (char**)malloc(sizeof(char**) * (nb_words + 1))) == NULL)
+	if (!s || !c)
+		return (NULL);
+	if (!(r = (char**)malloc(sizeof(char*) * nb_word(s, c) + 1)))
 		return (NULL);
 	i = 0;
 	k = 0;
-	while (i < nb_words)
+	while (i < nb_word(s, c))
 	{
 		j = 0;
 		while (s[k] == c)
 			k++;
-		if ((r[i] = (char*)malloc(sizeof(char*) * (word(s, k, c) + 1))) == NULL)
+		if (!(r[i] = ft_strnew(sizeof(char) * word(s, k, c))))
 			return (NULL);
 		while (s[k] != c && s[k])
 			r[i][j++] = s[k++];

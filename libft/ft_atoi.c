@@ -6,15 +6,15 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/04 16:39:43 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 17:02:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/15 17:15:50 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			ft_atoi(char *str)
+int			ft_atoi(const char *str)
 {
-	int 			i;
-	long long int 	result;
-	long long int	sign;
+	int					i;
+	long long int		result;
+	long long int		sign;
 
 	sign = 1;
 	i = 0;
