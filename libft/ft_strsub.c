@@ -16,7 +16,12 @@ char	*ft_strsub(char const *s, size_t start, size_t len)
 {
 	char		*result;
 
-	if (len > 0 && start < len)
+	result = ft_strnew(len);
+	if (!result)
+		return (NULL);
+	result = ft_strncpy(result, s + start, len);
+	return (result);
+	/*if (len > 0 && start < len)
 	{
 		if ((result = (char*)malloc(sizeof(char) * len + 1)) == NULL)
 			return (NULL);
@@ -24,5 +29,5 @@ char	*ft_strsub(char const *s, size_t start, size_t len)
 		return (result);
 	}
 	result = ft_strdup("");
-	return (result);
+	return (result);*/
 }

@@ -94,6 +94,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	gcc $(FLAG) -c $(SRCS) -I libft.h
 	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 clean:
 	rm -rf $(OBJ)
 fclean: clean

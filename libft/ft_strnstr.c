@@ -15,20 +15,16 @@
 char	*ft_strnstr(const char *str, const char *tofind, size_t n)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	if (!tofind[i])
+	if (!tofind[i] || !n)
 		return ((char*)str);
-	while (str[i] && (i + j) < n)
+	i = ft_strlen(tofind);
+	while (*str &&  n-- >= i)
 	{
-		j = 0;
-		while (str[i + j] && tofind[j] && str[i + j] == tofind[j]
-				&& (i + j) < n)
-			j++;
-		if (!tofind[j])
-			return ((char*)(str + i));
-		i++;
+		if (!ft_strncmp(str, tofind, i))
+			return ((char*)str);
+		str++;
 	}
-	return (0);
+	return (NULL);
 }
