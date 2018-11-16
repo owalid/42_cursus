@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int			ft_atoi(const char *str)
 {
 	int					i;
 	long long int		result;
-	long long int		sign;
+	int					sign;
 
 	sign = 1;
 	i = 0;
 	result = 0;
-	while (str[i] == '\n' || str[i] == '\v' || str[i] == '\r'
-			|| str[i] == '\t' || str[i] == '\f' || str[i] == ' ')
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
 		sign = -1;

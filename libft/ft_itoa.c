@@ -53,7 +53,7 @@ char			*ft_itoa(int nb)
 		return (ft_strdup("2147483647"));
 	is_neg(&nb, &neg, &size);
 	size += nb_ofnb((long)nb) + 1;
-	if (!(result = ft_strnew(sizeof(char) * size + 1)))
+	if (!(result = ft_strnew(sizeof(char) * size - 1)))
 		return (NULL);
 	result[--size] = '\0';
 	while (size--)
