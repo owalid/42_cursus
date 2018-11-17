@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 18:08:30 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 18:10:05 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-
-void		ft_liste_push_back(t_list **begin_list, void *data)
+int		ft_isblank(int c)
 {
-	int		i;
-	t_list	*push;
-
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
-		i++;
-	begin_list[i]->next = push;
+	if (c == ' ' || c == '\t')
+		return (1);
+	return (0);
 }

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/08 16:13:36 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 14:27:52 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	t_list	*push;
+	size_t	i;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char*)s1)[i] != ((unsigned char*)s2)[i])
+			return ((((unsigned char*)s1)[i]) - (((unsigned char*)s2)[i]));
 		i++;
-	begin_list[i]->next = push;
+	}
+	return (0);
 }

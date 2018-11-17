@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/09 13:12:11 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/14 16:55:23 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+void		ft_putstr(const char *str)
 {
-	int		i;
-	t_list	*push;
-
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
-		i++;
-	begin_list[i]->next = push;
+	write(1, str, ft_strlen(str));
 }

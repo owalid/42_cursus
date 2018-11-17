@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/09 15:26:15 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/11 18:29:11 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+void	ft_putnbr(int n)
 {
-	int		i;
-	t_list	*push;
-
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
-		i++;
-	begin_list[i]->next = push;
+	if (n == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	ft_putchar((n % 10) + '0');
 }

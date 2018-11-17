@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/08/06 23:27:45 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/09 13:13:33 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-
-void		ft_liste_push_back(t_list **begin_list, void *data)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int		i;
-	t_list	*push;
+	int i;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
-	begin_list[i]->next = push;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

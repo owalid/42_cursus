@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/08/07 20:19:04 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/14 19:52:45 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+char	*ft_strncat(char *dest, const char *src, int nb)
 {
+	int		size;
 	int		i;
-	t_list	*push;
+	char	*result;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	size = 0;
+	result = dest;
+	size = ft_strlen(result);
+	i = 0;
+	while (src[i] && i < nb)
+	{
+		result[size] = src[i];
+		size++;
 		i++;
-	begin_list[i]->next = push;
+	}
+	result[size] = '\0';
+	return (result);
 }

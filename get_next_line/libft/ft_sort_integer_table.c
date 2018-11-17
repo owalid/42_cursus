@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_sort_integer_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/14 14:59:20 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/14 14:59:23 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+void		ft_sort_integer_table(int *tab, int size)
 {
-	int		i;
-	t_list	*push;
+	int i;
+	int temp;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
-		i++;
-	begin_list[i]->next = push;
+	i = 0;
+	temp = 0;
+	while (i < size)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			ft_swap(&tab[i], &tab[i + 1]);
+			i = 1;
+		}
+		else
+			i++;
+	}
 }

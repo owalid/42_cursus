@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_lstget_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/14 14:52:34 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/14 14:52:40 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+t_list		*ft_lstget_at(t_list *begin_list, size_t nb)
 {
-	int		i;
-	t_list	*push;
+	t_list		*lst;
+	size_t		i;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 1;
+	lst = begin_list;
+	while (i < nb)
+	{
+		if (!lst)
+			return (NULL);
+		lst = lst->next;
 		i++;
-	begin_list[i]->next = push;
+	}
+	return (lst);
 }

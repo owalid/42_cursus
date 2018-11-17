@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_strcasecmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/12 19:23:10 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/13 19:31:07 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+int			ft_strcasecmp(const char *s1, const char *s2)
 {
 	int		i;
-	t_list	*push;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	while (s1[i] && s2[i] && ft_tolower(s1[i]) == ft_tolower(s2[i]))
 		i++;
-	begin_list[i]->next = push;
+	return (((unsigned char*)s1)[i] - ((unsigned char*)s2)[i]);
 }

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/08 16:06:54 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/13 21:15:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int		i;
-	t_list	*push;
+	size_t	i;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	while (n--)
+	{
+		((char*)dest)[i] = ((char*)src)[i];
+		if (((char*)dest)[i] == (char)c)
+			return (&dest[i + 1]);
 		i++;
-	begin_list[i]->next = push;
+	}
+	return (NULL);
 }

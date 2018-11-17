@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liste_push_back.c                               :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/17 00:03:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/13 16:35:39 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/11/08 17:21:30 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/12 15:03:13 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "libft.h"
 
-void		ft_liste_push_back(t_list **begin_list, void *data)
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		i;
-	t_list	*push;
+	size_t		size_dst;
+	size_t		i;
+	size_t		i_max;
 
-	push = ft_create_elem(data);
-	while (begin_list[i]->data == NULL)
+	i = 0;
+	size_dst = ft_strlen(dst);
+	i_max = size_dst + size;
+	if (size < size_dst)
+		return (ft_strlen(src) + size);
+	while (src[i] && (size_dst + i) < (size - 1))
+	{
+		dst[size_dst + i] = src[i];
 		i++;
-	begin_list[i]->next = push;
+	}
+	dst[size_dst + i] = '\0';
+	while (src[i])
+		i++;
+	return ((size_dst + i));
 }
