@@ -10,54 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int			get_size(char **s)
-{
-	int 	i;
-	int		j;
-	int		size;
-
-	i = 0;
-	size = 0;
-	while (s[i])
-	{
-		j = -1;
-		while (s[i][++j])
-			size++;
-		i++;
-	}
-}
-
-
-char		*get_fic(int fd, char **line)
-{
-	int		size;
-	int 	i;
-	char	*result;
-
-	i = 0;
-	size = 0;
-	while (!read(fd, *line, BUFF_SIZE))
-		size++;
-	result = ft_strnew(size);
-	while (!read(fd, *line, BUFF_SIZE))
-		result[++i] = **line;
-	return (result);
-}
+#include "get_next_line.h"
+#include <fcntl.h>
 
 int		get_next_line(const int fd, char **line)
 {
-	char	**gnl;
-	int		i;
-	int		j;
-	char	*result;
+	static char		*gnl[];
+	char			buff[BUFF_SIZE + 1];
 
-	gnl = ft_strsplit(get_fic(fd, line), '\n');
-	result = ft_strnew(get_size(gnl) / 2);
-	while (gnl[i])
+	if (!line || BUFF_SIZE < 1 || read(fd, buff, BUFF_SIZE) < 0 || !gnl)
+		return (-1);
+	while (!ft_strrchr(gnl[fd], '\n') && read(fd, buff, BUFF_SIZE))
 	{
-		if (i % 2 == 0)
-			result += gnl[i];
-		i++;
+		//tant qu'on est pas sur un \n ni a la fin du fichier
+		//.......
 	}
 }
 
