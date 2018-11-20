@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:36:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/19 20:44:51 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/11/20 15:00:22 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		get_next_line(const int fd, char **line)
 	if (!line || fd <= -1 || BUFF_SIZE < 1 || read(fd, buff, BUFF_SIZE) < 0 || !(gnl[fd] = ft_strnew(0)))
 		return (-1);
 	// tant qu'on est pas sur un \n ni a la fin du fichier
-	while ((read(fd, buff, BUFF_SIZE) > 0) && (fd_read = read(fd, buff, BUFF_SIZE) > 0))
+	while (!(ft_strrchr(buff, '\n')) && (fd_read = read(fd, buff, BUFF_SIZE) > 0))
 	{
 		printf("%s", buff);
 		buff[fd_read] = '\0';
