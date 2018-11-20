@@ -14,29 +14,61 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <limits.h>
-void	ft_strjoinfree(char *s1, char **line)
+
+static char 	*ft_strnjoin(char *s1, char *s2, size_t size)
 {
-	if (s1 || line)
-	{
-	*line = s1;
-	}
+	char	*result;
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	if (!s1 || !s2 || !(result = ft_strnew(ft_strlen(s1) + size)))
+		return (NULL);
+	while (s1[++j])
+		result[++i] = s1[j];
+	j = -1;
+	while (s2[++j] && --size > 0)
+		result[++i] = s2[j];
+	result[i] = '\0';
+	return (result);
+}
+
+
+static int		ft_strlenat(char *str, char c)
+{
+	int 	i;
+	int 	to_find;
+
+	to_find = -1;
+	i = -1;
+	while (str[++i])
+		if (str[i] == c)
+			to_find = i;
+	return (to_find);
 }
 
 int		get_next_line(const int fd, char **line)
 {
 	static char		*gnl[10240];
 	char			buff[BUFF_SIZE + 1]; //buffer fic
+	int				fd_read;
 
-	if (!line || BUFF_SIZE < 1 || read(fd, buff, BUFF_SIZE) < 0 || !(gnl[fd] = ft_strnew(0)))
+	if (!line || fd <= -1 || BUFF_SIZE < 1 || read(fd, buff, BUFF_SIZE) < 0 || !(gnl[fd] = ft_strnew(0)))
 		return (-1);
 	// tant qu'on est pas sur un \n ni a la fin du fichier
-	while (read(fd, buff, BUFF_SIZE) != 0)
+	while ((read(fd, buff, BUFF_SIZE) > 0) && (fd_read = read(fd, buff, BUFF_SIZE) > 0))
 	{
-		gnl[fd] = buff;
-		ft_strjoinfree(buff, line);
+		printf("%s", buff);
+		buff[fd_read] = '\0';
+		gnl[fd_read] = ft_strnjoin(gnl[fd_read], buff, OPEN_MAX);
 	}
-	printf("%s", *line);
-	return (1);
+	//printf("");
+	printf("\n%d", ft_strlenat(gnl[fd], '\n'));
+	//*line = ft_strsub(gnl[fd], 0, ft_strlenat(gnl[fd], '\n'));
+	if (line)
+		return (1);
+	return (0);
 }
 
 int		main(int argc, char **argv)
