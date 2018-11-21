@@ -15,77 +15,61 @@
 #include <stdio.h>
 #include <limits.h>
 
-static char 	*ft_strnjoin(char *s1, char *s2, size_t size)
-{
-	char	*result;
-	int		i;
-	int		j;
 
-	i = -1;
-	j = -1;
-	if (!s1 || !s2 || !(result = ft_strnew(ft_strlen(s1) + size)))
+static char		*ft_strjoinfree(char *s1, char *s2, size_t len)
+{
+	char		*result;
+	size_t		total_size;
+
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[++j])
-		result[++i] = s1[j];
-	j = -1;
-	while (s2[++j] && --size > 0)
-		result[++i] = s2[j];
-	result[i] = '\0';
+	total_size = ft_strlen(s1) + len;
+	if (!(result = (char*)ft_strnew(sizeof(char) * total_size)))
+		return (NULL);
+	ft_strcpy(result, s1);
+	ft_strncat(result, s2, len);
+	ft_strdel(&s1);
 	return (result);
 }
 
-
-static int		ft_strlenat(char *str, char c)
+int				get_next_line(const int fd, char **line)
 {
-	int 	i;
-	int 	to_find;
+	static char 	gnl[BUFF_SIZE];
+	char			*separator;
+	int				nb_read;
 
-	to_find = -1;
-	i = -1;
-	while (str[++i])
-		if (str[i] == c)
-			to_find = i;
-	return (to_find);
-}
-
-int		get_next_line(const int fd, char **line)
-{
-	static char		*gnl[10240];
-	char			buff[BUFF_SIZE + 1]; //buffer fic
-	int				fd_read;
-
-	if (!line || fd <= -1 || BUFF_SIZE < 1 || read(fd, buff, BUFF_SIZE) < 0 || !(gnl[fd] = ft_strnew(0)))
+	if (fd < 0 || !line || read(fd, gnl, 0) < 0 || BUFF_SIZE < 1 || !(*line = ft_strdup("")))
 		return (-1);
-	// tant qu'on est pas sur un \n ni a la fin du fichier
-	while (!(ft_strrchr(buff, '\n')) && (fd_read = read(fd, buff, BUFF_SIZE) > 0))
+	while ((nb_read = read(fd, gnl, BUFF_SIZE) > 0) && !(separator = ft_strrchr(gnl, '\n')))
 	{
-		printf("%s", buff);
-		buff[fd_read] = '\0';
-		gnl[fd_read] = ft_strnjoin(gnl[fd_read], buff, OPEN_MAX);
+		*line = ft_strjoinfree(*line, gnl, BUFF_SIZE);
+		gnl[nb_read] = '\0';
 	}
-	//printf("");
-	printf("\n%d", ft_strlenat(gnl[fd], '\n'));
-	//*line = ft_strsub(gnl[fd], 0, ft_strlenat(gnl[fd], '\n'));
-	if (line)
-		return (1);
-	return (0);
+	if (!separator)
+		return (0);
+		*line = ft_strjoinfree(*line, gnl, separator - gnl);
+		ft_strncpy(gnl, &gnl[separator - gnl + 1], BUFF_SIZE - (separator - gnl));
+		gnl[nb_read] = '\0';
+	return (1);
 }
 
 int		main(int argc, char **argv)
 {
-	int 	fd;
-	char 	*line; //la line
+	int		fd;
+	char	*line;
 
-	if (argc != 2)
+	if (argc == 1)
+		fd = 0;
+	else if (argc == 2)
+		fd = open(argv[1], O_RDONLY);
+	else
+		return (2);
+	while (get_next_line(fd, &line) == 1)
 	{
-		if (argc > 2)
-			write(2, "Too many arguments.\n", 20);
-		if (argc < 2)
-			write(2, "File name missing.\n", 19);
-		return (1);
+		ft_putendl(line);
+		free(line);
 	}
-	fd = open(argv[1], O_RDONLY);
-	get_next_line(fd, &line);
-	close(fd);
-	return (0);
+	if (argc == 2)
+		close(fd);
+	return (1);
 }
