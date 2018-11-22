@@ -47,9 +47,9 @@ int				get_next_line(const int fd, char **line)
 	}
 	if (!separator)
 		return (0);
-		*line = ft_strjoinfree(*line, gnl, separator - gnl);
-		ft_strncpy(gnl, &gnl[separator - gnl + 1], BUFF_SIZE - (separator - gnl));
-		gnl[nb_read] = '\0';
+	*line = ft_strjoinfree(*line, gnl, separator - gnl);
+	ft_strncpy(gnl, &gnl[separator - gnl + 1], BUFF_SIZE - (separator - gnl));
+	gnl[nb_read] = '\0';
 	return (1);
 }
 
