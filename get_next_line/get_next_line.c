@@ -56,33 +56,36 @@ int				get_next_line(const int fd, char **line)
 	int				nb_read;
 	int				position;
 
+	position = 0;
 	if (fd < 0 || !line || read(fd, gnl, 0) < 0 || BUFF_SIZE < 1 || !(*line = ft_strnew(0)))
 		return (-1);
 
 	//printf("\x1B[32m[gnl: %s]\n", gnl);
-	if (ft_strlen(gnl) > 1)
-		*line = ft_strjoinfree(*line, gnl, BUFF_SIZE);
+	if (ft_strlen(gnl) > 0)
+		*line = ft_strjoinfree(*line, gnl, ft_strlen(gnl));
 	while ((nb_read = read(fd, gnl, BUFF_SIZE) > 0) && !(separator = ft_strrchr(gnl, '\n')))
 	{
 		*line = ft_strjoinfree(*line, gnl, BUFF_SIZE);
+		gnl[nb_read] = '\0';
 		//	printf("\x1B[34m[line: %s]", *line);
 	}
 	//	printf("\x1B[34m[line: %s]", *line);
 	if (!separator)
 	{
-		//ft_strncpy(gnl, &gnl[ft_strlen(gnl)], ft_strlen(gnl));
 		*line = ft_strjoinfree(*line, gnl, ft_strlen(gnl));
+		ft_strncpy(gnl, &gnl[position + 1], ft_strlen(gnl));
 		return (0);
 	}
 	position = (ft_strlen(gnl) - (ft_strlen(separator)));
 	*line = ft_strjoinfree(*line, gnl, position);
 	//printf("\x1B[32m[position: %d]\n", position);
-	//printf("\x1B[34m[line: %s]", *line);
-	ft_strncpy(gnl, &gnl[position + 1], ft_strlen(gnl));
+	//printf("\x1B[34m\n[gnl[position]: %d]\n", gnl[position]);
+	ft_strncpy(gnl, &gnl[position + 1],  BUFF_SIZE);
+	//printf("\x1B[34m\n[gnl[position]: %s]\n", gnl);
 	//printf("\x1B[34m[line: %s]", *line);
 	return (1);
 }
-
+/*
 int		main(int argc, char **argv)
 {
 	int		fd;
@@ -99,13 +102,7 @@ int		main(int argc, char **argv)
 		ft_putendl(line);
 		free(line);
 	}
-	if (get_next_line(fd, &line) == 0)
-	{
-		ft_putendl(line);
-		free(line);
-		return (1);
-	}
 	if (argc == 2)
 		close(fd);
 	return (1);
-}
+}*/
