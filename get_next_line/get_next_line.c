@@ -15,14 +15,6 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
-void			ft_putstrf(char **str)
-{
-	int 	size = ft_strlen(*str) - 1;
-
-	while (size--)
-		printf("%c", *str[size]);
-}
-
 static char		*ft_strjoinfree(char *s1, char *s2, size_t len)
 {
 	char		*result;
@@ -49,29 +41,34 @@ int				get_next_line(const int fd, char **line)
 	position = 0;
 	if (fd < 0 || !line || read(fd, gnl, 0) < 0 || BUFF_SIZE < 1 || !(*line = ft_strnew(0)))
 		return (-1);
-	if (ft_strlen(gnl) > 0)
-		*line = ft_strjoinfree(*line, gnl, ft_strlen(gnl));
-	while ((nb_read = read(fd, gnl, BUFF_SIZE)) > 1 && !(separator = ft_strrchr(gnl, '\n')))
+	if ((position = ft_strlen(gnl)) > 0)
+	{
+		if ((separator = ft_strrchr(gnl, '\n')))
+		{
+			*line = ft_strjoinfree(*line, gnl, separator - gnl);
+			ft_strncpy(gnl, &gnl[separator - gnl + 1],  BUFF_SIZE);
+		}
+		else
+		{
+			*line = ft_strjoinfree(*line, gnl, BUFF_SIZE);
+			ft_bzero((void*)gnl, BUFF_SIZE);
+		}
+	}
+	while ((nb_read = read(fd, gnl, BUFF_SIZE)) > 1)
 	{
 		//printf("\n[gnl in while: %s]", gnl);
+		separator = ft_strrchr(gnl, '\n');
+		if (separator)
+		{
+			*line = ft_strjoinfree(*line, gnl, separator - gnl);
+			ft_strncpy(gnl, &gnl[separator - gnl + 1],  BUFF_SIZE);
+			return (1);
+		}
 		*line = ft_strjoinfree(*line, gnl, BUFF_SIZE);
-		ft_bzero((void*)gnl, ft_strlen(gnl));
-		//gnl[nb_read] = '\0';
+		ft_bzero((void*)gnl, BUFF_SIZE);
 	}
 	if (!nb_read && !**line)
 		return (0);
-	if (!separator)
-	{
-		//printf("\n\ngnl %s", gnl);
-		ft_bzero((void *)gnl, ft_strlen(gnl));
-		//gnl[nb_read] = '\0';
-		*line = ft_strjoinfree(*line, gnl, ft_strlen(gnl));
-		ft_strncpy(gnl, &gnl[BUFF_SIZE], ft_strlen(gnl));
-		return (1);
-	}
-	position = (ft_strlen(gnl) - (ft_strlen(separator)));
-	*line = ft_strjoinfree(*line, gnl, position);
-	ft_strncpy(gnl, &gnl[position + 1],  BUFF_SIZE);
 	return (1);
 }
 
@@ -82,26 +79,16 @@ int		main(int argc, char **argv)
 	char	*line;
 
 	if (argc == 1)
-		fd = 2;
+		fd = 0;
 	else if (argc == 2)
-		fd = 2;
+		fd = open(argv[1], O_RDONLY);
 	else
 		return (2);
-	write(fd, "aaa\nbbb\nccc\n", 12);
-	 close(fd);
-	
-		get_next_line(fd, &line);
-		ft_putstrf(&line);
-	//	printf("%d\n", strcmp(&line, "aaa"));
-		get_next_line(fd, &line);
-		//ft_putstrf(line);
-	//	printf("%d\n", strcmp(line, "bbb"));
-		get_next_line(fd, &line);
-		//	ft_putstrf(line);
-	//	printf("%d\n", strcmp(line, "ccc"));
-		//ft_putendl(line);
+	while (get_next_line(fd, &line) == 1)
+	{
+		ft_putendl(line);
 		free(line);
-	
+	}
 	if (argc == 2)
 		close(fd);
 	return (1);
