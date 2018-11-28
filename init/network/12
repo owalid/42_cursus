@@ -1,0 +1,1 @@
+ipconfig getoption en0 server_identifier
