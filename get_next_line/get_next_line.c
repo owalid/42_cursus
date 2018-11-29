@@ -18,7 +18,6 @@ int			ft_verif_line(char **line)
 		free(*line);
 	return ((**line) ? 1 : 0);
 }
-
 char		*ft_strjoinfree(char *s1, char *s2, size_t len)
 {
 	char		*result;
