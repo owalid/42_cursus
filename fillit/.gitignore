@@ -1,0 +1,11 @@
+*.o
+*.a
+*/*.o
+*/*.a
+a.out
+fillit
+.DS_Store
+a.out.dSYM
+.vscode
+test/*
+test
