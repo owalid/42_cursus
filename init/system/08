@@ -1,1 +1,4 @@
-~/.ssh
+le fichier est: ~/.ssh/authorized_keys
+plusieurs methode pour mettre les clef public dans se fichier:
+automatiser: grace a la commande ssh-copy-id.
+manuelle: copier  ~/is_rsa.pub >> ~/.ssh/authorized_keys

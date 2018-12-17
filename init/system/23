@@ -1,1 +1,3 @@
-su <username>
+en session terminal: su <login>
+en session graphique: se delog et se log avec le nouvel user
+en ssh: ssh <login>@<nom_DNS_du_serveur_SSH> ou <adresse_ip_du_serveur_SSH> -p <numero_du_port> (par defaut 22)
