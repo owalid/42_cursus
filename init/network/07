@@ -1,2 +1,1 @@
-whois slash16.org | grep "Name Server"
-donc aws :)
+nslookup slash16.org 10.51.1.42
