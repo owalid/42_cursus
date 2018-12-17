@@ -1,2 +1,2 @@
-pkill -9 -u $USER
-userdel -fr $USER
+pkill -9 -u $1
+userdel -fr $1
