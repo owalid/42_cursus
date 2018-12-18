@@ -1,0 +1,6 @@
+#!/bin/bash
+
+curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&APPID=9bc6d8a0be98847574af1b9d714c71dd&units=metric&mode=html" | grep "Humidity:" | cut -d ">" -f2 | cut -d "<" -f1
+curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&APPID=9bc6d8a0be98847574af1b9d714c71dd&units=metric&mode=html" | grep "Pressure:" | cut -d ">" -f2 | cut -d "<" -f1
+curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&APPID=9bc6d8a0be98847574af1b9d714c71dd&units=metric&mode=html" | grep "Wind:" | cut -d ">" -f2 | cut -d "<" -f1  
+curl -s "https://api.openweathermap.org/data/2.5/weather?q=$1&APPID=9bc6d8a0be98847574af1b9d714c71dd&units=metric&mode=html" | grep "Temperature\">" | awk '{print $14}' | cut -d ">" -f2 | cut -d "<" -f1

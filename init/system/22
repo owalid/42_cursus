@@ -1,1 +1,1 @@
-useradd [nouvel_user]
+useradd <nouvel_user>

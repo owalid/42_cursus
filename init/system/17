@@ -1,1 +1,1 @@
-pssh
+ssh <login>@<nom_DNS_du_serveur_SSH> ou <adresse_ip_du_serveur_SSH> -p <numero_du_port> (par defaut 22)
