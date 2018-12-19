@@ -1,4 +1,4 @@
-void		err(int id)
+void		fdf_err(int id)
 {						
 	if (id == 1)
 		ft_putstr(ERR_1);

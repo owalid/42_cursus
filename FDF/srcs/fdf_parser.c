@@ -1,5 +1,6 @@
 #include "../includes/fdf.h"
 
+//taille du fichier = nombre de line 😎
 int		get_size_file(char *file)
 {
 	int		fd;
