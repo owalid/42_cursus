@@ -13,7 +13,7 @@ int		get_size_file(char *file)
 		count++;
 		free(tmp);
 	}
-	if (clos(fd) != -1)
+	if (close(fd) != -1)
 		return (-1);
 	return (count);
 }
@@ -45,7 +45,7 @@ int		*create_tab(char *map)
 	map_split = ft_strsplit(map, ' ');
 	while (map_split[i])
 		i++;
-	if (!(result = (int*)malloc(sizeof(int) * i)i))
+	if (!(result = (int*)malloc(sizeof(int) * i)))
 			return (NULL);
 	i = -1;
 	while (map_split[++i])
@@ -53,3 +53,4 @@ int		*create_tab(char *map)
 	ft_strdel(map_split);
 	return (result);
 }
+
