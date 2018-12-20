@@ -1,7 +1,11 @@
 NAME	= fdf
 
 SRC		= fdf_parser.c \
-			fdf_err.c
+			fdf_err.c \
+			fdf_main.c \
+			fdf_utils.c \
+			fdf_windows_manager.c \
+			get_next_line.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -18,7 +22,7 @@ FT_LIB	= $(addprefix $(FT),libft.a)
 FT_INC	= -I ./libft
 FT_LNK	= -L ./libft -l ft
 
-SRCDIR	= ./src/
+SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 OBJDIR	= ./obj/
 

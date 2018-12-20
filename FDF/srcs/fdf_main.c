@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_main.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/12/20 20:50:17 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
 void	fdf_verif_ext(char *file)
@@ -8,16 +20,16 @@ void	fdf_verif_ext(char *file)
 	if (i <= 0 || ft_strcmp(file + i, ".fdf"))
 		fdf_err(2);
 }
-void	fdf_setwin(t_infos *infos, char *x, char *y)
+void	fdf_setwin(t_infowin *infos, char *x, char *y)
 {
 	infos->width = ft_atoi(x);
 	infos->height = ft_atoi(y);
 }
 
-int 	main(int ac char **av)
+int 	main(int ac, char **av)
 {
-	char		**map;
-	t_infos		infos[1];
+	t_vector	*map;
+	t_infowin	infos[1];
 
 	if (ac > 1 && ac < 5)
 	{
@@ -27,14 +39,15 @@ int 	main(int ac char **av)
 			// modifier les valeurs par default de la fenetre
 		else
 		{
-			info->width = 1280;
-			info->heigth = 720;
+			infos->width = 1280;
+			infos->height = 720;
 		}
+		fdf_init(infos->width, infos->height);
 		map = get_map(av[1]);
-		ft_parse(map, info);
-		ft_strdel(map);
-		ft_stctdel(info);
+		//ft_parse(map, infos);
+	//	ft_strdel(map);
+	//	ft_stctdel(infos);
 	}
-	ft_err(1);
+	fdf_err(1);
 	return (0);
 }
