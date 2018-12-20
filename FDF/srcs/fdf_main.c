@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/20 20:50:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/20 22:24:46 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	fdf_setwin(t_infowin *infos, char *x, char *y)
 
 int 	main(int ac, char **av)
 {
+	int i;
 	t_vector	*map;
 	t_infowin	infos[1];
 
@@ -44,6 +45,17 @@ int 	main(int ac, char **av)
 		}
 		fdf_init(infos->width, infos->height);
 		map = get_map(av[1]);
+		i = 0;
+		/*while(map)
+		{
+			ft_putnbr(map[i].x);
+			ft_putchar('\n');
+			ft_putnbr(map[i].y);
+			ft_putchar('\n');
+			ft_putnbr(map[i].z);
+			ft_putchar('\n');
+			i++;
+		}*/
 		//ft_parse(map, infos);
 	//	ft_strdel(map);
 	//	ft_stctdel(infos);
