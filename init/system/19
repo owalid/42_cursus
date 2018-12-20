@@ -1,4 +1,4 @@
-systemctl list-units --type service
+systemctl list-units --type service --all
 
 ce sont des service de type simple car ils sont executer au boot
 

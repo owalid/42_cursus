@@ -1,1 +1,1 @@
-kill <PID_process>
+pkill -f tail -f
