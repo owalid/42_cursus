@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/20 20:04:28 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:44:14 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,20 @@
 
 # define BUFF_SIZE 			42
 # define ERR_1				"hello"
-# define ERR_2				"world"
+# define ERR_2				"Err: malloc, open, read"
 # define ERR_3				".."
 # define EXT1				"fdf: end"
+
+typedef struct			s_ord
+{
+	int				x1;
+	int				x2;
+	int				y1;
+	int				y2;
+	int				dy;
+	int				dx;
+}						t_ord;
+
 
 typedef struct 			s_vector
 {
@@ -36,6 +47,13 @@ typedef struct 			s_vector
 	long			z;
 	int				color;
 }						t_vector;
+
+typedef struct			s_img
+{
+	void			*mlx_img;
+	int				*data;
+}						t_img;
+
 
 typedef struct 			s_map
 {
@@ -46,8 +64,10 @@ typedef struct 			s_map
 
 typedef struct			s_infowin
 {
+	int				**tab;
 	int				width;
 	int				height;
+	t_img			*mlx;
 }						t_infowin;
 
 typedef struct			s_mlxprint
@@ -55,17 +75,30 @@ typedef struct			s_mlxprint
 	void			*mlx_ptr;
 	void			*mlx_win;
 	int				zoom;
+	int				bperpix;
+	int				size_line;
+	int				endian;
 	//t_infowin		*infos;
 }						t_mlxprint;
 
+/*
+** get_next_line.c
+*/
 int			get_next_line(const int fd, char **line);
 
+/*
+** fdf_err.c
+*/
 void		fdf_err(int id);
 void		fdf_exit(int id);
 
+/*
+** fdf_parser.c
+*/
 t_vector	*get_map(char *file);
 
-void		fdf_infodel(t_infowin infos);
-
+/*
+** fdf_err.c
+*/
 void		fdf_init(int x, int y);
 #endif

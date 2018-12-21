@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/20 22:24:46 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/21 15:52:18 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int 	main(int ac, char **av)
 			ft_putchar('\n');
 			i++;
 		}*/
-		//ft_parse(map, infos);
+	//	ft_parse(map, infos);
 	//	ft_strdel(map);
 	//	ft_stctdel(infos);
 	}
