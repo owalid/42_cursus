@@ -61,6 +61,27 @@ t_vector	*create_vector(int size_total, int fd)
 	return (vector);
 }
 
+int			*create_tab(int *str, t_infowin *infos)
+{
+	char 	**split_matrix;
+	int		*result;
+	int		i;
+
+	i = 0;
+	split_matrix = ft_strsplit(str, ' ');
+	while (split_matrix[i])
+		i++;
+	if (!(result = (int*)malloc(sizeof(int) * i)))
+		fdf_err(2);
+	i = -1;
+	while (split_matrix[++i])
+		result[i] = ft_atoi(split_matrix[i]);
+	if (infos->w == 0)
+		infos->w = i;
+	ft_tabfree(split_matrix);
+	return (result);
+}
+
 t_vector	*get_map(char *file)
 {
 	t_vector	*result;
@@ -89,3 +110,23 @@ t_vector	*get_map(char *file)
 }
 
 
+
+void		fdf_parser(char **tab, t_infowin *infos)
+{
+	int 	**tab;
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (!(tab = (int **)malloc(sizeof(int *) * i)))
+		ft_err(2);
+	i = -1;
+	infos->w = 0;
+	while (str[++i])
+		tab[i] = create_tab(str[i], infos);
+	if (i == 0)
+		fdf_err(1);
+	infos->h = i;
+	infos->tab = tab;
+}

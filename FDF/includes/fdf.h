@@ -52,6 +52,10 @@ typedef struct			s_img
 {
 	void			*mlx_img;
 	int				*data;
+	int				bperpix;
+	int				size_line;
+	int				endian;
+
 }						t_img;
 
 
@@ -64,6 +68,8 @@ typedef struct 			s_map
 
 typedef struct			s_infowin
 {
+	int				w;
+	int				h;
 	int				**tab;
 	int				width;
 	int				height;
@@ -74,11 +80,11 @@ typedef struct			s_mlxprint
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
+	int				a;
 	int				zoom;
-	int				bperpix;
-	int				size_line;
-	int				endian;
-	//t_infowin		*infos;
+	int				height;
+	int				h;
+	t_infowin		*infos;
 }						t_mlxprint;
 
 /*
