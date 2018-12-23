@@ -32,43 +32,34 @@ int		get_size_file(char *file)
 	return (size);
 }
 
-t_vector	*create_vector(int size_total, int fd)
+char		**get_map(char *file)
 {
-	char		**map_split;
-	char		*gnl;
-	int			i;
-	int			j;
-	t_vector	*vector;
+	int 	fd;
+	int		i;
+	char	**result;
 
-	if(!(vector = malloc(sizeof(t_vector) * size_total)))
+	i = 0;
+	if (!(result = (char**)malloc(sizeof(char*) * (get_size_file(file) + 1))))
 		fdf_err(2);
 	i = 0;
-	while (get_next_line(fd, &gnl + i))
-	{
-		printf("%s\n", gnl);
-		j = 0;
-		map_split = ft_strsplit(gnl, ' ');
-		while (map_split[j])
-		{
-			vector[j].x = i;
-			vector[j].y = j;
-			vector[j].z = ft_atoi(map_split[j]);
-			j++;
-			vector++;
-		}
+	if ((fd = open(file, O_RDONLY) == -1))
+		fdf_err(2);
+	while (get_next_line(fd, result + i))
 		i++;
-	}
-	return (vector);
+	if (close(fd) == 0)
+		fdf_err(2);
+	result[i] = NULL;
+	return (result);
 }
 
-int			*create_tab(int *str, t_infowin *infos)
+int			*create_tab(char *str, t_infowin *infos)
 {
 	char 	**split_matrix;
 	int		*result;
 	int		i;
 
 	i = 0;
-	split_matrix = ft_strsplit(str, ' ');
+	split_matrix = ft_strsplit((const char*)str, ' ');
 	while (split_matrix[i])
 		i++;
 	if (!(result = (int*)malloc(sizeof(int) * i)))
@@ -78,53 +69,24 @@ int			*create_tab(int *str, t_infowin *infos)
 		result[i] = ft_atoi(split_matrix[i]);
 	if (infos->w == 0)
 		infos->w = i;
-	ft_tabfree(split_matrix);
+	//ft_tabfree(split_matrix);
 	return (result);
 }
 
-t_vector	*get_map(char *file)
-{
-	t_vector	*result;
-	char 	*gnl;
-	char 	**tmp;
-	int		i;
-	int		j;
-	int		count;
-	int 	fd;
-
-	count = 0;
-	i = -1;
-	if ((fd = open(file, O_RDONLY)) == -1)
-		fdf_err(2);
-	while (get_next_line(fd, &gnl + i))
-	{
-		j = -1;
-		tmp = ft_strsplit(gnl, ' ');
-		while (tmp[++j])
-			count++;
-	}
-	result = create_vector(count, fd);
-	if (close(fd) == -1)
-		fdf_err(2);
-	return (result);
-}
-
-
-
-void		fdf_parser(char **tab, t_infowin *infos)
+void		fdf_parser(char **map, t_infowin *infos)
 {
 	int 	**tab;
 	int		i;
 
 	i = 0;
-	while (str[i])
+	while (map[i])
 		i++;
 	if (!(tab = (int **)malloc(sizeof(int *) * i)))
-		ft_err(2);
+		fdf_err(2);
 	i = -1;
 	infos->w = 0;
-	while (str[++i])
-		tab[i] = create_tab(str[i], infos);
+	while (map[++i])
+		tab[i] = create_tab(map[i], infos);
 	if (i == 0)
 		fdf_err(1);
 	infos->h = i;

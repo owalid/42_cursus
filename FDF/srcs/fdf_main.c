@@ -29,7 +29,7 @@ void	fdf_setwin(t_infowin *infos, char *x, char *y)
 int 	main(int ac, char **av)
 {
 	int i;
-	t_vector	*map;
+	char		**map;
 	t_infowin	infos[1];
 
 	if (ac > 1 && ac < 5)
@@ -43,8 +43,9 @@ int 	main(int ac, char **av)
 			infos->width = 1280;
 			infos->height = 720;
 		}
-		fdf_init(infos->width, infos->height);
 		map = get_map(av[1]);
+		fdf_parser(map, infos);
+		fdf_init(infos);
 		i = 0;
 		/*while(map)
 		{

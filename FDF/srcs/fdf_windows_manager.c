@@ -47,28 +47,40 @@ int			deal_key(int key, t_mlxprint *mlx)
 	return (0);
 }
 
-void		fdf_init(int x, int y)
+void		fdf_initimg(t_infowin *infos, t_img *img, void *mlx_ptr)
 {
-//	int			zoom;
+	img->mlx_img = mlx_new_image(mlx_ptr, infos->width, infos->height);
+	img->data = (int *)mlx_get_data_addr(img->mlx_img, &img->bperpix, &img->size_line, &img->endian);
+}
+
+void		fdf_graph(t_mlxprint *mlx)
+{
+	t_img	img[1];
+	
+	fdf_initimg(mlx->infos, img, mlx->mlx_ptr);
+	mlx->infos->img = img;
+	//display ?
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, 0, 0);
+	display_usage(mlx->mlx_ptr, mlx->mlx_win);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->infos->img->mlx_img);
+}
+
+void		fdf_init(t_infowin *info)
+{
 	t_mlxprint	mlx[1];
-	void 	*img;
-	char	*adr;
 
 	mlx->zoom = 50;
-	mlx->mlx_ptr = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, x, y, "fdf");
-	while (x >= 10)
-	{
-		mlx_pixel_put(mlx->mlx_ptr, mlx->mlx_win, x, y, 0xFFFFFF);
-		x -= 1;
-		y -= 1;
-	}
+	if (!(mlx->mlx_ptr = mlx_init()))
+		fdf_err(2);
+	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, mlx->infos->width, mlx->infos->height, "fdf");
+	mlx->infos = info;
+	fdf_graph(mlx);
 	mlx_key_hook(mlx->mlx_win, deal_key, mlx);
-	img = mlx_new_image(mlx->mlx_ptr, 100, 100);
-	adr = mlx_get_data_addr(img, &mlx->bperpix, &mlx->size_line, 0);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, img, 100, 100);
+	//img = mlx_new_image(mlx->mlx_ptr, 100, 100);
+	//adr = mlx_get_data_addr(img, &mlx->bperpix, &mlx->size_line, 0);
+	//mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, img, 100, 100);
 //	fdf_init_img();
 	//mlx_new_image(mlx->mlx_ptr, 50, 50);
-	display_usage(mlx->mlx_ptr, mlx->mlx_win);
+	//display_usage(mlx->mlx_ptr, mlx->mlx_win);
 	mlx_loop(mlx->mlx_ptr);
 }

@@ -73,7 +73,7 @@ typedef struct			s_infowin
 	int				**tab;
 	int				width;
 	int				height;
-	t_img			*mlx;
+	t_img			*img;
 }						t_infowin;
 
 typedef struct			s_mlxprint
@@ -101,10 +101,11 @@ void		fdf_exit(int id);
 /*
 ** fdf_parser.c
 */
-t_vector	*get_map(char *file);
+char		**get_map(char *file);
 
 /*
 ** fdf_err.c
 */
-void		fdf_init(int x, int y);
+void		fdf_init(t_infowin *info);
+void		fdf_parser(char **map, t_infowin *infos);
 #endif
