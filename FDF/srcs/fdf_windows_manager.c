@@ -59,7 +59,7 @@ void		fdf_graph(t_mlxprint *mlx)
 	
 	fdf_initimg(mlx->infos, img, mlx->mlx_ptr);
 	mlx->infos->img = img;
-	//display ?
+	display_all(mlx->infos->ptr, mlx->infos);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, 0, 0);
 	display_usage(mlx->mlx_ptr, mlx->mlx_win);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->infos->img->mlx_img);

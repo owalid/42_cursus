@@ -71,6 +71,7 @@ typedef struct			s_infowin
 	int				w;
 	int				h;
 	int				**tab;
+	int				**ptr;
 	int				width;
 	int				height;
 	t_img			*img;
@@ -102,6 +103,11 @@ void		fdf_exit(int id);
 ** fdf_parser.c
 */
 char		**get_map(char *file);
+
+/*
+** fdf_display.c 
+*/
+void		display_all(int **ptr, t_infowin *infos);
 
 /*
 ** fdf_err.c
