@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/21 15:52:18 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/24 20:52:20 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	fdf_setwin(t_infowin *infos, char *x, char *y)
 
 int 	main(int ac, char **av)
 {
-	int i;
-	char		**map;
+	t_gnl		*map;
 	t_infowin	infos[1];
 
 	if (ac > 1 && ac < 5)
@@ -46,21 +45,7 @@ int 	main(int ac, char **av)
 		map = get_map(av[1]);
 		fdf_parser(map, infos);
 		fdf_init(infos);
-		i = 0;
-		/*while(map)
-		{
-			ft_putnbr(map[i].x);
-			ft_putchar('\n');
-			ft_putnbr(map[i].y);
-			ft_putchar('\n');
-			ft_putnbr(map[i].z);
-			ft_putchar('\n');
-			i++;
-		}*/
-	//	ft_parse(map, infos);
-	//	ft_strdel(map);
-	//	ft_stctdel(infos);
+
 	}
-	fdf_err(1);
 	return (0);
 }

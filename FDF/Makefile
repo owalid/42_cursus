@@ -5,6 +5,8 @@ SRC		= fdf_parser.c \
 			fdf_main.c \
 			fdf_utils.c \
 			fdf_windows_manager.c \
+			fdf_display.c \
+			utils.c \
 			get_next_line.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

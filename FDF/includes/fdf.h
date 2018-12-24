@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/21 19:44:14 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/24 20:45:13 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 //////////////////////////////////////
 #include <stdio.h>
+#include <limits.h>
 /////////////////////////////////////
 
 # include <math.h>
@@ -39,6 +40,11 @@ typedef struct			s_ord
 	int				dx;
 }						t_ord;
 
+typedef struct			s_gnl
+{
+	char			*str;
+	struct s_gnl			*next;
+}						t_gnl;
 
 typedef struct 			s_vector
 {
@@ -68,8 +74,11 @@ typedef struct 			s_map
 
 typedef struct			s_infowin
 {
+	int				xmove;
+	int				ymove;
 	int				w;
 	int				h;
+	int				i;
 	int				**tab;
 	int				**ptr;
 	int				width;
@@ -102,7 +111,7 @@ void		fdf_exit(int id);
 /*
 ** fdf_parser.c
 */
-char		**get_map(char *file);
+t_gnl		*get_map(char *file);
 
 /*
 ** fdf_display.c 
@@ -113,5 +122,12 @@ void		display_all(int **ptr, t_infowin *infos);
 ** fdf_err.c
 */
 void		fdf_init(t_infowin *info);
-void		fdf_parser(char **map, t_infowin *infos);
+void		fdf_parser(t_gnl *map, t_infowin *infos);
+
+/*
+** utils.c
+*/
+t_gnl		*ft_lstgnlnew(char *str);
+void		ft_lstgnlpushback(t_gnl **beginlst, char *str);
+int			ft_lstgnlsize(t_gnl *lst);
 #endif

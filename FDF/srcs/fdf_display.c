@@ -6,11 +6,98 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 18:27:20 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/21 19:13:25 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/24 20:51:05 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		one(t_line *line, t_infowin infos){
+#include "../includes/fdf.h"
+
+void	four(t_ord *line, t_infowin *infos)
+{
+	float	a;
+	int		temp;
+	int		i;
+	int		x;
+	int		y;
+
+	a = 0;
+	i = 0;
+	temp = 0;
+	if (line->x1 > line->x2)
+	{
+		temp = line->x1;
+		line->x1 = line->x2;
+		line->x2 = temp;
+	}
+	i = line->x1;
+	while (i < line->x2 + 1)
+	{
+		x = line->y1;
+		y = i;
+		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
+			infos->img->data[x * infos->width + y] = 0xFFFFFF;
+		++i;
+	}
+}
+
+void	three(t_ord *line, t_infowin *infos)
+{
+	float	a;
+	int		temp;
+	int		i;
+	int		x;
+	int		y;
+
+	a = 0;
+	i = 0;
+	temp = 0;
+	if (line->y1 > line->y2)
+	{
+		temp = line->y1;
+		line->y1 = line->y2;
+		line->y2 = temp;
+	}
+	i = line->y1;
+	while (i < line->y2 + 1)
+	{
+		x = i;
+		y = line->x1;
+		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
+			infos->img->data[x * infos->width + y] = 0xFFFFFF;
+		++i;
+	}
+}
+
+void	two(t_ord *line, t_infowin *infos)
+{
+	float	a;
+	int		temp;
+	int		i;
+
+	a = 0;
+	i = 0;
+	temp = 0;
+	if (line->y1 > line->y2)
+	{
+		temp = line->y1;
+		line->y1 = line->y2;
+		line->y2 = temp;
+		temp = line->x1;
+		line->x1 = line->x2;
+		line->x2 = temp;
+	}
+	a = ((float)(line->x2 - line->x1) / (line->y2 - line->y1));
+	while (i < (int)line->dy + 1)
+	{
+		if ((line->x1 + (int)(i * a)) > 0 && (line->x1 + (int)(i * a)) <
+				infos->width && (line->y1 + i) > 0 && line->y1 + i < infos->height)
+			infos->img->data[(line->y1 + i) * infos->width +
+				(line->x1 + (int)(i * a))] = 0xFFFFFF;
+		++i;
+	}
+}
+
+void		one(t_ord *line, t_infowin *infos){
 	float	a;
 	int		temp;
 	int		i;
@@ -31,32 +118,16 @@ void		one(t_line *line, t_infowin infos){
 	while (i < (int)line->dx + 1)
 	{
 		if (line->x1 + i > 0 && line->x1 + i < infos->width && (line->y1
-			+ (int)(i * a)) > 0 && (line->y1 + (int)(i * a)) < infos->height)
-			infos->mlx->data[(line->y1 + (int)(i * a)) * infos->width +
+					+ (int)(i * a)) > 0 && (line->y1 + (int)(i * a)) < infos->height)
+			infos->img->data[(line->y1 + (int)(i * a)) * infos->width +
 				line->x1 + i] = 0xFFFFFF;
 		++i;
 	}
 }
 
-void		fdf_display_line(t_ord *ord)
+void		first_line(int **ptr, t_infowin *infos)
 {
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
-	ord->dy = ord->y1 - ord->y2;
-	ord->dx = ord->x1 - ord->x2;
-	while (x >= ord->x1 || x <= ord->x2)
-	{
-		fdf_draw_line(x, y);
-		x++;
-	}
-}
-
-void		first_line(int **ptr, t_infos *infos)
-{
-	t_line	line[1];
+	t_ord	line[1];
 
 	line->x1 = ptr[infos->i][1];
 	line->x2 = ptr[infos->i + infos->w][1];
@@ -66,8 +137,33 @@ void		first_line(int **ptr, t_infos *infos)
 	line->dy = abs(line->y2 - line->y1);
 	if (line->dx >= line->dy && line->dx != 0 && line->dy != 0)
 		one(line, infos);
+	if (line->dx < line->dy && line->dx != 0 && line->dy != 0)
+		two(line, infos);
+	if (line->dx == 0)
+		three(line, infos);
+	if (line->dy == 0)
+		four(line, infos);
 }
 
+void		second_line(int **ptr, t_infowin *infos)
+{
+	t_ord	line[1];
+
+	line->x1 = ptr[infos->i][1];
+	line->x2 = ptr[infos->i + 1][1];
+	line->y1 = ptr[infos->i][0];
+	line->y2 = ptr[infos->i + 1][0];
+	line->dx = abs(line->x2 - line->x1);
+	line->dy = abs(line->y2 - line->y1);
+	if (line->dx >= line->dy && line->dx != 0 && line->dy != 0)
+		one(line, infos);
+	if (line->dx < line->dy && line->dx != 0 && line->dy != 0)
+		two(line, infos);
+	if (line->dx == 0)
+		three(line, infos);
+	if (line->dy == 0)
+		four(line, infos);
+}
 
 void		display_all(int **ptr, t_infowin *infos)
 {
@@ -75,7 +171,7 @@ void		display_all(int **ptr, t_infowin *infos)
 	int	x;
 
 	i = 0;
-	x = 0;
+	x = 1;
 	while (i < infos->w * infos->h - 1)
 	{
 		if ((i != (infos->w * x) - 1))
@@ -91,7 +187,7 @@ void		display_all(int **ptr, t_infowin *infos)
 	while (i < infos->w * infos->h - infos->w)
 	{
 		infos->i = i;
-		secondline(ptr, infos);
+		second_line(ptr, infos);
 		i++;
 	}
 }
