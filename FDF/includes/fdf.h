@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/24 20:45:13 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/25 20:28:29 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct			s_ord
 	int				x2;
 	int				y1;
 	int				y2;
-	int				dy;
-	int				dx;
+	unsigned int				dy;
+	unsigned int				dx;
 }						t_ord;
 
 typedef struct			s_gnl
@@ -130,4 +130,5 @@ void		fdf_parser(t_gnl *map, t_infowin *infos);
 t_gnl		*ft_lstgnlnew(char *str);
 void		ft_lstgnlpushback(t_gnl **beginlst, char *str);
 int			ft_lstgnlsize(t_gnl *lst);
+unsigned int fdf_color(int x1, int x2, int y1, int y2);
 #endif

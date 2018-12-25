@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 14:19:47 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/24 16:37:14 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/25 18:48:30 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_gnl		*ft_lstgnlnew(char *str)
 
 	if ((result = (t_gnl*)malloc(sizeof(t_gnl))) == NULL)
 		return (NULL);
-	result->str = str;
+	result->str = ft_strdup(str);
 	result->next = NULL;
 	return (result);
 }

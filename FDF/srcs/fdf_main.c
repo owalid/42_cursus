@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/24 20:52:20 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/25 20:06:47 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int 	main(int ac, char **av)
 			// modifier les valeurs par default de la fenetre
 		else
 		{
-			infos->width = 1280;
-			infos->height = 720;
+			infos->width = 2560;
+			infos->height = 1440;
 		}
 		map = get_map(av[1]);
 		fdf_parser(map, infos);

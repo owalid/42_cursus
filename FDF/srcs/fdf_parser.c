@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/24 16:44:48 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/25 20:54:17 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			*create_tab(char *str, t_infowin *infos)
 	int		i;
 
 	i = 0;
+	//printf("\n\n\n%s\n\n", str);
 	split_matrix = ft_strsplit(str, ' ');
 	while (split_matrix[i])
 		i++;
@@ -76,4 +77,29 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 		fdf_err(2);
 	infos->h = i;
 	infos->tab = tab;
+}
+
+unsigned int	fdf_color(int x1, int x2, int y1, int y2)
+{
+	printf("\n x1: %d\n", x1);
+	printf("\n x2: %d\n", x2);
+	printf("\n y1: %d\n", y1);
+	printf("\n y2: %d\n", y2);
+	(void) x1;
+	(void) x2;
+	(void) y1;
+	(void) y2;
+	return (0xFF0000);
+	/*if (z[i][j] < 0)
+		return (0x0000FF);
+	if (z[i][j] == 0)
+		return (0x00FF00);
+	if (z[i][j] >= 1 || z[i][j] <= 20)
+		return (0xFFFF00);
+	if (z[i][j] >= 21 || z[i][j] <= 60)
+		return (0xFFF000);
+	if (z[i][j] >= 61 || z[i][j] <= 80)
+		return (0xFFD000);
+	else
+		return (0xFF0000);*/
 }
