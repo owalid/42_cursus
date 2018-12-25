@@ -90,6 +90,7 @@ void		fdf_init(t_infowin *info)
 	info->ymove = 0;
 	mlx->a = 18;
 	mlx->h = 2;
+	printf("infos->w: %d \n", info->w);
 	mlx->mlx_ptr = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, 1000, 1000, "fdf");
 	mlx->infos = info;
