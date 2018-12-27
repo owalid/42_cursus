@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:07:08 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/25 20:33:44 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/26 22:02:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void		display_usage(void *mlx_ptr, void *mlx_win)
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 120, 0xFFFFFF,
 			"Change color 	: 		C    ");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 160, 0xFFFFFF,
+			"Rotation		:		SPACE");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 200, 0xFFFFFF,
 			"Zoom/Dezoom	:		+/-	");
 }
 
@@ -45,7 +47,7 @@ void		fdf_initimg(t_infowin *infos, t_img *img, void *mlx_ptr)
 }
 
 
-int		**to_isometric(t_infowin *infos, int a, int zoom, int height)
+int		**to_isometric(t_mlxprint *mlx, int a, int zoom, int height)
 {
 	int i;
 	int j;
@@ -53,23 +55,23 @@ int		**to_isometric(t_infowin *infos, int a, int zoom, int height)
 
 	i = 0;
 	k = 0;
-	while (i < infos->h)
+	while (i < mlx->infos->h)
 	{
 		j = 0;
-		while (j < infos->w)
+		while (j < mlx->infos->w)
 		{
-			infos->ptr[k][0] = ((i * cos(a) * zoom + j * cos(a + 2) * zoom
-						+ infos->tab[i][j] * cos(a - 2) * zoom / 20 * height) +
-					(infos->height / 3)) + infos->ymove * 50;
-			infos->ptr[k][1] = ((i * sin(a) * zoom + j * sin(a + 2) * zoom
-						+ infos->tab[i][j] * sin(a - 2) * zoom / 20 * height) +
-					(infos->width / 2)) + infos->xmove * 50;
+			mlx->infos->ptr[k][0] = ((i * cos(a) * zoom + j * cos(a + 2) * zoom
+						+ mlx->infos->tab[i][j] * mlx->relief * cos(a - 2) * zoom / 30 * height) +
+					(mlx->infos->height / 3)) + mlx->infos->ymove *  50;
+			mlx->infos->ptr[k][1] = ((i * sin(a) * zoom + j * sin(a + 2) * zoom
+						+ mlx->infos->tab[i][j] * mlx->relief * sin(a - 2) * zoom / 30 * height) +
+					(mlx->infos->width / 2)) + mlx->infos->xmove * 50;
 			++j;
 			++k;
 		}
 		++i;
 	}
-	return (infos->ptr);
+	return (mlx->infos->ptr);
 }
 
 void		fdf_graph(t_mlxprint *mlx)
@@ -78,7 +80,7 @@ void		fdf_graph(t_mlxprint *mlx)
 
 	fdf_initimg(mlx->infos, img, mlx->mlx_ptr);
 	mlx->infos->img = img;
-	to_isometric(mlx->infos, mlx->a, mlx->zoom, mlx->h);
+	to_isometric(mlx, mlx->a, mlx->zoom, mlx->h);
 	display_all(mlx->infos->ptr, mlx->infos);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, 0, 0);
 	display_usage(mlx->mlx_ptr, mlx->mlx_win);
@@ -90,17 +92,28 @@ int			deal_key(int key, t_mlxprint *mlx)
 	if (key == 53)
 		fdf_exit(1);
 	if (key == 123)
-		mlx->infos->xmove--;
-	if (key == 124)
 		mlx->infos->xmove++;
+	if (key == 124)
+		mlx->infos->xmove--;
 	if (key == 126)
-		mlx->infos->ymove--;
-	if (key == 125)
 		mlx->infos->ymove++;
+	if (key == 125)
+		mlx->infos->ymove--;
 	if (key == 24)
 		mlx->zoom++;
-	if (key == 27 && mlx->zoom > 0)
+	if (key == 27 && mlx->zoom > 2)
 		mlx->zoom--;
+	if (key == 49)
+		mlx->a--;
+	if (key == 3)
+		mlx->relief++;
+	if (key == 15)
+		mlx->relief--;
+	if (key == 46)
+	{
+		mlx->infos->xmove = 0;
+		mlx->infos->ymove = 0;
+	}
 	mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
 	fdf_graph(mlx);
 	return (0);
@@ -124,10 +137,11 @@ void		fdf_init(t_infowin *info)
 {
 	t_mlxprint	mlx[1];
 
+	mlx->relief = 1;
 	mlx->zoom = 50;
 	info->xmove = 0;
 	info->ymove = 0;
-	mlx->a = 18;
+	mlx->a = -1;
 	mlx->h = 2;
 	mlx->mlx_ptr = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, info->width, info->height, "fdf");

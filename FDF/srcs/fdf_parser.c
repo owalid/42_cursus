@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/25 20:54:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/26 18:08:56 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,6 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 
 unsigned int	fdf_color(int x1, int x2, int y1, int y2)
 {
-	printf("\n x1: %d\n", x1);
-	printf("\n x2: %d\n", x2);
-	printf("\n y1: %d\n", y1);
-	printf("\n y2: %d\n", y2);
 	(void) x1;
 	(void) x2;
 	(void) y1;

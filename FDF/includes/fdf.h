@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/25 20:28:29 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/26 20:27:27 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
+#define WDEF				2560;
+#define HDEF				1440;
 # define BUFF_SIZE 			42
 # define ERR_1				"hello"
 # define ERR_2				"Err: malloc, open, read"
@@ -73,7 +75,8 @@ typedef struct 			s_map
 }						t_map;
 
 typedef struct			s_infowin
-{
+{	
+	unsigned int	color;
 	int				xmove;
 	int				ymove;
 	int				w;
@@ -88,6 +91,7 @@ typedef struct			s_infowin
 
 typedef struct			s_mlxprint
 {
+	int				relief;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	int				a;

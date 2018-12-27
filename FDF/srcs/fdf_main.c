@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/25 20:06:47 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/26 18:58:56 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,21 @@ void	fdf_verif_ext(char *file)
 }
 void	fdf_setwin(t_infowin *infos, char *x, char *y)
 {
-	infos->width = ft_atoi(x);
-	infos->height = ft_atoi(y);
+	int xfinal;
+	int yfinal;
+
+	xfinal = ft_atoi(x);
+	yfinal = ft_atoi(y);
+	if (xfinal >= 300 && yfinal >= 300)
+	{
+		infos->width = xfinal;
+		infos->height = yfinal;
+	}
+	else
+	{
+		infos->width = WDEF;
+		infos->height = HDEF;
+	}
 }
 
 int 	main(int ac, char **av)
@@ -36,16 +49,11 @@ int 	main(int ac, char **av)
 		fdf_verif_ext(av[1]);
 		if (ac == 4)
 			fdf_setwin(infos,  av[2], av[3]);
-			// modifier les valeurs par default de la fenetre
 		else
-		{
-			infos->width = 2560;
-			infos->height = 1440;
-		}
+			fdf_setwin(infos, "", "");
 		map = get_map(av[1]);
 		fdf_parser(map, infos);
 		fdf_init(infos);
-
 	}
 	return (0);
 }
