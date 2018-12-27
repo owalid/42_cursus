@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/26 20:27:27 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/27 17:51:37 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct			s_infowin
 
 typedef struct			s_mlxprint
 {
+	double			yorientation;
+	double			xorientation;
 	int				relief;
 	void			*mlx_ptr;
 	void			*mlx_win;

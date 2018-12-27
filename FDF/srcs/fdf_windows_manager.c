@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:07:08 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/26 22:02:02 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/27 18:05:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,18 @@ void		display_usage(void *mlx_ptr, void *mlx_win)
 	mlx_string_put(mlx_ptr, mlx_win, x, y, 0xFFFFFF,
 			"----------USAGE------------");					
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 40, 0xFFFFFF,
-			"Exit 		 	: 		ESC  ");
+			"Exit 		 	    :		ESC");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 80, 0xFFFFFF,
-			"Change view 	:  		V   ");
+			"Change view 	    :  		V");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 120, 0xFFFFFF,
-			"Change color 	: 		C    ");
+			"Change color       : 		C");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 160, 0xFFFFFF,
-			"Rotation		:		SPACE");
+			"Rotation           :		SPACE");	
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 200, 0xFFFFFF,
-			"Zoom/Dezoom	:		+/-	");
+			"Zoom/Dezoom        :		+/-");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 240, 0xFFFFFF,
+			"relief+/relief-    :		F/R");
+
 }
 
 void		fdf_initimg(t_infowin *infos, t_img *img, void *mlx_ptr)
@@ -45,7 +48,6 @@ void		fdf_initimg(t_infowin *infos, t_img *img, void *mlx_ptr)
 	img->mlx_img = mlx_new_image(mlx_ptr, infos->width, infos->height);
 	img->data = (int *)mlx_get_data_addr(img->mlx_img, &img->bperpix, &img->size_line, &img->endian);
 }
-
 
 int		**to_isometric(t_mlxprint *mlx, int a, int zoom, int height)
 {
@@ -60,12 +62,14 @@ int		**to_isometric(t_mlxprint *mlx, int a, int zoom, int height)
 		j = 0;
 		while (j < mlx->infos->w)
 		{
-			mlx->infos->ptr[k][0] = ((i * cos(a) * zoom + j * cos(a + 2) * zoom
-						+ mlx->infos->tab[i][j] * mlx->relief * cos(a - 2) * zoom / 30 * height) +
-					(mlx->infos->height / 3)) + mlx->infos->ymove *  50;
-			mlx->infos->ptr[k][1] = ((i * sin(a) * zoom + j * sin(a + 2) * zoom
-						+ mlx->infos->tab[i][j] * mlx->relief * sin(a - 2) * zoom / 30 * height) +
-					(mlx->infos->width / 2)) + mlx->infos->xmove * 50;
+			mlx->infos->ptr[k][0] = ((i * cos(a) * zoom + j * cos(a + mlx->xorientation) * zoom
+						+ mlx->infos->tab[i][j] * mlx->relief * cos(a - mlx->xorientation) * zoom / 30 * height) +
+					(mlx->infos->height / 4)) 
+					+ mlx->infos->ymove *  50;
+			mlx->infos->ptr[k][1] = ((i * sin(a) * zoom + j * sin(a + mlx->yorientation) * zoom
+						+ mlx->infos->tab[i][j] * mlx->relief * sin(a - mlx->yorientation) * zoom / 30 * height) +
+					(mlx->infos->width / 2.25)) 
+				+ mlx->infos->xmove * 50;
 			++j;
 			++k;
 		}
@@ -114,6 +118,14 @@ int			deal_key(int key, t_mlxprint *mlx)
 		mlx->infos->xmove = 0;
 		mlx->infos->ymove = 0;
 	}
+	if (key == 91)
+		mlx->xorientation += 0.01;
+	if (key == 84 && mlx->xorientation > 0.1)
+		mlx->xorientation -= 0.01;
+	if (key == 86)
+		mlx->yorientation += 0.01;
+	if (key == 88 && mlx->yorientation > 0.1)
+		mlx->yorientation -= 0.01;
 	mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
 	fdf_graph(mlx);
 	return (0);
@@ -141,6 +153,8 @@ void		fdf_init(t_infowin *info)
 	mlx->zoom = 50;
 	info->xmove = 0;
 	info->ymove = 0;
+	mlx->yorientation = 2;
+	mlx->xorientation = 2;
 	mlx->a = -1;
 	mlx->h = 2;
 	mlx->mlx_ptr = mlx_init();
