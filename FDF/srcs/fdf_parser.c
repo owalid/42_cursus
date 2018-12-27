@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/26 18:08:56 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/27 20:10:13 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,23 +79,18 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 	infos->tab = tab;
 }
 
-unsigned int	fdf_color(int x1, int x2, int y1, int y2)
+unsigned int	fdf_color(int tag)
 {
-	(void) x1;
-	(void) x2;
-	(void) y1;
-	(void) y2;
-	return (0xFF0000);
-	/*if (z[i][j] < 0)
+	if (tag < 0)
 		return (0x0000FF);
-	if (z[i][j] == 0)
+	if (tag == 0)
 		return (0x00FF00);
-	if (z[i][j] >= 1 || z[i][j] <= 20)
+	if (tag >= 1 || tag <= 20)
 		return (0xFFFF00);
-	if (z[i][j] >= 21 || z[i][j] <= 60)
+	if (tag >= 21 || tag <= 60)
 		return (0xFFF000);
-	if (z[i][j] >= 61 || z[i][j] <= 80)
+	if (tag >= 61 || tag <= 80)
 		return (0xFFD000);
 	else
-		return (0xFF0000);*/
+		return (0xFF0000);
 }

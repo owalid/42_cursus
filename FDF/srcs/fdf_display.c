@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 18:27:20 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/26 20:21:05 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2018/12/27 20:23:07 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	four(t_ord *line, t_infowin *infos)
 		x = line->y1;
 		y = i;
 		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
-			infos->img->data[x * infos->width + y] = fdf_color(line->x1, line->x2, line->y1, line->y2);
+			infos->img->data[x * infos->width + y] = fdf_color(infos->ptr_save[i][0]);
 		++i;
 	}
 }
@@ -51,7 +51,7 @@ void	three(t_ord *line, t_infowin *infos)
 		x = i;
 		y = line->x1;
 		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
-			infos->img->data[x * infos->width + y] = fdf_color(line->x1, line->x2, line->y1, line->y2);
+			infos->img->data[x * infos->width + y] = fdf_color(infos->ptr_save[i][0]);
 		++i;
 	}
 }
@@ -74,7 +74,7 @@ void	two(t_ord *line, t_infowin *infos)
 		if ((line->x1 + (int)(i * a)) > 0 && (line->x1 + (int)(i * a)) <
 				infos->width && (line->y1 + i) > 0 && line->y1 + i < infos->height)
 			infos->img->data[(line->y1 + i) * infos->width +
-				(line->x1 + (int)(i * a))] = fdf_color(line->x1, line->x2, line->y1, line->y2);
+				(line->x1 + (int)(i * a))] = fdf_color(infos->ptr_save[i][0]);
 		++i;
 	}
 }
@@ -83,7 +83,7 @@ void		one(t_ord *line, t_infowin *infos)
 {
 	float	a;
 	int		i;
-	unsigned int b = 0xFF0000;
+	//unsigned int b = 0x0000FF;
 
 	a = 0;
 	i = 0;
@@ -95,13 +95,13 @@ void		one(t_ord *line, t_infowin *infos)
 	a = ((float)(line->y2 - line->y1) / (line->x2 - line->x1));
 	while (i < (int)line->dx + 1)
 	{
+		printf("\n%d\n", infos->ptr_save[i][0]);
 		if (line->x1 + i > 0 && line->x1 + i < infos->width && (line->y1
 					+ (int)(i * a)) > 0 && (line->y1 + (int)(i * a)) < infos->height)
 			infos->img->data[(line->y1 + (int)(i * a)) * infos->width +
-				line->x1 + i] = b;
+				line->x1 + i] = fdf_color(infos->ptr_save[i][0]);
 				//fdf_color(line->x1, line->x2, line->y1, line->y2);
 		++i;
-		b += 5;
 	}
 }
 
