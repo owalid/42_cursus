@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/27 20:10:23 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:19:08 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,16 @@ typedef struct			s_infowin
 
 typedef struct			s_mlxprint
 {
+	short			vpress;
+	short			mlx_orient_max;
+	short			stoplooph;
 	double			yorientation;
 	double			xorientation;
 	double			relief;
+	double			zoom;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	int				a;
-	int				zoom;
 	int				height;
 	int				h;
 	t_infowin		*infos;
@@ -119,6 +122,7 @@ void		fdf_exit(int id);
 ** fdf_parser.c
 */
 t_gnl		*get_map(char *file);
+unsigned int fdf_color(int tag);
 
 /*
 ** fdf_display.c 
@@ -137,5 +141,4 @@ void		fdf_parser(t_gnl *map, t_infowin *infos);
 t_gnl		*ft_lstgnlnew(char *str);
 void		ft_lstgnlpushback(t_gnl **beginlst, char *str);
 int			ft_lstgnlsize(t_gnl *lst);
-unsigned int fdf_color(int tag);
 #endif

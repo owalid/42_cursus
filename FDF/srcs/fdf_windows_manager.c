@@ -6,18 +6,11 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:07:08 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/27 20:33:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/07 20:24:31 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-/*int			deal_mouse(int key, t_mlxprint *param)
-  {
-  if ()
-  return (0);
-  }
-  */
 
 void		display_usage(void *mlx_ptr, void *mlx_win)
 {
@@ -41,20 +34,22 @@ void		display_usage(void *mlx_ptr, void *mlx_win)
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 240, 0xFFFFFF,
 			"relief+/relief-               R/F");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 280, 0xFFFFFF,
-			"change view                      ");
-	mlx_string_put(mlx_ptr, mlx_win, x, y + 280, 0xFFFFFF,
-			"                              8");
-	mlx_string_put(mlx_ptr, mlx_win, x, y + 300, 0xFFFFFF,
-			"                            4 5 6");
-	mlx_string_put(mlx_ptr, mlx_win, x, y + 320, 0xFFFFFF,
-			"                              2");
+			"Stop move                      L");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 340, 0xFFFFFF,
-			"Navigation                      ");
+			"change view                      ");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 360, 0xFFFFFF,
-			"                               /\\");
+			"                               8");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 380, 0xFFFFFF,
-			"                            <      > ");
+			"                             4 5 6");
 	mlx_string_put(mlx_ptr, mlx_win, x, y + 400, 0xFFFFFF,
+			"                               2");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 440, 0xFFFFFF,
+			"Navigation                      ");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 460, 0xFFFFFF,
+			"                               /\\");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 480, 0xFFFFFF,
+			"                            <      > ");
+	mlx_string_put(mlx_ptr, mlx_win, x, y + 500, 0xFFFFFF,
 			"                               \\/");
 }
 
@@ -77,19 +72,19 @@ int		**to_isometric(t_mlxprint *mlx, int a, int zoom, int height)
 		j = 0;
 		while (j < mlx->infos->w)
 		{
-			mlx->infos->ptr_save[k][0] = mlx->infos->tab[i][j];
 			mlx->infos->ptr[k][0] = ((i * cos(a) * zoom + j * cos(a + mlx->xorientation) * zoom
 						+ mlx->infos->tab[i][j] * mlx->relief * cos(a - mlx->xorientation) * zoom / 30 * height) +
 					(mlx->infos->height / 4)) 
 				+ mlx->infos->ymove *  50;
+			mlx->infos->ptr_save[k][0] = mlx->infos->tab[i][j] * mlx->relief;
 			mlx->infos->ptr[k][1] = ((i * sin(a) * zoom + j * sin(a + mlx->yorientation) * zoom
 						+ mlx->infos->tab[i][j] * mlx->relief * sin(a - mlx->yorientation) * zoom / 30 * height) +
 					(mlx->infos->width / 2.25)) 
 				+ mlx->infos->xmove * 50;
-			++j;
-			++k;
+			j++;
+			k++;
 		}
-		++i;
+		i++;
 	}
 	return (mlx->infos->ptr);
 }
@@ -119,10 +114,10 @@ int			deal_key(int key, t_mlxprint *mlx)
 		mlx->infos->ymove++;
 	if (key == 125)
 		mlx->infos->ymove--;
-	if (key == 24)
-		mlx->zoom++;
-	if (key == 27 && mlx->zoom > 2)
-		mlx->zoom--;
+	if (key == 24 || key == 69)
+		mlx->zoom += 0.5;
+	if ((key == 27 || key == 78) && mlx->zoom > 2)
+		mlx->zoom -= 0.5;
 	if (key == 49)
 		mlx->a--;
 	if (key == 3)
@@ -131,13 +126,15 @@ int			deal_key(int key, t_mlxprint *mlx)
 		mlx->relief += 0.15;
 	if (key == 9)
 	{
-		if (mlx->xorientation == 2.5 && mlx->yorientation == 2.8)
+		if (mlx->vpress)
 		{
+			mlx->vpress = 0;
 			mlx->xorientation = 2;
 			mlx->yorientation = 2;
 		}
 		else 
 		{
+			mlx->vpress = 1;
 			mlx->xorientation = 2.5;
 			mlx->yorientation = 2.8;
 		}
@@ -160,6 +157,13 @@ int			deal_key(int key, t_mlxprint *mlx)
 		mlx->yorientation = 2;
 		mlx->xorientation = 2;
 	}
+	if (key == 37)
+	{
+		if (mlx->stoplooph == 1)
+			mlx->stoplooph = 0;
+		else
+			mlx->stoplooph = 1;
+	}
 	mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
 	fdf_graph(mlx);
 	return (0);
@@ -172,25 +176,54 @@ void		fdf_tab(t_infowin *infos)
 	int			i;
 
 	i = -1;
-	if (!(ptr = (int**)malloc(sizeof(int *) * (infos->w * infos->h))) ||
-				!(ptr_save = (int**)malloc(sizeof(int*) * (infos->w * infos->h))))
+	if (!(ptr = (int**)malloc(sizeof(int*) * (infos->w * infos->h))))
 		fdf_err(2);
+	if (!(ptr_save = (int**)malloc(sizeof(int*) * (infos->w * infos->h))))
+	{
+		free(ptr);
+		fdf_err(2);
+	}
 	while (i < infos->h * infos->w)
 	{
-		if (!(ptr[i] = (int*)malloc(sizeof(int) * 2)) || !(ptr_save[i] = (int*)malloc(sizeof(int))))
-			i++;
-}
+		if (!(ptr[++i] = (int*)malloc(sizeof(int) * 2)))
+			fdf_err(2); 
+		if (!(ptr_save[i] = (int*)malloc(sizeof(int))))
+		{
+			free(ptr[i]);
 			fdf_err(2);
+		}
+	}
 	infos->ptr = ptr;
 	infos->ptr_save = ptr_save;
+}
+
+int		loop_hook(t_mlxprint *mlx)
+{
+	if (!mlx->stoplooph)
+	{
+		if (mlx->yorientation > INT_MAX)
+			mlx->mlx_orient_max = 1;
+		if (mlx->yorientation < INT_MIN)
+			mlx->mlx_orient_max = 0;
+		if (mlx->mlx_orient_max == 0)
+			mlx->yorientation += 0.003;
+		if (mlx->mlx_orient_max == 1)
+			mlx->yorientation -= 0.003;
+		mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
+		fdf_graph(mlx);
+	}
+	return (0);
 }
 
 void		fdf_init(t_infowin *info)
 {
 	t_mlxprint	mlx[1];
 
+	mlx->mlx_orient_max = 0;
+	mlx->vpress = 0;
+	mlx->stoplooph = 0;
 	mlx->relief = 1;
-	mlx->zoom = 50;
+	mlx->zoom = 25;
 	info->xmove = 0;
 	info->ymove = 0;
 	mlx->yorientation = 2;
@@ -203,5 +236,6 @@ void		fdf_init(t_infowin *info)
 	fdf_tab(info);
 	fdf_graph(mlx);
 	mlx_hook(mlx->mlx_win, 2, 5, deal_key, mlx);
+	mlx_loop_hook(mlx->mlx_ptr, loop_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 }

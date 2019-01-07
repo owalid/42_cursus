@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 18:27:20 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/27 20:23:07 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/07 18:30:51 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	four(t_ord *line, t_infowin *infos)
 {
+	int 	neg;
 	float	a;
 	int		i;
 	int		x;
@@ -21,21 +22,26 @@ void	four(t_ord *line, t_infowin *infos)
 
 	a = 0;
 	i = 0;
+	neg = 1;
 	if (line->x1 > line->x2)
+	{
+		neg = -1;
 		ft_swap(&line->x1, &line->x2);
+	}
 	i = line->x1;
 	while (i < line->x2 + 1)
 	{
 		x = line->y1;
 		y = i;
 		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
-			infos->img->data[x * infos->width + y] = fdf_color(infos->ptr_save[i][0]);
-		++i;
+			infos->img->data[x * infos->width + y] = fdf_color((x * infos->width + y) * neg);
+		i++;
 	}
 }
 
 void	three(t_ord *line, t_infowin *infos)
 {
+	int		neg;
 	float	a;
 	int		i;
 	int		x;
@@ -43,28 +49,35 @@ void	three(t_ord *line, t_infowin *infos)
 
 	a = 0;
 	i = 0;
+	neg = 1;
 	if (line->y1 > line->y2)
+	{
+		neg = -1;
 		ft_swap(&line->y1, &line->y2);
+	}
 	i = line->y1;
 	while (i < line->y2 + 1)
 	{
 		x = i;
 		y = line->x1;
 		if (y > 0 && y < infos->width && x > 0 && x < infos->height)
-			infos->img->data[x * infos->width + y] = fdf_color(infos->ptr_save[i][0]);
-		++i;
+			infos->img->data[x * infos->width + y] = fdf_color((x * infos->width + y) * neg);
+		i++;
 	}
 }
 
 void	two(t_ord *line, t_infowin *infos)
 {
+	int		neg;
 	float	a;
 	int		i;
 
+	neg = 1;
 	a = 0;
 	i = 0;
 	if (line->y1 > line->y2)
 	{
+		neg = -1;
 		ft_swap(&line->y1, &line->y2);
 		ft_swap(&line->x1, &line->x2);
 	}
@@ -74,34 +87,34 @@ void	two(t_ord *line, t_infowin *infos)
 		if ((line->x1 + (int)(i * a)) > 0 && (line->x1 + (int)(i * a)) <
 				infos->width && (line->y1 + i) > 0 && line->y1 + i < infos->height)
 			infos->img->data[(line->y1 + i) * infos->width +
-				(line->x1 + (int)(i * a))] = fdf_color(infos->ptr_save[i][0]);
-		++i;
+				(line->x1 + (int)(i * a))] = fdf_color(((int)(i * a)) * neg);
+		i++;
 	}
 }
 
 void		one(t_ord *line, t_infowin *infos)
 {
+	int		neg;
 	float	a;
 	int		i;
-	//unsigned int b = 0x0000FF;
 
+	neg = 1;
 	a = 0;
 	i = 0;
 	if (line->x1 > line->x2)
 	{
+		neg = -1;
 		ft_swap(&line->x1, &line->x2);
 		ft_swap(&line->y1, &line->y2);
 	}
 	a = ((float)(line->y2 - line->y1) / (line->x2 - line->x1));
 	while (i < (int)line->dx + 1)
 	{
-		printf("\n%d\n", infos->ptr_save[i][0]);
 		if (line->x1 + i > 0 && line->x1 + i < infos->width && (line->y1
 					+ (int)(i * a)) > 0 && (line->y1 + (int)(i * a)) < infos->height)
 			infos->img->data[(line->y1 + (int)(i * a)) * infos->width +
-				line->x1 + i] = fdf_color(infos->ptr_save[i][0]);
-				//fdf_color(line->x1, line->x2, line->y1, line->y2);
-		++i;
+				line->x1 + i] = fdf_color((int)(i * a));
+		i++;
 	}
 }
 

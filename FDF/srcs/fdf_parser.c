@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/27 20:10:13 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/07 18:28:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,17 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 
 unsigned int	fdf_color(int tag)
 {
+	/*if (tag > 1)
+		printf("\n\n%d\n\n", tag);*/
 	if (tag < 0)
 		return (0x0000FF);
 	if (tag == 0)
 		return (0x00FF00);
-	if (tag >= 1 || tag <= 20)
+	if (tag >= 1 || tag <= 5)
 		return (0xFFFF00);
-	if (tag >= 21 || tag <= 60)
+	if (tag >= 5 || tag <= 8)
 		return (0xFFF000);
-	if (tag >= 61 || tag <= 80)
+	if (tag >= 8 || tag <= 20)
 		return (0xFFD000);
 	else
 		return (0xFF0000);
