@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:36:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/12/24 12:09:50 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/08 20:42:32 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			get_next_line(const int fd, char **line)
 	char			*separator;
 	int				nb_read;
 	int				position;
-	
+
 	if (fd < 0 || !line || read(fd, gnl, 0) < 0 ||
 			BUFF_SIZE < 1 || !(*line = ft_strnew(0)))
 		return (-1);

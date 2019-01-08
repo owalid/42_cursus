@@ -6,76 +6,54 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/07 20:19:08 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/08 21:16:07 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-
-//////////////////////////////////////
-#include <stdio.h>
-#include <limits.h>
-/////////////////////////////////////
-
+# include <limits.h>
 # include <math.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-#define WDEF				2560;
-#define HDEF				1440;
+# define WDEF				2560
+# define HDEF				1440
 # define BUFF_SIZE 			42
-# define ERR_1				"hello"
+# define ERR_1				"Err:\nUsage: [./fdf <file.fdf>]"
 # define ERR_2				"Err: malloc, open, read"
 # define ERR_3				".."
 # define EXT1				"fdf: end"
 
-typedef struct			s_ord
+typedef struct		s_ord
 {
 	int				x1;
 	int				x2;
 	int				y1;
 	int				y2;
-	unsigned int				dy;
-	unsigned int				dx;
-}						t_ord;
+	unsigned int	dy;
+	unsigned int	dx;
+}					t_ord;
 
-typedef struct			s_gnl
+typedef struct		s_gnl
 {
 	char			*str;
-	struct s_gnl			*next;
-}						t_gnl;
+	struct s_gnl	*next;
+}					t_gnl;
 
-typedef struct 			s_vector
-{
-	long			x;
-	long			y;
-	long			z;
-	int				color;
-}						t_vector;
-
-typedef struct			s_img
+typedef struct		s_img
 {
 	void			*mlx_img;
 	int				*data;
 	int				bperpix;
 	int				size_line;
 	int				endian;
+}					t_img;
 
-}						t_img;
-
-
-typedef struct 			s_map
+typedef struct		s_infowin
 {
-	int 			width;
-	int				height;
-	t_vector		*vector;
-}						t_map;
-
-typedef struct			s_infowin
-{	
 	unsigned int	color;
 	int				xmove;
 	int				ymove;
@@ -84,14 +62,14 @@ typedef struct			s_infowin
 	int				i;
 	int				**tab;
 	int				**ptr;
-	int				**ptr_save;
 	int				width;
 	int				height;
 	t_img			*img;
-}						t_infowin;
+}					t_infowin;
 
-typedef struct			s_mlxprint
+typedef struct		s_mlxprint
 {
+	short			egg;
 	short			vpress;
 	short			mlx_orient_max;
 	short			stoplooph;
@@ -105,40 +83,75 @@ typedef struct			s_mlxprint
 	int				height;
 	int				h;
 	t_infowin		*infos;
-}						t_mlxprint;
+}					t_mlxprint;
 
 /*
 ** get_next_line.c
 */
-int			get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 /*
 ** fdf_err.c
 */
-void		fdf_err(int id);
-void		fdf_exit(int id);
+void				fdf_err(int id);
+void				fdf_exit(int id, t_mlxprint *mlx);
 
 /*
 ** fdf_parser.c
 */
-t_gnl		*get_map(char *file);
-unsigned int fdf_color(int tag);
+t_gnl				*get_map(char *file);
+unsigned int		fdf_color(int tag);
 
 /*
-** fdf_display.c 
+** fdf_display.c
 */
-void		display_all(int **ptr, t_infowin *infos);
+void				display_all(int **ptr, t_infowin *infos);
 
 /*
-** fdf_err.c
+** fdf_parser.c
 */
-void		fdf_init(t_infowin *info);
-void		fdf_parser(t_gnl *map, t_infowin *infos);
+void				fdf_init(t_infowin *info);
+void				fdf_parser(t_gnl *map, t_infowin *infos);
 
 /*
 ** utils.c
 */
-t_gnl		*ft_lstgnlnew(char *str);
-void		ft_lstgnlpushback(t_gnl **beginlst, char *str);
-int			ft_lstgnlsize(t_gnl *lst);
+t_gnl				*ft_lstgnlnew(char *str);
+void				ft_lstgnlpushback(t_gnl **beginlst, char *str);
+int					ft_lstgnlsize(t_gnl *lst);
+unsigned int		fdf_random_color(void);
+void				fdf_init_tab(t_infowin *infos);
+
+/*
+** fdf_usage.c
+*/
+void				display_usage(void *mlx_ptr, void *mlx_win);
+
+/*
+** fdf_windows_manager.c
+*/
+void				fdf_graph(t_mlxprint *mlx);
+
+/*
+** fdf_deal.c
+*/
+int					deal_key(int key, t_mlxprint *mlx);
+int					loop_hook(t_mlxprint *mlx);
+
+/*
+** fdf_line.c
+*/
+void				first_line(t_ord *line, t_infowin *infos);
+void				second_line(t_ord *line, t_infowin *infos);
+void				third_line(t_ord *line, t_infowin *infos);
+void				fourth_line(t_ord *line, t_infowin *infos);
+
+/*
+** fdf_clean.c
+*/
+void				fdf_del_mlx(t_mlxprint *mlx);
+void				fdf_del_all(t_mlxprint *mlx, t_infowin *info, t_gnl *gnl);
+void				fdf_del_map(t_gnl *gnl);
+
+
 #endif

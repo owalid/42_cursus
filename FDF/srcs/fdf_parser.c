@@ -6,16 +6,15 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/07 18:28:42 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:52:27 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/fdf.h"
 
 t_gnl		*get_map(char *file)
 {
-	int 	fd;
+	int		fd;
 	char	*tmp;
 	t_gnl	*gnl;
 
@@ -40,12 +39,11 @@ t_gnl		*get_map(char *file)
 
 int			*create_tab(char *str, t_infowin *infos)
 {
-	char 	**split_matrix;
+	char	**split_matrix;
 	int		*result;
 	int		i;
 
 	i = 0;
-	//printf("\n\n\n%s\n\n", str);
 	split_matrix = ft_strsplit(str, ' ');
 	while (split_matrix[i])
 		i++;
@@ -61,7 +59,7 @@ int			*create_tab(char *str, t_infowin *infos)
 
 void		fdf_parser(t_gnl *map, t_infowin *infos)
 {
-	int 	**tab;
+	int		**tab;
 	int		i;
 
 	if (!(tab = (int**)malloc(sizeof(int*) * ft_lstgnlsize(map))))
@@ -77,22 +75,5 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 		fdf_err(2);
 	infos->h = i;
 	infos->tab = tab;
-}
-
-unsigned int	fdf_color(int tag)
-{
-	/*if (tag > 1)
-		printf("\n\n%d\n\n", tag);*/
-	if (tag < 0)
-		return (0x0000FF);
-	if (tag == 0)
-		return (0x00FF00);
-	if (tag >= 1 || tag <= 5)
-		return (0xFFFF00);
-	if (tag >= 5 || tag <= 8)
-		return (0xFFF000);
-	if (tag >= 8 || tag <= 20)
-		return (0xFFD000);
-	else
-		return (0xFF0000);
+	infos->color = fdf_random_color();
 }
