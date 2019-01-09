@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:36:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/08 20:42:32 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/09 14:53:54 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int			ft_verif_line(char **line)
 {
 	if (!**line)
-		free(*line);
-	return ((**line) ? 1 : 0);
+		ft_strdel(line);
+	return ((*line) ? 1 : 0);
 }
 
 char		*ft_strjoinfree(char *s1, char *s2, size_t len)

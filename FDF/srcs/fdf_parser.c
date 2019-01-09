@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/08 18:52:27 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/09 19:13:34 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ t_gnl		*get_map(char *file)
 	if (get_next_line(fd, &tmp))
 	{
 		gnl = ft_lstgnlnew(tmp);
-		free(tmp);
+		ft_strdel(&tmp);
 	}
 	else
-		return (NULL);
+		fdf_err(3);
 	while (get_next_line(fd, &tmp))
 	{
 		ft_lstgnlpushback(&gnl, tmp);
-		free(tmp);
+		ft_strdel(&tmp);
 	}
 	if (close(fd) == -1)
 		fdf_err(2);
@@ -59,6 +59,7 @@ int			*create_tab(char *str, t_infowin *infos)
 
 void		fdf_parser(t_gnl *map, t_infowin *infos)
 {
+	t_gnl 	*tmp;
 	int		**tab;
 	int		i;
 
@@ -66,6 +67,7 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 		fdf_err(2);
 	i = -1;
 	infos->w = 0;
+	tmp = map;
 	while (map)
 	{
 		tab[++i] = create_tab(map->str, infos);
@@ -76,4 +78,5 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 	infos->h = i;
 	infos->tab = tab;
 	infos->color = fdf_random_color();
+	fdf_del_map(tmp);
 }

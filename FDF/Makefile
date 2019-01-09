@@ -46,7 +46,7 @@ $(MLX_LIB):
 	make -C $(MLX)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME) 
 
 clean:
 	rm -rf $(OBJDIR)

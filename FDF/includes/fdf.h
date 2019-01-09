@@ -6,12 +6,16 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/08 21:16:07 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/09 17:55:38 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+
+///////////////////////////
+#include <stdio.h>
+/////////////////////////
 
 # include <limits.h>
 # include <math.h>
@@ -22,9 +26,9 @@
 # define WDEF				2560
 # define HDEF				1440
 # define BUFF_SIZE 			42
-# define ERR_1				"Err:\nUsage: [./fdf <file.fdf>]"
+# define ERR_1				"Err:\nUsage: ./fdf <file.fdf> [<width> <height>]"
 # define ERR_2				"Err: malloc, open, read"
-# define ERR_3				".."
+# define ERR_3				"Err: empty file"
 # define EXT1				"fdf: end"
 
 typedef struct		s_ord
@@ -77,9 +81,9 @@ typedef struct		s_mlxprint
 	double			xorientation;
 	double			relief;
 	double			zoom;
+	double			a;
 	void			*mlx_ptr;
 	void			*mlx_win;
-	int				a;
 	int				height;
 	int				h;
 	t_infowin		*infos;
@@ -152,6 +156,6 @@ void				fourth_line(t_ord *line, t_infowin *infos);
 void				fdf_del_mlx(t_mlxprint *mlx);
 void				fdf_del_all(t_mlxprint *mlx, t_infowin *info, t_gnl *gnl);
 void				fdf_del_map(t_gnl *gnl);
-
+void				fdf_del_info(t_infowin *info);
 
 #endif

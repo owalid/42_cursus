@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/08 21:13:36 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/09 18:57:28 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void		fdf_exit(int id, t_mlxprint *mlx)
 {
 	if (id == 1)
 	{
-		fdf_del_mlx(mlx);
+		fdf_del_info(mlx->infos);
 		ft_putendl(EXT1);
+		exit(0);
 	}
-	exit(0);
+	exit(id);
 }
