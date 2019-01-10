@@ -6,16 +6,12 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/09 17:55:38 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/10 16:21:04 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-
-///////////////////////////
-#include <stdio.h>
-/////////////////////////
 
 # include <limits.h>
 # include <math.h>
@@ -153,9 +149,8 @@ void				fourth_line(t_ord *line, t_infowin *infos);
 /*
 ** fdf_clean.c
 */
-void				fdf_del_mlx(t_mlxprint *mlx);
-void				fdf_del_all(t_mlxprint *mlx, t_infowin *info, t_gnl *gnl);
-void				fdf_del_map(t_gnl *gnl);
+void				fdf_del_map(t_gnl **gnl);
+void				fdf_del_tab(int **ptr, int size);
 void				fdf_del_info(t_infowin *info);
 
 #endif

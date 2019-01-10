@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/09 19:13:34 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/10 16:17:38 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ int			*create_tab(char *str, t_infowin *infos)
 		result[i] = ft_atoi(split_matrix[i]);
 	if (infos->w == 0)
 		infos->w = i;
+	ft_del_tab(&split_matrix);
 	return (result);
 }
 
 void		fdf_parser(t_gnl *map, t_infowin *infos)
 {
-	t_gnl 	*tmp;
+	t_gnl	*tmp;
 	int		**tab;
 	int		i;
 
@@ -68,15 +69,15 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 	i = -1;
 	infos->w = 0;
 	tmp = map;
-	while (map)
+	while (tmp)
 	{
-		tab[++i] = create_tab(map->str, infos);
-		map = map->next;
+		tab[++i] = create_tab(tmp->str, infos);
+		tmp = tmp->next;
 	}
 	if (i == 0)
 		fdf_err(2);
 	infos->h = i;
 	infos->tab = tab;
 	infos->color = fdf_random_color();
-	fdf_del_map(tmp);
+	fdf_del_map(&map);
 }

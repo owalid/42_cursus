@@ -3,81 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 09:52:33 by clfoltra          #+#    #+#             */
-/*   Updated: 2018/11/14 14:13:15 by clfoltra         ###   ########.fr       */
+/*   Created: 2018/11/09 13:26:17 by oel-ayad          #+#    #+#             */
+/*   Updated: 2018/11/15 20:48:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		cw(char const *s, char c)
+static int			nb_word(const char *str, char c)
 {
-	int counter;
-	int in_word;
-	int i;
+	int		i;
+	int		nb_words;
+	int		in_word;
 
-	counter = 0;
-	in_word = 0;
 	i = 0;
-	while (s[i])
+	nb_words = 0;
+	in_word = 0;
+	while (str[i])
 	{
-		while (s[i] == c)
-		{
-			i++;
+		if (str[i] == c)
 			in_word = 0;
-		}
-		if (s[i] && s[i] != c && in_word == 0)
+		else if (in_word == 0 && str[i] != c)
 		{
 			in_word = 1;
-			counter++;
-			i++;
+			nb_words++;
 		}
-		else
-			i++;
-	}
-	return (counter);
-}
-
-static int		lword(char const *s, char c, int i)
-{
-	int len;
-
-	len = 0;
-	while (s[i] && s[i] != c)
-	{
-		len++;
 		i++;
 	}
-	return (len + 1);
+	return (nb_words);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static int			word(const char *str, int i, char c)
 {
-	char	**res;
-	int		i;
-	int		j;
-	int		k;
+	int		size_words;
 
-	i = 0;
-	j = 0;
-	if (!s || ((res = (char**)malloc(sizeof(*res) * cw(s, c) + 1)) == NULL))
+	size_words = 0;
+	while (str[i++] && str[i] != c)
+		size_words++;
+	return (size_words);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	int			k;
+	int			i;
+	int			j;
+	char		**r;
+
+	if (!s || !c)
 		return (NULL);
-	while (s[i])
+	if (!(r = (char**)malloc(sizeof(char*) * nb_word(s, c) + 1)))
+		return (NULL);
+	i = 0;
+	k = 0;
+	while (i < nb_word(s, c))
 	{
-		if (s[i] == c)
-			i++;
-		else if (s[i])
-		{
-			if ((res[j] = (char*)malloc(sizeof(char) * lword(s, i, c))) == NULL)
-				return (NULL);
-			k = 0;
-			while (s[i] && s[i] != c)
-				res[j][k++] = s[i++];
-			res[j++][k] = '\0';
-		}
+		j = 0;
+		while (s[k] == c)
+			k++;
+		if (!(r[i] = ft_strnew(sizeof(char) * word(s, k, c))))
+			return (NULL);
+		while (s[k] != c && s[k])
+			r[i][j++] = s[k++];
+		r[i++][j] = '\0';
 	}
-	res[j] = NULL;
-	return (res);
+	r[i] = NULL;
+	return (r);
 }

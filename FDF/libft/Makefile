@@ -87,7 +87,8 @@ SRCS =	ft_memset.c \
 		ft_lstsize.c \
 		ft_lstget_at.c \
 		ft_lstfind.c \
-		ft_swap.c
+		ft_swap.c \
+		ft_del_tab.c
 OBJ = $(SRCS:.c=.o)
 FLAG = -Wall -Wextra -Werror
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 15:07:08 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/09 18:19:34 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/10 15:34:43 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,16 @@ int			**transform_tab(t_mlxprint *mlx)
 	int		j;
 	int		k;
 
-	i = 0;
-	k = 0;
-	while (i < mlx->infos->h)
+	i = -1;
+	k = -1;
+	while (++i < mlx->infos->h)
 	{
-		j = 0;
-		while (j < mlx->infos->w)
+		j = -1;
+		while (++j < mlx->infos->w)
 		{
-			mlx->infos->ptr[k][0] = iso_expression(i, j, mlx, 1);
+			mlx->infos->ptr[++k][0] = iso_expression(i, j, mlx, 1);
 			mlx->infos->ptr[k][1] = iso_expression(i, j, mlx, 0);
-			j++;
-			k++;
 		}
-		i++;
 	}
 	return (mlx->infos->ptr);
 }

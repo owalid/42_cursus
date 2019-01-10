@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/09 16:17:40 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/10 16:17:17 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void		fdf_verif_ext(char *file)
 
 void		fdf_setwin(t_infowin *infos, int x, int y)
 {
-
 	if (x >= 300 && y >= 300)
 	{
 		infos->width = x;
@@ -50,7 +49,6 @@ int			main(int ac, char **av)
 			fdf_setwin(infos, WDEF, HDEF);
 		map = get_map(av[1]);
 		fdf_parser(map, infos);
-		fdf_del_map(map);
 		fdf_init(infos);
 		fdf_del_info(infos);
 	}
