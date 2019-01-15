@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_del_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 15:26:15 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/14 19:54:52 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/01/10 15:56:11 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/01/10 16:14:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void		ft_del_tab(char ***tab)
 {
-	if (n == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	ft_putchar((n % 10) + '0');
+	int		i;
+
+	i = -1;
+	while ((*tab)[++i])
+		ft_strdel(&(*tab)[i]);
+	free(*tab);
+	*tab = NULL;
 }
