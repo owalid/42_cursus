@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 16:21:04 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 19:20:38 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@
 # define WDEF				2560
 # define HDEF				1440
 # define BUFF_SIZE 			42
-# define ERR_1				"Err:\nUsage: ./fdf <file.fdf> [<width> <height>]"
-# define ERR_2				"Err: malloc, open, read"
-# define ERR_3				"Err: empty file"
+# define ERR_USAGE			"Error:\nUsage: ./fdf <file.fdf> [<width> <height>]"
+# define ERR_OPEN			"Error: open or close"
+# define ERR_MALLOC			"Error: malloc"
+# define ERR_READ			"Error: read"
+# define ERR_FILE			"Error: empty file"
+# define ERR_INFILE		"Error: invalid file"
 # define EXT1				"fdf: end"
 
 typedef struct		s_ord
@@ -94,7 +97,7 @@ int					get_next_line(const int fd, char **line);
 ** fdf_err.c
 */
 void				fdf_err(int id);
-void				fdf_exit(int id, t_mlxprint *mlx);
+void				fdf_exit(int id);
 
 /*
 ** fdf_parser.c

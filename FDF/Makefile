@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/01/16 14:34:20 by oel-ayad          #+#    #+#              #
+#    Updated: 2019/01/16 19:22:52 by oel-ayad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	= fdf
 
 SRC		= fdf_parser.c \
@@ -5,8 +17,8 @@ SRC		= fdf_parser.c \
 			fdf_main.c \
 			fdf_utils.c \
 			fdf_windows_manager.c \
-			fdf_display.c \
 			fdf_usage.c \
+			fdf_display.c \
 			fdf_deal.c \
 			fdf_line.c \
 			fdf_clean.c \
@@ -31,22 +43,16 @@ SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 OBJDIR	= ./obj/
 
-all: obj $(FT_LIB) $(MLX_LIB) $(NAME)
-
-obj:
-	mkdir -p $(OBJDIR)
+all: $(NAME)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $<
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $< 
 
-$(FT_LIB):
-	make -C $(FT)
-
-$(MLX_LIB):
+$(NAME): $(OBJ) 
 	make -C $(MLX)
-
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME) 
+	make -C $(FT) 
+	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
 
 clean:
 	rm -rf $(OBJDIR)

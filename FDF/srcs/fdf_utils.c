@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:03:37 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 16:38:48 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 16:33:54 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_gnl			*ft_lstgnlnew(char *str)
 {
 	t_gnl	*result;
 
-	if ((result = (t_gnl*)malloc(sizeof(t_gnl))) == NULL)
-		return (NULL);
+	if (!(result = (t_gnl*)malloc(sizeof(t_gnl))))
+		fdf_err(3);
 	result->str = ft_strdup(str);
 	result->next = NULL;
 	return (result);
@@ -50,7 +50,7 @@ int				ft_lstgnlsize(t_gnl *begin_list)
 
 unsigned int	fdf_random_color(void)
 {
-	return (rand() * 0xFFFF00);
+	return (rand() % (((0xFFFF00 + 1) - 0x000000) + 0xFFFFFF));
 }
 
 void			fdf_init_tab(t_infowin *infos)
@@ -60,9 +60,11 @@ void			fdf_init_tab(t_infowin *infos)
 
 	i = -1;
 	if (!(ptr = (int**)malloc(sizeof(int*) * (infos->w * infos->h))))
-		fdf_err(2);
-	while (i < infos->h * infos->w)
+		fdf_err(3);
+	while (i < (infos->h * infos->w) - 1)
+	{
 		if (!(ptr[++i] = (int*)malloc(sizeof(int) * 2)))
-			fdf_err(2);
+			fdf_err(3);
+	}
 	infos->ptr = ptr;
 }

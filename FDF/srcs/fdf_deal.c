@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 15:53:29 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/09 15:57:47 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 14:07:52 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int			deal_key_quater(int key, t_mlxprint *mlx)
 		else
 			mlx->egg = 0;
 	}
+	else if (key == 91)
+		mlx->xorientation += 0.01;
+	else if (key == 84 && mlx->xorientation > 0.1)
+		mlx->xorientation -= 0.01;
 	return (0);
 }
 
@@ -34,8 +38,16 @@ int			deal_key_ter(int key, t_mlxprint *mlx)
 		mlx->yorientation -= 0.01;
 	else if (key == 87)
 	{
-		mlx->yorientation = 2;
-		mlx->xorientation = 2;
+		if (!mlx->vpress)
+		{
+			mlx->yorientation = 2;
+			mlx->xorientation = 2;
+		}
+		else
+		{
+			mlx->yorientation = 2.8;
+			mlx->xorientation = 2.5;
+		}
 	}
 	else if (key == 37)
 	{
@@ -44,10 +56,6 @@ int			deal_key_ter(int key, t_mlxprint *mlx)
 		else
 			mlx->stoplooph = 1;
 	}
-	else if (key == 91)
-		mlx->xorientation += 0.01;
-	else if (key == 84 && mlx->xorientation > 0.1)
-		mlx->xorientation -= 0.01;
 	else
 		deal_key_quater(key, mlx);
 	return (0);
@@ -83,7 +91,7 @@ int			deal_key_bis(int key, t_mlxprint *mlx)
 int			deal_key(int key, t_mlxprint *mlx)
 {
 	if (key == 53)
-		fdf_exit(1, mlx);
+		fdf_exit(1);
 	else if (key == 123)
 		mlx->infos->xmove++;
 	else if (key == 124)

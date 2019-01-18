@@ -6,11 +6,33 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:41:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 16:17:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 19:18:48 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void		verif_map(t_gnl *map)
+{
+	char		**split;
+	t_gnl		*tmp_map;
+	size_t		tmp;
+
+	tmp_map = map;
+	split = ft_strsplit(tmp_map->str, ' ');
+	tmp = ft_tab_len(split);
+	tmp_map = tmp_map->next;
+	ft_del_tab(&split);
+	while (tmp_map)
+	{
+		split = ft_strsplit(tmp_map->str, ' ');
+		if (tmp != ft_tab_len(split))
+			fdf_err(6);
+		tmp_map = tmp_map->next;
+		ft_del_tab(&split);
+	}
+	fdf_del_map(&tmp_map);
+}
 
 void		fdf_verif_ext(char *file)
 {
@@ -48,6 +70,7 @@ int			main(int ac, char **av)
 		else
 			fdf_setwin(infos, WDEF, HDEF);
 		map = get_map(av[1]);
+		verif_map(map);
 		fdf_parser(map, infos);
 		fdf_init(infos);
 		fdf_del_info(infos);

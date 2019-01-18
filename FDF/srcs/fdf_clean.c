@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 20:54:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 16:18:07 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 16:43:35 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void		fdf_del_tab(int **ptr, int size)
 	int		i;
 
 	i = -1;
-	while (i < size)
+	while (i <= size)
 		free(ptr[++i]);
 	free(ptr);
+	ptr = NULL;
 }
 
 void		fdf_del_info(t_infowin *info)

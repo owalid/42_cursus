@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 14:53:13 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 15:02:00 by oel-ayad         ###   ########.fr       */
+/*   Created: 2018/08/10 12:49:25 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/01/16 17:10:51 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-static int			ft_is_separator(char c)
+int		ft_is_separator(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
 	return (0);
 }
 
-static int			ft_cal_nb_word(char *str)
+int		ft_cal_nb_word(char *str)
 {
 	int		i;
 	int		nb_words;
@@ -42,7 +42,7 @@ static int			ft_cal_nb_word(char *str)
 	return (nb_words);
 }
 
-static int			ft_calc_size_words(char *str, int i)
+int		ft_calc_size_words(char *str, int i)
 {
 	int		size_words;
 
@@ -52,7 +52,7 @@ static int			ft_calc_size_words(char *str, int i)
 	return (size_words + 1);
 }
 
-char				**ft_split_whitespaces(char *str)
+char	**ft_split_whitespaces(char *str)
 {
 	int			nb_words;
 	int			k;

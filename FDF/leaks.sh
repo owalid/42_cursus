@@ -1,1 +1,1 @@
-leaks $(ps -ax | grep ./fdf | grep -v grep | cut -d " " -f 1)
+leaks $(ps -ax | grep "./fdf " | grep -v grep | cut -d " " -f 1)

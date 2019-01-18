@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 13:40:53 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 16:17:38 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 19:00:06 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ t_gnl		*get_map(char *file)
 	t_gnl	*gnl;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-		fdf_err(2);
+		fdf_err(5);
 	if (get_next_line(fd, &tmp))
 	{
 		gnl = ft_lstgnlnew(tmp);
 		ft_strdel(&tmp);
 	}
 	else
-		fdf_err(3);
+		fdf_err(2);
 	while (get_next_line(fd, &tmp))
 	{
 		ft_lstgnlpushback(&gnl, tmp);
 		ft_strdel(&tmp);
 	}
 	if (close(fd) == -1)
-		fdf_err(2);
+		fdf_err(5);
 	return (gnl);
 }
 
@@ -48,7 +48,7 @@ int			*create_tab(char *str, t_infowin *infos)
 	while (split_matrix[i])
 		i++;
 	if (!(result = (int*)malloc(sizeof(int) * i)))
-		fdf_err(2);
+		fdf_err(3);
 	i = -1;
 	while (split_matrix[++i])
 		result[i] = ft_atoi(split_matrix[i]);
@@ -65,7 +65,7 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 	int		i;
 
 	if (!(tab = (int**)malloc(sizeof(int*) * ft_lstgnlsize(map))))
-		fdf_err(2);
+		fdf_err(3);
 	i = -1;
 	infos->w = 0;
 	tmp = map;
@@ -74,7 +74,7 @@ void		fdf_parser(t_gnl *map, t_infowin *infos)
 		tab[++i] = create_tab(tmp->str, infos);
 		tmp = tmp->next;
 	}
-	if (i == 0)
+	if (i == -1)
 		fdf_err(2);
 	infos->h = i;
 	infos->tab = tab;

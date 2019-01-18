@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/10 15:59:13 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/16 18:54:18 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,6 @@ t_list				*ft_lstget_at(t_list *begin_list, size_t nbr);
 t_list				*ft_lstfind(t_list *begin_list, void *data);
 void				ft_swap(int *a, int *b);
 void				ft_del_tab(char ***tab);
+char				**ft_split_whitespaces(char *str);
+size_t				ft_tab_len(char **str);
 #endif
