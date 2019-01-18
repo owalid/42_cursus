@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frtl_err.c                                         :+:      :+:    :+:   */
+/*   frtl_deal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 15:45:00 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/18 16:58:38 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/01/18 17:06:51 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/01/18 18:01:03 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/frtl.h"
 
-void		frtl_err(int id)
+int			deal_key(int key, t_mlx *mlx)
 {
-	if (id == 1)
-		ft_putendl(ERR_USAGE);
-	exit(id);
-}
-
-void		frtl_exit(int id)
-{
-	if (id == 0)
-		ft_putendl(EXIT);
-	exit(id);
+	mlx->mlx_ptr = mlx->mlx_ptr;
+	if (key == 53)
+		frtl_exit(0);
+	return (0);
 }

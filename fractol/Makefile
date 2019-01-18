@@ -6,14 +6,17 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 14:34:20 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/01/18 15:58:32 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/01/18 18:23:07 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fractol
 
 SRC		= frtl_main.c \
-			frtl_err.c
+			frtl_err.c \
+			frtl_windows.c \
+			frtl_deal.c \
+			frtl_display.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

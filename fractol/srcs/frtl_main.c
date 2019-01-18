@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:40:48 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/18 16:04:45 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:09:04 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			main(int ac, char **av)
 			frtl_setwin(infos, ft_atoi(av[2]), ft_atoi(av[3]));
 		else
 			frtl_setwin(infos, WDEF, HDEF);
+		frtl_init(infos);
 	}
 	else
 		frtl_err(1);

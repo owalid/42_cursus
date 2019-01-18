@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:31:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/18 16:33:49 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:54:01 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,26 @@
 # define JU			"julia"
 # define MAND		"mandelbrot"
 
+typedef struct		s_frtl
+{
+	double 			c_i;
+	double 			c_r;
+	double 			z_i;
+	double			z_r;
+	double			x1;
+	double			x2;
+	double			y1;
+	double			y2;
+	long long		i_max;
+}					t_frtl;
 
 typedef	struct		s_img
 {
-	void		*mlx_img;
-	int			*data;
-	int			bperpix;
-	int			size_line;
-	int			endian;
+	void			*mlx_img;
+	int				*data;
+	int				bperpix;
+	int				size_line;
+	int				endian;
 }					t_img;
 
 typedef struct		s_infowin
@@ -44,9 +56,17 @@ typedef struct		s_infowin
 	int				frtl;
 	int				width;
 	int				height;
+	int				zoom;
 	t_img			*img;
 }					t_infowin;
 
+
+typedef struct 		s_mlx
+{
+	void			*mlx_ptr;
+	void			*mlx_win;
+	t_infowin		*infos;
+}					t_mlx;
 
 /*
 ** 	frtl_err.c
@@ -57,6 +77,8 @@ void				frtl_exit(int id);
 /*
 **	frtl_windows.c
 */
+void				frtl_init(t_infowin *infos);
+
 
 /*
 **	frtl_utils.c
@@ -67,7 +89,13 @@ void				frtl_exit(int id);
 */
 
 /*
+**	frtl_display.c
+*/
+void				frtl_display(t_mlx *mlx);
+
+/*
 **	frtl_deal.c
 */
+int					deal_key(int key, t_mlx *mlx);
 
 #endif

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frtl_err.c                                         :+:      :+:    :+:   */
+/*   frtl_windows.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 15:45:00 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/18 16:58:38 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/01/18 16:58:50 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/01/18 18:49:00 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/frtl.h"
 
-void		frtl_err(int id)
+void		frtl_init(t_infowin *infos)
 {
-	if (id == 1)
-		ft_putendl(ERR_USAGE);
-	exit(id);
-}
+	t_mlx	mlx[1];
 
-void		frtl_exit(int id)
-{
-	if (id == 0)
-		ft_putendl(EXIT);
-	exit(id);
+	mlx->mlx_ptr = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, infos->width, infos->height, "Fractol");
+	mlx->infos = infos;
+	frtl_display(mlx);
+	mlx_hook(mlx->mlx_win, 2, 5, deal_key, mlx);
+	mlx_loop(mlx->mlx_ptr);
 }
