@@ -94,16 +94,21 @@ void				wind_init(t_infowin *infos);
 /*
 **	frtl_utils.c
 */
+void				frtl_pxl(t_mlx *mlx, int x, int y, unsigned int c);
 
 /*
 **	frtl_clean.c
 */
 
 /*
-**	frtl_display.c
+**	frtl_mand.c
 */
 void		frtl_dspl_mand(t_mlx *mlx);
-//void		frtl_dsp_ju(t_mlx *mlx);
+
+/*
+**	frtl_ju.c
+*/
+void		frtl_dspl_ju(t_mlx *mlx);
 
 /*
 **	frtl_deal.c

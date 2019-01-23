@@ -16,7 +16,9 @@ SRC		= frtl_main.c \
 			frtl_err.c \
 			frtl_windows.c \
 			frtl_deal.c \
-			frtl_display.c \
+			frtl_mand.c \
+			frtl_ju.c \
+			frtl_utils.c \
 			frtl_init.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
