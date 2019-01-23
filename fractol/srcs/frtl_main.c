@@ -18,6 +18,8 @@ void		frtl_verif_prms(t_infowin *infos, char *prms)
 		infos->frtl = 0;
 	else if (ft_strcmp(prms, JU) == 0)
 		infos->frtl = 1;
+	else if (ft_strcmp(prms, BUD) == 0)
+		infos->frtl = 2;
 	if (infos->frtl == -1)
 		frtl_err(1);
 }

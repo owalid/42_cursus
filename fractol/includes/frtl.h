@@ -23,11 +23,12 @@
 
 # define WDEF		2560
 # define HDEF		1440
-# define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia"
+# define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia, buddha"
 # define ERR_MALLOC "Error: malloc"
 # define EXIT		"fractol: end session 😊"
 # define JU			"julia"
 # define MAND		"mandelbrot"
+# define BUD		"buddha"
 
 
 typedef struct		s_frtl
@@ -109,6 +110,11 @@ void		frtl_dspl_mand(t_mlx *mlx);
 **	frtl_ju.c
 */
 void		frtl_dspl_ju(t_mlx *mlx);
+
+/*
+**	frtl_budbrot.c
+*/
+void		frtl_dspl_budbrot(t_mlx *mlx);
 
 /*
 **	frtl_deal.c

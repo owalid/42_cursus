@@ -2,7 +2,7 @@
 
 void		frtl_iter_ju(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 {
-	int		i;
+	long long	i;
 
 	i = 0;
 	frtl->c_r = 0.285;
@@ -13,7 +13,7 @@ void		frtl_iter_ju(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 	{
 		frtl->tmp = frtl->z_r;
 		frtl->z_r = frtl->z_r * frtl->z_r - frtl->z_i * frtl->z_i + frtl->c_r;
-		frtl->z_i = 2 * frtl->tmp * frtl->c_i;
+		frtl->z_i = 2 * frtl->z_i * frtl->tmp + frtl->c_i;
 		i++;
 	}
 	if (i == frtl->i_max)

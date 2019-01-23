@@ -20,6 +20,7 @@ SRC		= frtl_main.c \
 			frtl_ju.c \
 			frtl_utils.c \
 			frtl_init.c \
+			frtl_budbrot.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
