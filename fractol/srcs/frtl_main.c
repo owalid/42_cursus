@@ -14,11 +14,11 @@
 
 void		frtl_verif_prms(t_infowin *infos, char *prms)
 {
-	if (ft_strcmp(prms, JU) == 0)
+	if (ft_strcmp(prms, MAND) == 0)
+		infos->frtl = 0;
+	else if (ft_strcmp(prms, JU) == 0)
 		infos->frtl = 1;
-	else if (ft_strcmp(prms, MAND) == 0)
-		infos->frtl = 2;
-	if (infos->frtl == 0)
+	if (infos->frtl == -1)
 		frtl_err(1);
 }
 
@@ -42,13 +42,13 @@ int			main(int ac, char **av)
 
 	if (ac >= 2 && ac <= 4)
 	{
-		infos->frtl = 0;
+		infos->frtl = -1;
 		frtl_verif_prms(infos, av[1]);
 		if (ac == 4)
 			frtl_setwin(infos, ft_atoi(av[2]), ft_atoi(av[3]));
 		else
 			frtl_setwin(infos, WDEF, HDEF);
-		frtl_init(infos);
+		wind_init(infos);
 	}
 	else
 		frtl_err(1);

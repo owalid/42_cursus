@@ -16,12 +16,13 @@ SRC		= frtl_main.c \
 			frtl_err.c \
 			frtl_windows.c \
 			frtl_deal.c \
-			frtl_display.c
+			frtl_display.c \
+			frtl_init.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 
 MLX		= ./mlx/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
@@ -41,7 +42,7 @@ all: $(NAME)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -I $(INCDIR) -o $@ -c $< 
+	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -o $@ -c $< -I $(INCDIR)
 
 $(NAME): $(OBJ) 
 	make -C $(MLX)

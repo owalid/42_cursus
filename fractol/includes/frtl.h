@@ -29,6 +29,7 @@
 # define JU			"julia"
 # define MAND		"mandelbrot"
 
+
 typedef struct		s_frtl
 {
 	double 			c_i;
@@ -39,6 +40,8 @@ typedef struct		s_frtl
 	double			x2;
 	double			y1;
 	double			y2;
+	double			tmp;
+	double			zoom;
 	long long		i_max;
 }					t_frtl;
 
@@ -56,7 +59,7 @@ typedef struct		s_infowin
 	int				frtl;
 	int				width;
 	int				height;
-	int				zoom;
+	double			zoom;
 	t_img			*img;
 }					t_infowin;
 
@@ -66,7 +69,15 @@ typedef struct 		s_mlx
 	void			*mlx_ptr;
 	void			*mlx_win;
 	t_infowin		*infos;
+	t_frtl			*frtl;
 }					t_mlx;
+
+
+typedef struct		s_frtlop
+{
+	int			id;
+	void		(*frtl_dspl)(t_mlx *mlx);
+}					t_frtlop;
 
 /*
 ** 	frtl_err.c
@@ -77,7 +88,7 @@ void				frtl_exit(int id);
 /*
 **	frtl_windows.c
 */
-void				frtl_init(t_infowin *infos);
+void				wind_init(t_infowin *infos);
 
 
 /*
@@ -91,11 +102,17 @@ void				frtl_init(t_infowin *infos);
 /*
 **	frtl_display.c
 */
-void				frtl_display(t_mlx *mlx);
+void		frtl_dspl_mand(t_mlx *mlx);
+//void		frtl_dsp_ju(t_mlx *mlx);
 
 /*
 **	frtl_deal.c
 */
 int					deal_key(int key, t_mlx *mlx);
+
+/*
+**	frtl_init.c
+*/
+void				frtl_init(t_mlx *mlx, t_frtl *frtl);
 
 #endif

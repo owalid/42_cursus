@@ -12,61 +12,51 @@
 
 #include "../includes/frtl.h"
 
-void		frtl_display(t_mlx *mlx)
+void			frtl_pxl(t_mlx *mlx, int x, int  y, unsigned int c)
 {
-	long long	img_x;
-	long long	img_y;
-	long long	x;
-	long long	y;
-	long long	i;
-	double		tmp;
-	t_frtl 		frtl[1];
-	unsigned int color[51];
-	unsigned int start;
+	int 	i;
 
-	start = 0x0000FF;
-	frtl->i_max = 50;
-	frtl->x1 = -2.1;
-	frtl->x2 = 0.6;
-	frtl->y1 = -1.2;
-	frtl->y2 = 1.50;
-	mlx->infos->zoom = 100;
-	x = 0;
-	img_x = (frtl->x2 - frtl->x1) * mlx->infos->zoom;
-	img_y = (frtl->y2 - frtl->y1) * mlx->infos->zoom;
+	i = y * mlx->infos->width + x;
+	mlx->infos->img->data[i] = c;
+	mlx->infos->img->data[++i] = c >> 8;
+	mlx->infos->img->data[++i] =  c >> 16;
+}
+
+void		frtl_iter_mand(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
+{
+	int		i;
+
 	i = 0;
-	while (i < frtl->i_max)
+	frtl->c_r = ((double)x) / frtl->zoom + frtl->x1;
+	frtl->c_i = ((double)y) / frtl->zoom + frtl->y1;
+	frtl->z_r = 0;
+	frtl->z_i = 0;
+	while (frtl->z_r * frtl->z_r + frtl->z_i * frtl->z_i < 4 && i < frtl->i_max)
 	{
-		color[i] = start;
-		start += 0x00000F;
+		
+		frtl->tmp = frtl->z_r;
+		frtl->z_r = frtl->z_r * frtl->z_r - frtl->z_i * frtl->z_i * frtl->z_i + frtl->c_r;
+		frtl->z_i = 2 * frtl->tmp * frtl->z_i + frtl->c_i;
 		i++;
 	}
-	i = 0;
-	while (x < img_x)
+	if (i == frtl->i_max)
+		mlx->infos->img->data[y * mlx->infos->width + x] = 0x000000;
+	else
+		frtl_pxl(mlx, x, y, 0x123456 * i);
+}
+
+void		frtl_dspl_mand(t_mlx *mlx)
+{
+	long long	x;
+	long long	y;
+
+	x = 0;
+	while (x < mlx->infos->width)
 	{
 		y = 0;
-		while (y < img_y)
+		while (y < mlx->infos->height)
 		{
-			frtl->c_r = x / mlx->infos->zoom + frtl->x1;
-			frtl->c_i = y / mlx->infos->zoom + frtl->y1;
-			frtl->z_r = 0;
-			frtl->z_i = 0;
-			i = 0;
-			tmp = frtl->z_r;
-			frtl->z_r = pow(frtl->z_r, 2) - pow(frtl->z_i, 2) + frtl->c_r;
-			frtl->z_i = 2 * tmp * frtl->z_i + frtl->c_i;
-			while (pow(frtl->z_r, 2) + pow(frtl->z_i, 2) < 4
-					&& i < frtl->i_max)
-			{
-			i++;
-				tmp = frtl->z_r;
-				frtl->z_r = pow(frtl->z_r, 2) - pow(frtl->z_i, 2) + frtl->c_r;
-				frtl->z_i = 2 * tmp * frtl->z_i + frtl->c_i;
-			}
-			if (i == frtl->i_max)
-				mlx_pixel_put(mlx->mlx_ptr, mlx->mlx_win, x, y, 0x000000);
-			else
-				mlx_pixel_put(mlx->mlx_ptr, mlx->mlx_win, x, y, color[i]);
+			frtl_iter_mand(mlx->frtl, mlx, x, y);
 			y++;
 		}
 		x++;
