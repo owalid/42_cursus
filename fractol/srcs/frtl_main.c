@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:40:48 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/18 18:09:04 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:27:49 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,26 @@
 void		frtl_verif_prms(t_infowin *infos, char *prms)
 {
 	if (ft_strcmp(prms, MAND) == 0)
+	{
+		infos->first = 1;
 		infos->frtl = 0;
+		infos->zoom = 300;
+		infos->i_max = 30;
+	}
 	else if (ft_strcmp(prms, JU) == 0)
+	{
+		infos->first = 1;
 		infos->frtl = 1;
-	else if (ft_strcmp(prms, BUD) == 0)
+		infos->zoom = 300;
+		infos->i_max = 100;
+	}
+	else if (ft_strcmp(prms, SHIP) == 0)
+	{
+		infos->first = 1;
 		infos->frtl = 2;
+		infos->zoom = 300;
+		infos->i_max = 1000;
+	}
 	if (infos->frtl == -1)
 		frtl_err(1);
 }
@@ -46,6 +61,7 @@ int			main(int ac, char **av)
 	{
 		infos->frtl = -1;
 		frtl_verif_prms(infos, av[1]);
+		init_tabcolor(infos);
 		if (ac == 4)
 			frtl_setwin(infos, ft_atoi(av[2]), ft_atoi(av[3]));
 		else

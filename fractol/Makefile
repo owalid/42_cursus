@@ -6,7 +6,7 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 14:34:20 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/01/18 18:23:07 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/01/24 19:35:12 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,13 @@ SRC		= frtl_main.c \
 			frtl_ju.c \
 			frtl_utils.c \
 			frtl_init.c \
-			frtl_budbrot.c \
+			frtl_ship.c \
+			frtl_usage.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror 
 
 MLX		= ./mlx/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
