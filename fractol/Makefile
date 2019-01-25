@@ -6,7 +6,7 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/16 14:34:20 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/01/24 19:35:12 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/01/25 18:38:52 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ SRC		= frtl_main.c \
 			frtl_deal.c \
 			frtl_mand.c \
 			frtl_ju.c \
+			frtl_my.c \
+			frtl_ship.c \
 			frtl_utils.c \
 			frtl_init.c \
-			frtl_ship.c \
 			frtl_usage.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

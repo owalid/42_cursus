@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 16:58:50 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/24 21:12:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/25 18:50:28 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		frtl_graph(t_mlx *mlx)
 	frtl_init_img(mlx->infos, img, mlx->mlx_ptr);
 	mlx->infos->img = img;
 	g_frtlop[mlx->infos->frtl].frtl_dspl(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, mlx->infos->width / 3, mlx->infos->height / 3);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, 0, 0);
 	display_usage(mlx);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->infos->img->mlx_img);
 }

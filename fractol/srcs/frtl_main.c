@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:40:48 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/24 21:27:49 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/25 18:46:34 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,13 @@
 void		frtl_verif_prms(t_infowin *infos, char *prms)
 {
 	if (ft_strcmp(prms, MAND) == 0)
-	{
-		infos->first = 1;
-		infos->frtl = 0;
-		infos->zoom = 300;
-		infos->i_max = 30;
-	}
+		frtl_init_infos(0, 0, infos);
 	else if (ft_strcmp(prms, JU) == 0)
-	{
-		infos->first = 1;
-		infos->frtl = 1;
-		infos->zoom = 300;
-		infos->i_max = 100;
-	}
+		frtl_init_infos(1, 1, infos);
 	else if (ft_strcmp(prms, SHIP) == 0)
-	{
-		infos->first = 1;
-		infos->frtl = 2;
-		infos->zoom = 300;
-		infos->i_max = 1000;
-	}
+		frtl_init_infos(0, 2, infos);
+	else if (ft_strcmp(prms, MY) == 0)
+		frtl_init_infos(0, 3, infos);
 	if (infos->frtl == -1)
 		frtl_err(1);
 }

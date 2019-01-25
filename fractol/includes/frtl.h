@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:31:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/24 21:37:13 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/25 18:49:44 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 # include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-
 # define WDEF		2560
 # define HDEF		1440
-# define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia, burningship"
+# define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia, burningship, oel-ayad"
 # define ERR_MALLOC "Error: malloc"
 # define EXIT		"fractol: end session 😊"
 # define JU			"julia"
 # define MAND		"mandelbrot"
 # define SHIP		"burningship"
+# define MY			"oel-ayad"
 # define ITER		"Iterations: "
 
 typedef struct		s_frtl
@@ -42,6 +42,8 @@ typedef struct		s_frtl
 	double			y1;
 	double			y2;
 	double			tmp;
+	double			zoom;
+	long long		i_max;
 	long long		img_x;
 	long long		img_y;
 }					t_frtl;
@@ -57,13 +59,11 @@ typedef	struct		s_img
 
 typedef struct		s_infowin
 {
+	short			mouse;
 	short			stop_psy;
-	short			first;
-	int				frtl;
+	short			frtl;
 	int				width;
 	int				height;
-	double			zoom;
-	long long		i_max;
 	short			i_tab;
 	unsigned int	color_tab[11];
 	unsigned int	color;
@@ -83,6 +83,7 @@ typedef struct 		s_mlx
 typedef struct		s_frtlop
 {
 	int			id;
+	char		*frtl_name;
 	void		(*frtl_dspl)(t_mlx *mlx);
 }					t_frtlop;
 
@@ -125,6 +126,11 @@ void		frtl_dspl_ju(t_mlx *mlx);
 void		frtl_dspl_ship(t_mlx *mlx);
 
 /*
+**	frtl_my.c
+*/
+void		frtl_dspl_my(t_mlx *mlx);
+
+/*
 **	frtl_deal.c
 */
 int					deal_key(int key, t_mlx *mlx);
@@ -135,6 +141,7 @@ int					deal_mouse(int x, int y, t_mlx *mlx);
 **	frtl_init.c
 */
 void				frtl_init(t_mlx *mlx, t_frtl *frtl);
+void				frtl_init_infos(short mouse, short frtl, t_infowin *infos);
 
 /*
 **	frtl_usage.c
