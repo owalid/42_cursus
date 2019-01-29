@@ -43,7 +43,6 @@ void		wind_init(t_infowin *infos)
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, infos->width, infos->height, "Fractol");
 	mlx->infos = infos;
 	g_frtlop[mlx->infos->frtl].frtl_init(frtl, mlx);
-	//frtl_init(mlx, frtl);
 	mlx->frtl = frtl;
 	frtl_graph(mlx);
 	mlx_hook(mlx->mlx_win, 2, 5, deal_key, mlx);
