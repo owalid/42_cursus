@@ -88,6 +88,7 @@ typedef struct		s_frtlop
 	int			id;
 	char		*frtl_name;
 	void		(*frtl_dspl)(t_mlx *mlx);
+	void		(*frtl_init)(t_frtl *frtl, t_mlx *mlx);
 }					t_frtlop;
 
 /*
@@ -156,9 +157,11 @@ int					deal_close(int key, t_mlx *mlx);
 /*
 **	frtl_init.c
 */
-void				frtl_init(t_mlx *mlx, t_frtl *frtl);
-void				frtl_init_infos(short mouse, short frtl, t_infowin *infos);
-
+void				frtl_init_newton(t_frtl *frtl, t_mlx *mlx);
+void				frtl_init_ship(t_frtl *frtl, t_mlx *mlx);
+void				frtl_init_ju(t_frtl *frtl, t_mlx *mlx);
+void				frtl_init_mand(t_frtl *frtl, t_mlx *mlx);
+void				frtl_init_my(t_frtl *frtl, t_mlx *mlx);
 /*
 **	frtl_usage.c
 */

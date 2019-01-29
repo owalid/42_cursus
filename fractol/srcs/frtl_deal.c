@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/frtl.h"
+#include "../includes/frtl_op.h"
 
 int			deal_key_bis(int key, t_mlx *mlx)
 {
@@ -29,7 +29,7 @@ int			deal_key_bis(int key, t_mlx *mlx)
 			mlx->infos->stop_psy = 0;
 	}
 	else if (key == 15)
-		frtl_init(mlx, mlx->frtl);
+		g_frtlop[mlx->infos->frtl].frtl_init(mlx->frtl, mlx);
 	else if (key == 46)
 	{
 		if (mlx->infos->mouse == 0)
@@ -75,12 +75,12 @@ int			deal_key(int key, t_mlx *mlx)
 		if (mlx->infos->frtl == 4)
 		{
 			mlx->infos->frtl = 0;
-			frtl_init(mlx, mlx->frtl);
+			g_frtlop[mlx->infos->frtl].frtl_init(mlx->frtl, mlx);
 		}
 		else
 		{
 			mlx->infos->frtl++;
-			frtl_init(mlx, mlx->frtl);
+			g_frtlop[mlx->infos->frtl].frtl_init(mlx->frtl, mlx);
 		}
 	}
 	deal_key_bis(key, mlx);

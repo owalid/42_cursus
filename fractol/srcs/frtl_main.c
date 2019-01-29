@@ -12,6 +12,12 @@
 
 #include "../includes/frtl.h"
 
+void		frtl_init_infos(short mouse, short frtl, t_infowin *infos)
+{
+	infos->mouse = mouse;
+	infos->frtl = frtl;
+}
+
 void		frtl_verif_prms(t_infowin *infos, char *prms)
 {
 	if (ft_strcmp(prms, MAND) == 0)
@@ -30,7 +36,12 @@ void		frtl_verif_prms(t_infowin *infos, char *prms)
 
 void		frtl_setwin(t_infowin *infos, int x, int y)
 {
-	if (x >= 400 && y >= 400)
+	if (x >= WDEF || y >= HDEF)
+	{
+		infos->width = WDEF;
+		infos->height = HDEF;
+	}
+	else if (x >= 400 && y >= 400)
 	{
 		infos->width = x;
 		infos->height = y;

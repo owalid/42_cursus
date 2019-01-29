@@ -12,12 +12,6 @@
 
 #include "../includes/frtl.h"
 
-void		frtl_init_infos(short mouse, short frtl, t_infowin *infos)
-{
-	infos->mouse = mouse;
-	infos->frtl = frtl;
-}
-
 void		frtl_init_my(t_frtl *frtl, t_mlx *mlx)
 {
 	frtl->img_x = mlx->infos->width - 1;
@@ -86,18 +80,3 @@ void		frtl_init_newton(t_frtl *frtl, t_mlx *mlx)
 	frtl->i_max = 20;
 	frtl->zoom = 100;
 }
-
-void		frtl_init(t_mlx *mlx, t_frtl *frtl)
-{
-	if (mlx->infos->frtl == 0)
-		frtl_init_mand(frtl, mlx);
-	else if (mlx->infos->frtl == 1)
-		frtl_init_ju(frtl, mlx);
-	else if (mlx->infos->frtl == 2)
-		frtl_init_ship(frtl, mlx);
-	else if (mlx->infos->frtl == 3)
-		frtl_init_my(frtl, mlx);
-	else if (mlx->infos->frtl == 4)
-		frtl_init_newton(frtl, mlx);
-}
-
