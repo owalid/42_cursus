@@ -22,6 +22,8 @@ void		frtl_verif_prms(t_infowin *infos, char *prms)
 		frtl_init_infos(0, 2, infos);
 	else if (ft_strcmp(prms, MY) == 0)
 		frtl_init_infos(0, 3, infos);
+	else if (ft_strcmp(prms, NEW) == 0)
+		frtl_init_infos(0, 4, infos);
 	if (infos->frtl == -1)
 		frtl_err(1);
 }

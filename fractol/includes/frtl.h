@@ -20,8 +20,8 @@
 # include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# define WDEF		2560
-# define HDEF		1440
+# define WDEF		1280
+# define HDEF		720
 # define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia, burningship, oel-ayad"
 # define ERR_MALLOC "Error: malloc"
 # define EXIT		"fractol: end session 😊"
@@ -29,6 +29,7 @@
 # define MAND		"mandelbrot"
 # define SHIP		"burningship"
 # define MY			"oel-ayad"
+# define NEW		"newton"
 # define ITER		"Iterations: "
 
 typedef struct		s_frtl
@@ -67,6 +68,8 @@ typedef struct		s_infowin
 	short			i_tab;
 	unsigned int	color_tab[11];
 	unsigned int	color;
+	char			*iterations;
+	char			*i_max_str;
 	t_img			*img;
 }					t_infowin;
 
@@ -131,11 +134,24 @@ void		frtl_dspl_ship(t_mlx *mlx);
 void		frtl_dspl_my(t_mlx *mlx);
 
 /*
+**	frtl_newton.c
+*/
+void		frtl_dspl_new(t_mlx *mlx);
+
+/*
 **	frtl_deal.c
 */
 int					deal_key(int key, t_mlx *mlx);
 int					loop_hook(t_mlx *mlx);
 int					deal_mouse(int x, int y, t_mlx *mlx);
+
+
+/*
+**	frtl_deal_mouse.c
+*/
+int					deal_mouse(int x, int y, t_mlx *mlx);
+int					deal_scroll(int button, int x, int y, t_mlx *mlx);
+int					deal_close(int key, t_mlx *mlx);
 
 /*
 **	frtl_init.c

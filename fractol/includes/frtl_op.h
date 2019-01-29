@@ -19,6 +19,7 @@ static t_frtlop	g_frtlop[] =
 	{2, JU, &frtl_dspl_ju},
 	{3, SHIP, &frtl_dspl_ship},
 	{4, MY, &frtl_dspl_my},
+	{5, NEW, &frtl_dspl_new},
 	{0, "", &frtl_dspl_mand}
 };
 

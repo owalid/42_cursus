@@ -16,11 +16,9 @@ void		display_usage(t_mlx *mlx)
 {
 	int		x;
 	int		y;
-	char	*iteration;
 
 	x = 20;
 	y = 20;
-	iteration = ft_strjoin(ITER, ft_itoa(mlx->frtl->i_max));
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_win, x + 40, y, 0xFFFFFF,
 			"********* USAGE ********");
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_win, x, y + 40, 0xFFFFFF,
@@ -48,7 +46,7 @@ void		display_usage(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_win, x, y + 420, 0xFFFFFF,
 			"                      \\/");
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_win, x, y + 500, 0xFFFFFF,
-			iteration);
+			mlx->infos->iterations);
 	mlx_string_put(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->width - 150, mlx->infos->height - 150, 0xFFFFFF,
 			g_frtlop[mlx->infos->frtl].frtl_name);
 }

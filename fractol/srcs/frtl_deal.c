@@ -72,7 +72,7 @@ int			deal_key(int key, t_mlx *mlx)
 		mlx->frtl->i_max--;
 	else if (key == 3)
 	{
-		if (mlx->infos->frtl == 3)
+		if (mlx->infos->frtl == 4)
 		{
 			mlx->infos->frtl = 0;
 			frtl_init(mlx, mlx->frtl);
@@ -84,21 +84,6 @@ int			deal_key(int key, t_mlx *mlx)
 		}
 	}
 	deal_key_bis(key, mlx);
-	mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
-	frtl_graph(mlx);
-	return (0);
-}
-
-int			deal_mouse(int x, int y, t_mlx *mlx)
-{
-
-	x = x - mlx->infos->width / 3;
-	y = y - mlx->infos->height / 3;
-	if (mlx->infos->frtl == 1 && mlx->infos->mouse == 1)
-	{
-		mlx->frtl->c_r = (double)((double)x / (double)y);
-		mlx->frtl->c_i = (double)((double)x / (double)y);
-	}
 	mlx_clear_window(mlx->mlx_ptr, mlx->mlx_win);
 	frtl_graph(mlx);
 	return (0);

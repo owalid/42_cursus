@@ -26,8 +26,12 @@ void		frtl_graph(t_mlx *mlx)
 	mlx->infos->img = img;
 	g_frtlop[mlx->infos->frtl].frtl_dspl(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->infos->img->mlx_img, 0, 0);
+	mlx->infos->i_max_str = ft_itoa(mlx->frtl->i_max);
+	mlx->infos->iterations = ft_strjoin(ITER, mlx->infos->i_max_str);
 	display_usage(mlx);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->infos->img->mlx_img);
+	ft_strdel(&mlx->infos->iterations);
+	ft_strdel(&mlx->infos->i_max_str);
 }
 
 void		wind_init(t_infowin *infos)
@@ -43,6 +47,8 @@ void		wind_init(t_infowin *infos)
 	frtl_graph(mlx);
 	mlx_hook(mlx->mlx_win, 2, 5, deal_key, mlx);
 	mlx_hook(mlx->mlx_win, 6, (1L << 6), deal_mouse, mlx);
+	mlx_hook(mlx->mlx_win, 4, 0, deal_scroll, mlx);
+	mlx_hook(mlx->mlx_win, 17, (1L << 17), deal_close, mlx);
 	mlx_loop_hook(mlx->mlx_ptr, loop_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 }

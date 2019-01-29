@@ -74,6 +74,19 @@ void		frtl_init_ship(t_frtl *frtl, t_mlx *mlx)
 	frtl->i_max = 300;
 }
 
+void		frtl_init_newton(t_frtl *frtl, t_mlx *mlx)
+{
+	frtl->img_x = mlx->infos->width - 1;
+	frtl->img_y = mlx->infos->height - 1;
+	frtl->x1 = -2;
+	frtl->x2 = 2;
+	frtl->y1 = -2;
+	frtl->y2 = 2;
+	frtl->tmp = 0;
+	frtl->i_max = 20;
+	frtl->zoom = 100;
+}
+
 void		frtl_init(t_mlx *mlx, t_frtl *frtl)
 {
 	if (mlx->infos->frtl == 0)
@@ -84,5 +97,7 @@ void		frtl_init(t_mlx *mlx, t_frtl *frtl)
 		frtl_init_ship(frtl, mlx);
 	else if (mlx->infos->frtl == 3)
 		frtl_init_my(frtl, mlx);
+	else if (mlx->infos->frtl == 4)
+		frtl_init_newton(frtl, mlx);
 }
 

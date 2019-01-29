@@ -16,9 +16,11 @@ SRC		= frtl_main.c \
 			frtl_err.c \
 			frtl_windows.c \
 			frtl_deal.c \
+			frtl_deal_mouse.c \
 			frtl_mand.c \
 			frtl_ju.c \
 			frtl_my.c \
+			frtl_newton.c \
 			frtl_ship.c \
 			frtl_utils.c \
 			frtl_init.c \
