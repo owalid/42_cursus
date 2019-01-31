@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/25 18:38:15 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/25 18:45:37 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/30 14:57:00 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 void			frtl_iter_my(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 {
 	long long		i;
-	
+
 	i = 0;
 	frtl->z_r = x / frtl->zoom + frtl->x1;
 	frtl->z_i = y / frtl->zoom + frtl->y1;
 	while (frtl->z_r * frtl->z_r + frtl->z_i * frtl->z_i < 4 && i < frtl->i_max)
 	{
 		frtl->tmp = frtl->z_r;
-		frtl->z_r = (frtl->z_r * frtl->z_r - frtl->z_i * frtl->z_i + frtl->c_r) * 3;
+		frtl->z_r = (frtl->z_r * frtl->z_r - frtl->z_i *
+				frtl->z_i + frtl->c_r) * 3;
 		frtl->z_i = frtl->z_i * frtl->tmp + frtl->c_i;
 		i++;
 	}

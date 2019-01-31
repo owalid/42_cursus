@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 16:27:02 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/25 18:26:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/30 13:54:26 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		frtl_iter_ju(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 	long long	i;
 
 	i = 0;
-	frtl->z_r = x /  frtl->zoom + frtl->x1;
+	frtl->z_r = x / frtl->zoom + frtl->x1;
 	frtl->z_i = y / frtl->zoom + frtl->y1;
 	while (frtl->z_r * frtl->z_r + frtl->z_i * frtl->z_i < 4 && i < frtl->i_max)
 	{
@@ -34,8 +34,8 @@ void		frtl_iter_ju(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 
 void		frtl_dspl_ju(t_mlx *mlx)
 {
-	long long 	x;
-	long long 	y;
+	long long	x;
+	long long	y;
 
 	x = 0;
 	while (x < mlx->frtl->img_x)

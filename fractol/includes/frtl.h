@@ -6,24 +6,22 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:31:21 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/25 18:49:44 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/30 15:40:55 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRTL_H
 # define FRTL_H
 
-
-/////////////////////////////////////////
-#include <stdio.h>
-////////////////////////////////////////
 # include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# define WDEF		1280
-# define HDEF		720
-# define ERR_USAGE	"Usage: ./fractol <fractals> [<width> <height>]\nfractals: mandelbrot, julia, burningship, oel-ayad"
-# define ERR_MALLOC "Error: malloc"
+# define WDEF		2560
+# define HDEF		1440
+# define ERR_1 "Usage: ./fractol <fractals> [<width> <height>]\n"
+# define ERR_2 "fractals: mandelbrot, julia, burningship, oel-ayad, newton"
+# define ERR_USAGE	ERR_1 ERR_2
+# define ERR_MLX	"Error: MLX"
 # define EXIT		"fractol: end session 😊"
 # define JU			"julia"
 # define MAND		"mandelbrot"
@@ -34,9 +32,9 @@
 
 typedef struct		s_frtl
 {
-	double 			c_i;
-	double 			c_r;
-	double 			z_i;
+	double			c_i;
+	double			c_r;
+	double			z_i;
 	double			z_r;
 	double			x1;
 	double			x2;
@@ -73,15 +71,13 @@ typedef struct		s_infowin
 	t_img			*img;
 }					t_infowin;
 
-
-typedef struct 		s_mlx
+typedef struct		s_mlx
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
 	t_infowin		*infos;
 	t_frtl			*frtl;
 }					t_mlx;
-
 
 typedef struct		s_frtlop
 {
@@ -117,27 +113,27 @@ unsigned int		random_color(void);
 /*
 **	frtl_mand.c
 */
-void		frtl_dspl_mand(t_mlx *mlx);
+void				frtl_dspl_mand(t_mlx *mlx);
 
 /*
 **	frtl_ju.c
 */
-void		frtl_dspl_ju(t_mlx *mlx);
+void				frtl_dspl_ju(t_mlx *mlx);
 
 /*
 **	frtl_ship.c
 */
-void		frtl_dspl_ship(t_mlx *mlx);
+void				frtl_dspl_ship(t_mlx *mlx);
 
 /*
 **	frtl_my.c
 */
-void		frtl_dspl_my(t_mlx *mlx);
+void				frtl_dspl_my(t_mlx *mlx);
 
 /*
 **	frtl_newton.c
 */
-void		frtl_dspl_new(t_mlx *mlx);
+void				frtl_dspl_new(t_mlx *mlx);
 
 /*
 **	frtl_deal.c
@@ -145,7 +141,6 @@ void		frtl_dspl_new(t_mlx *mlx);
 int					deal_key(int key, t_mlx *mlx);
 int					loop_hook(t_mlx *mlx);
 int					deal_mouse(int x, int y, t_mlx *mlx);
-
 
 /*
 **	frtl_deal_mouse.c

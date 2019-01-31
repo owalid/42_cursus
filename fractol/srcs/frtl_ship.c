@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/24 18:04:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/25 14:18:18 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/30 13:54:06 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		frtl_iter_ship(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 {
-	long long i;
+	long long		i;
 
 	frtl->c_r = x / frtl->zoom + frtl->x1;
 	frtl->c_i = y / frtl->zoom + frtl->y1;
@@ -36,8 +36,8 @@ void		frtl_iter_ship(t_frtl *frtl, t_mlx *mlx, long long x, long long y)
 
 void		frtl_dspl_ship(t_mlx *mlx)
 {
-	long long 	x;
-	long long 	y;
+	long long		x;
+	long long		y;
 
 	x = 0;
 	while (x < mlx->frtl->img_x)
@@ -45,7 +45,7 @@ void		frtl_dspl_ship(t_mlx *mlx)
 		y = 0;
 		while (y < mlx->frtl->img_y)
 		{
-			frtl_iter_ship(mlx->frtl, mlx, x , y);
+			frtl_iter_ship(mlx->frtl, mlx, x, y);
 			y++;
 		}
 		x++;

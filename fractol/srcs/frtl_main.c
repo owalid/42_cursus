@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 15:40:48 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/25 18:46:34 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/01/30 15:24:11 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,17 @@ int			main(int ac, char **av)
 {
 	t_infowin	infos[1];
 
-	if (ac >= 2 && ac <= 4)
+	if (ac == 2 || ac == 4)
 	{
 		infos->frtl = -1;
 		frtl_verif_prms(infos, av[1]);
 		init_tabcolor(infos);
 		if (ac == 4)
+		{
+			if (!(ft_str_is_numeric(av[2])) || !(ft_str_is_numeric(av[3])))
+				frtl_err(1);
 			frtl_setwin(infos, ft_atoi(av[2]), ft_atoi(av[3]));
+		}
 		else
 			frtl_setwin(infos, WDEF, HDEF);
 		wind_init(infos);

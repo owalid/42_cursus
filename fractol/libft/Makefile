@@ -1,4 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/01/30 15:43:53 by oel-ayad          #+#    #+#              #
+#    Updated: 2019/01/30 15:43:56 by oel-ayad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
+
 SRCS =	ft_memset.c \
 		ft_bzero.c \
 		ft_memset.c \
@@ -91,15 +104,24 @@ SRCS =	ft_memset.c \
 		ft_del_tab.c \
 		ft_split_whitespaces.c \
 		ft_tab_len.c
+
 OBJ = $(SRCS:.c=.o)
+
 FLAG = -Wall -Wextra -Werror
+
 all: $(NAME)
+
 $(NAME): $(OBJ)
 	gcc $(FLAG) -c $(SRCS) -I libft.h
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+
 clean:
 	rm -rf $(OBJ)
+
 fclean: clean
 	rm -rf $(NAME)
+
 re: fclean all
+
+.PHONY: all obj fclean clean re
