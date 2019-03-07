@@ -1,0 +1,1 @@
+docker run --replicas 2 -itd --network=overmind --name marine-squad 42school/marine-squad

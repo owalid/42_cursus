@@ -1,0 +1,1 @@
+docker run -d --hostname overmind --name some-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3

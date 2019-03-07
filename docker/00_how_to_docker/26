@@ -1,0 +1,1 @@
+docker run --replicas 2 -itd --network=overmind --name engineering-bay 42school/engineering-bay

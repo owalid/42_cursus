@@ -1,1 +1,1 @@
-docker swarm init --advertise-addr $(docker-machine ip Char)
+docker swarm init --advertise-addr $(docker-machine ip Char) manager
