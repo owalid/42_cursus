@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    tr {
+        position: relative;
+    }
+
+    td {
+        vertical-align: top;
+        text-align: center;
+        height: 100px;
+        width: 100px;
+    }
+
+    .title-elmt {
+        font-size: 10px;
+    }
+
+    .left {
+        top: 0px;
+        right: 0px;
+    }
+    .num {
+        position: absolute;
+        font-size: 15px;
+    }
+
+    .symbol {
+        font-size: 20px;
+    }
+
+    .masse {
+        font-size: 10px;
+    }
+
+    .alcalins {
+        background-color: rgba(245, 14, 14, 0.623);
+    }
+
+    .alcalino-terr {
+        background-color: rgba(255, 230, 1, 0.637);
+    }
+
+    .lanthanides {
+        background-color: rgba(230, 137, 230, 0.699);
+    }
+
+    .metx-transition {
+        background-color: rgba(248, 73, 111, 0.685);
+    }
+
+    .metx-pauvre {
+        background-color: gray;
+    }
+
+    .metalloide {
+        background-color: rgba(51, 56, 19, 0.664);
+    }
+
+    .no-metx {
+        background-color: rgba(0, 233, 0, 0.664);
+    }
+
+    .halogenes {
+        background-color: rgba(255, 255, 0, 0.644);
+    }
+
+    .gaz-noble {
+        background-color: rgba(0, 255, 255, 0.616);
+    }
+</style>
+<body>
+    <table>
+    <!-- first line -->
+        <tr>
+          <td class="no-metx">
+              <p class="title-elmt">Hydrogène</p>
+              <h2 class="num">1</h2>
+              <h1 class="symbol">H</h1>
+              <p class="masse">1,007975</p>
+          </td>
+          <th colspan=16></th>
+          <td class="gaz-noble">
+            <p class="title-elmt">Hélium</p>
+            <h2 class="num">2</h2>
+            <h1 class="symbol">He</h1>
+            <p class="masse">1,007975</p>
+          </td>
+        </tr>
+    <!-- Second line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Lithium</p>
+                <h2 class="num">3</h2>
+                <h1 class="symbol">LI</h1>
+                <p class="masse">6,9395</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Bérylium</p>
+                <h2 class="num">4</h2>
+                <h1 class="symbol">Be</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <th colspan=10></th>
+            <td class="metalloide">
+                <p class="title-elmt">Bore</p>
+                <h2 class="num">5</h2>
+                <h1 class="symbol">B</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Carbone</p>
+                <h2 class="num">6</h2>
+                <h1 class="symbol">C</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Azote</p>
+                <h2 class="num">7</h2>
+                <h1 class="symbol">N</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Oxygène</p>
+                <h2 class="num">8</h2>
+                <h1 class="symbol">O</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Fluor</p>
+                <h2 class="num">9</h2>
+                <h1 class="symbol">Be</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+            <td class="gaz-noble">
+                <p class="title-elmt">Néon</p>
+                <h2 class="num">10</h2>
+                <h1 class="symbol">Ne</h1>
+                <p class="masse">9,0121831</p>
+            </td>
+        </tr>
+        <!-- Third line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Sodium</p>
+                <h2 class="num">11</h2>
+                <h1 class="symbol">Na</h1>
+                <p class="masse">22,98976928</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Magnésium</p>
+                <h2 class="num">12</h2>
+                <h1 class="symbol">Mg</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <th colspan=10></th>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Aluminum</p>
+                <h2 class="num">13</h2>
+                <h1 class="symbol">Al</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Sillicium</p>
+                <h2 class="num">14</h2>
+                <h1 class="symbol">Si</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Phosphore</p>
+                <h2 class="num">15</h2>
+                <h1 class="symbol">P</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Soufre</p>
+                <h2 class="num">16</h2>
+                <h1 class="symbol">S</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Chlore</p>
+                <h2 class="num">17</h2>
+                <h1 class="symbol">Cl</h1>
+                <p class="masse">24,3055</p>
+            </td>
+            <td class="gaz-noble">
+                <p class="title-elmt">Argon</p>
+                <h2 class="num">18</h2>
+                <h1 class="symbol">Ar</h1>
+                <p class="masse">24,3055</p>
+            </td>
+        </tr>
+        <!-- Fourth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Potassium</p>
+                <h2 class="num">19</h2>
+                <h1 class="symbol">K</h1>
+                <p class="masse">39,0983</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Calcium</p>
+                <h2 class="num">20</h2>
+                <h1 class="symbol">Ca</h1>
+                <p class="masse">40,078</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Scandium</p>
+                <h2 class="num">21</h2>
+                <h1 class="symbol">Sc</h1>
+                <p class="masse">44,955908</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Titane</p>
+                <h2 class="num">22</h2>
+                <h1 class="symbol">Ti</h1>
+                <p class="masse">47,867</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Vanadium</p>
+                <h2 class="num">23</h2>
+                <h1 class="symbol">V</h1>
+                <p class="masse">50,9415</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Chrome</p>
+                <h2 class="num">24</h2>
+                <h1 class="symbol">Cr</h1>
+                <p class="masse">51,9961</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Manganèse</p>
+                <h2 class="num">25</h2>
+                <h1 class="symbol">Mn</h1>
+                <p class="masse">54,938044</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Fer</p>
+                <h2 class="num">26</h2>
+                <h1 class="symbol">Fe</h1>
+                <p class="masse">55,845</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Cobalt</p>
+                <h2 class="num">27</h2>
+                <h1 class="symbol">Co</h1>
+                <p class="masse">58.933194</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Nickel</p>
+                <h2 class="num">28</h2>
+                <h1 class="symbol">Ni</h1>
+                <p class="masse">58.6934</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Cuivre</p>
+                <h2 class="num">29</h2>
+                <h1 class="symbol">Cu</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Zinc</p>
+                <h2 class="num">30</h2>
+                <h1 class="symbol">Zn</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Gallium</p>
+                <h2 class="num">31</h2>
+                <h1 class="symbol">Ga</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Germanium</p>
+                <h2 class="num">32</h2>
+                <h1 class="symbol">Ge</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Arsenic</p>
+                <h2 class="num">33</h2>
+                <h1 class="symbol">As</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="no-metx">
+                <p class="title-elmt">Sélénium</p>
+                <h2 class="num">34</h2>
+                <h1 class="symbol">Se</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="halogenes">
+                <p class="title-elmt">Brome</p>
+                <h2 class="num">35</h2>
+                <h1 class="symbol">Br</h1>
+                <p class="masse">63,546</p>
+            </td>
+            <td class="gaz-noble">
+                <p class="title-elmt">Krypton</p>
+                <h2 class="num">36</h2>
+                <h1 class="symbol">Kr</h1>
+                <p class="masse">63,546</p>
+            </td>
+        </tr>
+        <!-- Fifth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Rubidium</p>
+                <h2 class="num">19</h2>
+                <h1 class="symbol">Rb</h1>
+                <p class="masse">85,4678</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Strontium</p>
+                <h2 class="num">38</h2>
+                <h1 class="symbol">Sr</h1>
+                <p class="masse">87,62</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Yttrium</p>
+                <h2 class="num">39</h2>
+                <h1 class="symbol">Y</h1>
+                <p class="masse">88,90584</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Zirconium</p>
+                <h2 class="num">40</h2>
+                <h1 class="symbol">Zr</h1>
+                <p class="masse">91,224</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Niobium</p>
+                <h2 class="num">41</h2>
+                <h1 class="symbol">Nb</h1>
+                <p class="masse">92,90637</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Molybdène</p>
+                <h2 class="num">42</h2>
+                <h1 class="symbol">Mo</h1>
+                <p class="masse">95,95</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Technétium</p>
+                <h2 class="num">43</h2>
+                <h1 class="symbol">Tc</h1>
+                <p class="masse">[98]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Ruthénium</p>
+                <h2 class="num">44</h2>
+                <h1 class="symbol">Ru</h1>
+                <p class="masse">101,07</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Rhodium</p>
+                <h2 class="num">45</h2>
+                <h1 class="symbol">Rh</h1>
+                <p class="masse">102,90550</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Palladium</p>
+                <h2 class="num">46</h2>
+                <h1 class="symbol">Pd</h1>
+                <p class="masse">106,42</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Argent</p>
+                <h2 class="num">47</h2>
+                <h1 class="symbol">Ag</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Cadmium</p>
+                <h2 class="num">48</h2>
+                <h1 class="symbol">Cd</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Indium</p>
+                <h2 class="num">49</h2>
+                <h1 class="symbol">In</h1>
+                <p class="masse">102,90550</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Étain</p>
+                <h2 class="num">50</h2>
+                <h1 class="symbol">Sn</h1>
+                <p class="masse">106,42</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Antimoine</p>
+                <h2 class="num">51</h2>
+                <h1 class="symbol">Sb</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Tellure</p>
+                <h2 class="num">52</h2>
+                <h1 class="symbol">Te</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="halogenes">
+                <p class="title-elmt">Iode</p>
+                <h2 class="num">53</h2>
+                <h1 class="symbol">I</h1>
+                <p class="masse">102,90550</p>
+            </td>
+            <td class="gaz-noble">
+                <p class="title-elmt">Xénon</p>
+                <h2 class="num">54</h2>
+                <h1 class="symbol">Xe</h1>
+                <p class="masse">106,42</p>
+            </td>
+        </tr>
+        <!-- sixth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Césium</p>
+                <h2 class="num">55</h2>
+                <h1 class="symbol">Cs</h1>
+                <p class="masse">1,007975</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Baryum</p>
+                <h2 class="num">56</h2>
+                <h1 class="symbol">Ba</h1>
+                <p class="masse">137,327</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Lutetium</p>
+                <h2 class="num">71</h2>
+                <h1 class="symbol">LU</h1>
+                <p class="masse">95,95</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Hafnium</p>
+                <h2 class="num">72</h2>
+                <h1 class="symbol">Hf</h1>
+                <p class="masse">101,07</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Tantale</p>
+                <h2 class="num">73</h2>
+                <h1 class="symbol">Rh</h1>
+                <p class="masse">102,90550</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Tungstène</p>
+                <h2 class="num">74</h2>
+                <h1 class="symbol">W</h1>
+                <p class="masse">106,42</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Rhénium</p>
+                <h2 class="num">75</h2>
+                <h1 class="symbol">Re</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Osmium</p>
+                <h2 class="num">76</h2>
+                <h1 class="symbol">Os</h1>
+                <p class="masse">106,42</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Iridium</p>
+                <h2 class="num">77</h2>
+                <h1 class="symbol">Ir</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Platine</p>
+                <h2 class="num">78</h2>
+                <h1 class="symbol">Pt</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Or</p>
+                <h2 class="num">79</h2>
+                <h1 class="symbol">Au</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Mercure</p>
+                <h2 class="num">80</h2>
+                <h1 class="symbol">Hg</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Thalium</p>
+                <h2 class="num">81</h2>
+                <h1 class="symbol">TI</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Plomb</p>
+                <h2 class="num">82</h2>
+                <h1 class="symbol">Pb</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Bismuth</p>
+                <h2 class="num">83</h2>
+                <h1 class="symbol">Bi</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metx-pauvre">
+                <p class="title-elmt">Polonium</p>
+                <h2 class="num">84</h2>
+                <h1 class="symbol">At</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="metalloide">
+                <p class="title-elmt">Astate</p>
+                <h2 class="num">85</h2>
+                <h1 class="symbol">At</h1>
+                <p class="masse">107,8682</p>
+            </td>
+            <td class="gaz-noble">
+                <p class="title-elmt">Radon</p>
+                <h2 class="num">86</h2>
+                <h1 class="symbol">Rn</h1>
+                <p class="masse">107,8682</p>
+            </td>
+        </tr>
+        <!-- Seventh line -->
+        <tr>
+            <td class="alcalins">
+                <p class="title-elmt">Francium</p>
+                <h2 class="num">87</h2>
+                <h1 class="symbol">Fr</h1>
+                <p class="masse">[223]</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Radium</p>
+                <h2 class="num">88</h2>
+                <h1 class="symbol">Ra</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Lawrencium</p>
+                <h2 class="num">103</h2>
+                <h1 class="symbol">Lr</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Rutherfordium</p>
+                <h2 class="num">104</h2>
+                <h1 class="symbol">Rf</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Dubnium</p>
+                <h2 class="num">105</h2>
+                <h1 class="symbol">Db</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Seaborgium</p>
+                <h2 class="num">106</h2>
+                <h1 class="symbol">Sg</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Bohrium</p>
+                <h2 class="num">107</h2>
+                <h1 class="symbol">Bh</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Hassium</p>
+                <h2 class="num">108</h2>
+                <h1 class="symbol">Hs</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Meitnérium</p>
+                <h2 class="num">109</h2>
+                <h1 class="symbol">Mt</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Darmstadtium</p>
+                <h2 class="num">110</h2>
+                <h1 class="symbol">Ds</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Roentgenium</p>
+                <h2 class="num">111</h2>
+                <h1 class="symbol">Rg</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Copernicium</p>
+                <h2 class="num">112</h2>
+                <h1 class="symbol">Cn</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Ninhonium</p>
+                <h2 class="num">113</h2>
+                <h1 class="symbol">Nh</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Flérovium</p>
+                <h2 class="num">114</h2>
+                <h1 class="symbol">FI</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Moscovium</p>
+                <h2 class="num">115</h2>
+                <h1 class="symbol">Mc</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Livermorium</p>
+                <h2 class="num">116</h2>
+                <h1 class="symbol">Lv</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Tennesse</p>
+                <h2 class="num">117</h2>
+                <h1 class="symbol">Ts</h1>
+                <p class="masse">[226]</p>
+            </td>
+            <td>
+                <p class="title-elmt">Oganesson</p>
+                <h2 class="num">118</h2>
+                <h1 class="symbol">Og</h1>
+                <p class="masse">[226]</p>
+            </td>
+        </tr>
+        <tr>
+            <th colspan=2></th>
+            <td class="lanthanides">
+                <p class="title-elmt">Lanthane</p>
+                <h2 class="num">57</h2>
+                <h1 class="symbol">La</h1>
+                <p class="masse">138,90547</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Cérium</p>
+                <h2 class="num">58</h2>
+                <h1 class="symbol">Ce</h1>
+                <p class="masse">140,116</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Praséodyme</p>
+                <h2 class="num">59</h2>
+                <h1 class="symbol">Pr</h1>
+                <p class="masse">140,90766</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Néodyme</p>
+                <h2 class="num">60</h2>
+                <h1 class="symbol">Nd</h1>
+                <p class="masse">144,242</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Prométhium</p>
+                <h2 class="num">61</h2>
+                <h1 class="symbol">Pm</h1>
+                <p class="masse">[145]</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Samarium</p>
+                <h2 class="num">62</h2>
+                <h1 class="symbol">Sm</h1>
+                <p class="masse">150,36</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Europium</p>
+                <h2 class="num">63</h2>
+                <h1 class="symbol">Lr</h1>
+                <p class="masse">151,964 </p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Gadolinium</p>
+                <h2 class="num">64</h2>
+                <h1 class="symbol">Gd</h1>
+                <p class="masse">157,25</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Terbium</p>
+                <h2 class="num">65</h2>
+                <h1 class="symbol">Tb</h1>
+                <p class="masse">158,92535</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Dysprosium</p>
+                <h2 class="num">66</h2>
+                <h1 class="symbol">Dy</h1>
+                <p class="masse">162,500</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Holmium</p>
+                <h2 class="num">67</h2>
+                <h1 class="symbol">Ho</h1>
+                <p class="masse">164,93033</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Erbium</p>
+                <h2 class="num">68</h2>
+                <h1 class="symbol">Er</h1>
+                <p class="masse">167,259 ⑶</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Thulium</p>
+                <h2 class="num">69</h2>
+                <h1 class="symbol">Tm</h1>
+                <p class="masse">168,93422</p>
+            </td>
+            <td class="lanthanides">
+                <p class="title-elmt">Ytterbium</p>
+                <h2 class="num">70</h2>
+                <h1 class="symbol">Yb</h1>
+                <p class="masse">174,9668</p>
+            </td>
+        </tr>
+        <tr>
+            <th colspan=2></th>
+            <td class="alcalins">
+                <p class="title-elmt">Actinium</p>
+                <h2 class="num">89</h2>
+                <h1 class="symbol">Ac</h1>
+                <p class="masse">[227]</p>
+            </td>
+            <td class="alcalino-terr">
+                <p class="title-elmt">Thorium</p>
+                <h2 class="num">90</h2>
+                <h1 class="symbol">Th</h1>
+                <p class="masse">232,0358</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Protactinium</p>
+                <h2 class="num">91</h2>
+                <h1 class="symbol">Lr</h1>
+                <p class="masse">231.03588</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Uranium</p>
+                <h2 class="num">92</h2>
+                <h1 class="symbol">U</h1>
+                <p class="masse">238,02</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Neptunium</p>
+                <h2 class="num">93</h2>
+                <h1 class="symbol">Np</h1>
+                <p class="masse">[244]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Plutonium</p>
+                <h2 class="num">94</h2>
+                <h1 class="symbol">Pu</h1>
+                <p class="masse">[243]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Américum</p>
+                <h2 class="num">95</h2>
+                <h1 class="symbol">Am</h1>
+                <p class="masse">[247]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Curium</p>
+                <h2 class="num">96</h2>
+                <h1 class="symbol">Cm</h1>
+                <p class="masse">[247]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Berkélium</p>
+                <h2 class="num">97</h2>
+                <h1 class="symbol">Bk</h1>
+                <p class="masse">[251]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Californium</p>
+                <h2 class="num">98</h2>
+                <h1 class="symbol">Cf</h1>
+                <p class="masse">[252]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Einsteinium</p>
+                <h2 class="num">99</h2>
+                <h1 class="symbol">Es</h1>
+                <p class="masse">[257]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Fermium</p>
+                <h2 class="num">100</h2>
+                <h1 class="symbol">Fm</h1>
+                <p class="masse">[258]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Mendélévium</p>
+                <h2 class="num">101</h2>
+                <h1 class="symbol">Md</h1>
+                <p class="masse">[259]</p>
+            </td>
+            <td class="metx-transition">
+                <p class="title-elmt">Nobélium</p>
+                <h2 class="num">102</h2>
+                <h1 class="symbol">No</h1>
+                <p class="masse">[266]</p>
+            </td>
+        </tr>
+      </table>
+</body>
+</html>
