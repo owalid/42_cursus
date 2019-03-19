@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(48, 47, 47);
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 15px;
+}
+
+.header {
+    background-color: gray;
+}
+
+.ombre {
+    box-shadow: 8px 8px 12px #000000;
+}
+
+.dof42 {
+    width: 25%;
+    height: 25%;
+}
+
+.padding-50 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.img-right {
+    position: relative;
+    text-align: right;
+}
+
+.top {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.position-loupe {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 5px;
+}
+
+.loupe {
+    width: auto;
+    height: auto;
+}
+
+.reload {
+    width: 30px;
+    height: 30px;
+}
+
+.close {
+    width: 30px;
+    height: 30px;
+}
+
+.left-div {
+    height: 200px;
+    width: 50%;
+    background-color: gray;
+}
+
+.box {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.box>* {
+    flex: 1 1 80px;
+}
+
+
+.doft42 {
+    background-image: url(ressources/day_of_the_42.png);
+}
+.doft42 {
+    background-image: url(ressources/day_of_the_42.png);
+}
+.doft42 {
+    background-image: url(ressources/day_of_the_42.png);
+}
