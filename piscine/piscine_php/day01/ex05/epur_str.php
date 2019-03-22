@@ -7,3 +7,4 @@ foreach ($elmts as $e) {
     if ($e != end($elmts))
         echo ' ';
 }
+echo "\n";
