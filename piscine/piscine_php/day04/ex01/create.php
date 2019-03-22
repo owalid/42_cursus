@@ -7,11 +7,12 @@ function check_user($hash, $login, $file)
     foreach ($raw_file as $r)
     {
         if ($r == $login || $r == $hash)
-            return (0)
+            return (0);
     }
     return (1);
 }
-if ($_POST['login'] && $_POST['passwd'])
+
+if ($_POST['login'] && $_POST['passwd'] && $_POST['submit'] == 'OK')
 {
     if (!file_exist('../private'))
         mkdir('../private');
@@ -23,10 +24,10 @@ if ($_POST['login'] && $_POST['passwd'])
     {
         $tab = array(serialize($login, $hash_pwd));
         file_put_contents($file, $tab);
-        echo "OK\n"
+        echo "OK\n";
     } 
     else
-        echo "ERROR\n"
+        echo "ERROR\n";
 }
 else
-    echo "ERROR\n"
+    echo "ERROR\n";
