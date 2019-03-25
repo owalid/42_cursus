@@ -1,0 +1,173 @@
+tr {
+    position: relative;
+}
+
+td {
+    vertical-align: top;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+}
+
+
+.title-elmt {
+    font-size: 10px;
+}
+
+.left {
+    top: 0px;
+    
+}
+.num {
+    font-size: 15px;
+    top: 0px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.symbol {
+    font-size: 20px;
+}
+
+.masse {
+    font-size: 15px;
+    bottom: 0px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.alcalins {
+    background-color: rgba(245, 14, 14, 0.623);
+}
+
+.alcalino-terr {
+    background-color: rgba(255, 230, 1, 0.637);
+}
+
+.lanthanides {
+    background-color: rgba(230, 137, 230, 0.699);
+}
+
+.metx-transition {
+    background-color: rgba(248, 73, 111, 0.685);
+}
+
+.metx-pauvre {
+    background-color: gray;
+}
+
+.metalloide {
+    background-color: rgba(51, 56, 19, 0.664);
+}
+
+.no-metx {
+    background-color: rgba(0, 233, 0, 0.664);
+}
+
+.halogenes {
+    background-color: rgba(255, 255, 0, 0.644);
+}
+
+.gaz-noble {
+    background-color: rgba(0, 255, 255, 0.616);
+}
+
+@media screen and (max-width: 1024px) {
+    td {
+        vertical-align: top;
+        text-align: center;
+        height: 50px;
+        width: 50px;
+    }
+
+    table {
+        display:flex;
+    }
+    
+    .title-elmt {
+        font-size: 7px;
+    }
+
+    .symbol {
+        font-size: 15px;
+    }
+
+    .num  {
+        font-size: 10px;
+        top: 0px;
+        text-align: right;
+        padding-right: 2px;
+    }
+
+    .masse {
+        font-size: 10px;
+        bottom: 0px;
+        text-align: left;
+        padding-left: 2px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    td {
+        vertical-align: top;
+        text-align: center;
+        height: 25px;
+        width: 25px;
+    }
+
+    table {
+        display:flex;
+    }
+    
+    .title-elmt {
+        font-size: 5px;
+    }
+
+    .symbol {
+        font-size: 10px;
+    }
+
+    .num  {
+        font-size: 7px;
+        top: 0px;
+        text-align: right;
+    }
+
+    .masse {
+        font-size: 7px;
+        bottom: 0px;
+        text-align: left;
+    }
+}
+@media screen and (max-width: 600px) {
+    td {
+        vertical-align: top;
+        text-align: center;
+        height: 15px;
+        width: 15px;
+    }
+
+    table {
+        display:flex;
+    }
+    
+    .title-elmt {
+        font-size: 4px;
+    }
+
+    .symbol {
+        font-size: 7px;
+    }
+
+    .num  {
+        font-size: 5px;
+        top: 0px;
+        text-align: right;
+    }
+
+    .masse {
+        font-size: 5px;
+        bottom: 0px;
+        text-align: left;
+    }
+}
