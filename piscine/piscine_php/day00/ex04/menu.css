@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+html {
+    font-family: 'Slabo 27px', serif;
+    background-color: rgb(110, 30, 120);
+    animation: bg-pulse 5s;
+    -moz-animation: bg-pulse 5s;
+    -webkit-animation: bg-pulse 5s;
+    -o-animation: bg-pulse 5s;
+}
+
+nav {
+    background-color: rgb(110, 30, 120);
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+nav li {
+    float: left;
+    margin: auto;
+    padding: 0;
+    background-color: rgb(110, 30, 120);
+}
+
+nav li a {
+    margin-top: 8px;
+    display: block;
+    width: auto;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}
+
+nav li a:hover {
+    color: rgba(0, 0, 0, 0.863);
+    animation: left-right 1s;
+    -moz-animation: left-right 1s;
+    -webkit-animation: left-right 1s;
+    -o-animation: left-right 1s;
+}
+
+nav ul li ul {
+    display: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav li:hover ul li {
+    float: none;
+    background-color: rgba(43, 11, 49, 0.651);
+}
+
+.padding-50-left {
+    padding-left: 50px;
+}
+
+.sncf-logo {
+    width: 5%;
+    height: 5%;
+   
+}
+
+@keyframes left-right {
+    from {
+        opacity: 0;
+        transform: translate3d(-60px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes bg-pulse {
+    0% {
+        background-color: rgb(143, 9, 9);
+    }
+    100% {
+        background-color: rgb(110, 30, 120);
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="scumm.css"/>
+    <title>Day of 42</title>
+</head>
+<body>
+  <header class="ombre header">
+            <img class="dof42" src="resources/day_of_the_42.png"/>
+            <div class="img-right">
+                <a href="https://profile.intra.42.fr/searches/">
+                <img class="loupe" src="resources/loupe.png" alt="loupe">
+            </a>
+                    <img class="reload" id="reload" src="resources/reload.png" alt="reload">
+                <img class="close" src="resources/close.gif" alt="close">
+            </div>
+  </header>
+  <div class="padding-15"></div>
+  <section class="main">
+      <div class="left elmts ombre">
+            <img class="arrow center" id="avancer" src="resources/arrow.png" alt="Avancer" title="Avancer">
+            <img class="hand center" src="resources/main.png" alt="Prendre" title="Prendre">
+            <img class="eye center border-red" src="resources/oeil.png" alt="Regarde" title="Re-garde">
+            <img class="tool center" src="resources/outil.png" alt="Utiliser" title="Utiliser">
+            <a href="talk.html">
+                <img class="chat-icon center" id="parler" src="resources/chat-icon.png" alt="Parler" title="Parler">
+            </a>
+      </div>
+      <div class="middle elmts elmts-main ombre">
+            <img class="win" id="win" src="resources/win.png" alt="cluster" usemap="#cluster">
+            <map name="map-cluster" id="map-cluster">
+                <area shape="circle" coords="400, 400, 40" href="http://www.ikea.com" alt="chaise" title="chaise"/>
+                <area shape="circle" coords="930 , 400, 90" href="http://www.apple.com" alt="mac" title="mac"/>
+            </map>
+            
+      </div>
+      <div class="right elmts ombre">
+            <img class="book center" width="75px" src="resources/book.png" alt="book" title="book">
+            <img class="towel center" width="75px" src="resources/towel.png" alt="towel" title="towel">
+            <div class="brick"></div>
+      </div>
+    </section>
+    <div class="greenbox ombre">
+          <p class="margin-left-15">Vous <span class="entrez">entrez</span> alors dans une grande pièce remplie <span class="shadowtxt">d'ordinateurs</span>...<br/>
+              <span class="italic">- Bonjour, vous êtes nouveau ici ?</span></p>
+          <form class="margin-left-15 " action="#">
+              <input type="text">
+              <button type="submit">Repondre</button>
+          </form>
+      </div>
+</body>
+<script src="script.js"></script>
+</html>
