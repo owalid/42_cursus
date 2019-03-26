@@ -1,54 +1,50 @@
 body {
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(48, 47, 47);
     padding-top: 10px;
-	width: 1800px;
-	margin: auto auto;
+	width: 1420px;
+	margin: 0 auto;
     position: relative;
 }
 
 .main {
     width: 100%;
     text-align: center;
-    margin: auto auto;
 }
 
 .header {
     background-color: rgb(144, 144, 144);
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: 0px auto;
-    width: 1400px;
+    width: 1420px;
     height: 110px;
-    padding-left: 50px;
-    padding-right: 0px;
 }
 
 .elmts-main {
-    width: 1000px;
+    width: 1100px;
     height: 600px;
     display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-.cluster {
-    width: 980px;
-    height: 600px;
-}
-
-.elmts {
+.elmts{
     background-color: rgb(144, 144, 144);
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .ombre {
-    box-shadow: 10px 10px 8px #000000;
+    box-shadow: 8px 8px 12px #000000;
     border-radius: 10px;
 }
 
 .dof42 {
     height: 110px;
+}
+
+.padding-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .img-right {
@@ -85,25 +81,22 @@ body {
 }
 
 .left {
-    position: absolute;
-    left: 220px;
+    float:left;
     background-color: rgb(144, 144, 144);
     width: 150px;
-    height: 400px;
+    height: 450px;
 }
 
 .left img {
+    padding-bottom: 15px;
     width: 70px;
 }
 
 .right {
     float: right;
-    position: absolute;
-    right: 220px;
-    top: 160px;
     background-color: rgb(144, 144, 144);
     width: 150px;
-    height: 400px;
+    height: 450px;
 }
 
 .right img {
@@ -112,13 +105,28 @@ body {
 }
 
 .brick {
-    background-image: url("./resources/brick.jpg");
-    background-size: 35px 35px;
-    width: 125px;
-    height: 77px;
+    background-image: url("../resources/brick.jpg");
+    width: 140px;
+    height: 70px;
     margin: auto;
 }
 
+.box {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.box>* {
+    flex: 1 1 80px;
+}
+
+.cluster {
+    width: 1050px;
+    height: 600px;
+    transform: scale(0.1);
+}
 
 .center {
     display: block;
@@ -130,33 +138,26 @@ body {
 .greenbox {
 	float: left;
 	width: 510px;
-	height: 150px;
+	height: 170px;
 	position: absolute;
 	top: 700px;
-	left: 160px;
+	left: -42px;
 	background-color: rgb(136, 255, 137);
-    font-family: sans-serif;
-    font-size: 17px;
-    padding-top: 10px;
-}
-
-.greenbox p {
-    margin-bottom: 0;
-    margin-top: 0;
+    font-family: Times;
+    font-size: 20px;
 }
 
 .entrez {
-    font-size: 35px;
+    font-size: 50px;
 }
 
 .border-red {
     border: 5px solid red; 
     border-radius: 10px;
-    padding-bottom: 0 !important;
 }
 
 .shadowtxt {
-    text-shadow: 5px 5px 3px rgb(255, 0, 0) !important;
+    text-shadow: 15px 5px 3px rgb(255, 166, 0) !important;
 }
 
 .italic {
@@ -167,42 +168,39 @@ body {
     margin-left: 15px;
 }
 
-.margin-right-50 {
-    margin: 30px auto;
-}
-
-.margin-bottom-5 {
-    margin-bottom: 5px;
-}
-
-.margin-bottom-15 {
-    margin-bottom: 15px;
-}
-
-.margin-top-15 {
-    margin-bottom: 15px;
-}
-
-.padding-15 {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.padding-15b {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.centerall {
-    margin: 0 auto;
-    padding-right: 100px;
-}
-
 input {
     min-width: 70%;
     max-width: 70%;
-    box-shadow: inset 0 0 0px 0px rgba(136, 136, 136, 0.719);
-    background: #fff;
-    -webkit-box-shadow: inset 0 0 0px 0px #888;
-    -moz-box-shadow: inset 0 0 0px 0px #888;
+}
+
+.big-red {
+    color: red;
+    font-size: 60px;
+    text-align: center;
+}
+
+#terrain_de_jeu { 
+    height:90%;
+    width:90%;
+    position:absolute;
+}
+.monstre
+{
+  background-color:yellow; 
+  position:absolute;
+}
+
+.win {
+    width: 100%;
+    height: 100%;
+}
+
+.norminet {
+    width: 50%;
+    height: 100%;
+}
+
+.cluster-big {
+    width: 1050px;
+    height: 600px;
 }

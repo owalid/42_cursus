@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mendeleïev</title>
+</head>
+<style>
+    body {
+        background-color: rgba(53, 53, 175, 0.801);
+        background-image: url('https://images.vexels.com/media/users/3/153023/isolated/preview/6e09b0e7d2a73f9c6686e653b92fed5f-atom-school-icon-by-vexels.png');
+        background-size: 250px 250px;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+
+    tr {
+        position: relative;
+    }
+
+    td {
+        vertical-align: top;
+        text-align: center;
+        height: 100px;
+        width: 100px;
+    }
+
+    .title-elmt {
+        font-size: 10px;
+    }
+
+    .left {
+       top: 0px;
+     
+    }
+
+    .num {
+        font-size: 15px;
+        bottom: 0px;
+        text-align: left;
+        padding-left: 5px;
+    }
+    
+    .symbol {
+        font-size: 20px;
+    }
+    
+    .masse {
+        font-size: 15px;
+        top: 0px;
+        text-align: right;
+        padding-right: 5px;
+    }
+
+    .alcalins {
+        background-color: rgba(245, 14, 14, 0.623);
+    }
+
+    .alcalino-terr {
+        background-color: rgba(255, 230, 1, 0.637);
+    }
+
+    .lanthanides {
+        background-color: rgba(230, 137, 230, 0.699);
+    }
+
+    .metx-transition {
+        background-color: rgba(248, 73, 111, 0.685);
+    }
+
+    .metx-pauvre {
+        background-color: gray;
+    }
+
+    .metalloide {
+        background-color: rgba(51, 56, 19, 0.664);
+    }
+
+    .no-metx {
+        background-color: rgba(0, 233, 0, 0.664);
+    }
+
+    .halogenes {
+        background-color: rgba(255, 255, 0, 0.644);
+    }
+
+    .gaz-noble {
+        background-color: rgba(0, 255, 255, 0.616);
+    }
+
+    .img-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .table-center {
+       margin: 0 auto;
+    }
+
+    .padding-top {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+</style>
+<body>
+    <table class="table-center padding-top" contenteditable>
+    <!-- first line -->
+        <tr>
+            <td class="no-metx" > 
+                <p class="masse">1,007975</p>    
+                <h1 class="symbol">H</h1>
+                <h2 class="num">1</h2>
+            </td>
+            <th colspan=16></th>
+            <td class="gaz-noble">
+                <p class="masse">4,0026</p>    
+                <h1 class="symbol">He</h1>
+                <h2 class="num">2</h2>
+            </td>
+        </tr>
+    <!-- Second line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">6,9395</p>    
+                <h1 class="symbol">LI</h1>
+                <h2 class="num">3</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">9,0121831</p>    
+                <h1 class="symbol">Be</h1>
+                <h2 class="num">4</h2>
+            </td>
+            <th colspan=10></th>
+            <td class="metalloide">
+                <p class="masse">10,81</p>    
+                <h1 class="symbol">B</h1>
+                <h2 class="num">5</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">12,01</p>    
+                <h1 class="symbol">C</h1>
+                <h2 class="num">6</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">14,06</p>    
+                <h1 class="symbol">N</h1>
+                <h2 class="num">7</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">15,99</p>    
+                <h1 class="symbol">O</h1>
+                <h2 class="num">8</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">18,99</p>    
+                <h1 class="symbol">Be</h1>
+                <h2 class="num">9</h2>
+            </td>
+            <td class="gaz-noble">
+                <p class="masse">20,17</p>    
+                <h1 class="symbol">Ne</h1>
+                <h2 class="num">10</h2>
+            </td>
+        </tr>
+        <!-- Third line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">22,98976928</p>    
+                <h1 class="symbol">Na</h1>
+                <h2 class="num">11</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">24,3055</p>    
+                <h1 class="symbol">Mg</h1>
+                <h2 class="num">12</h2>
+            </td>
+            <th colspan=10></th>
+            <td class="metx-pauvre">
+                <p class="masse">26,98</p>    
+                <h1 class="symbol">Al</h1>
+                <h2 class="num">13</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">28,085</p>    
+                <h1 class="symbol">Si</h1>
+                <h2 class="num">14</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">30,97</p>    
+                <h1 class="symbol">P</h1>
+                <h2 class="num">15</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">32,06</p>    
+                <h1 class="symbol">S</h1>
+                <h2 class="num">16</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">35,45</p>    
+                <h1 class="symbol">Cl</h1>
+                <h2 class="num">17</h2>
+            </td>
+            <td class="gaz-noble">
+                <p class="masse">39,9</p>    
+                <h1 class="symbol">Ar</h1>
+                <h2 class="num">18</h2>
+            </td>
+        </tr>
+        <!-- Fourth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">39,0983</p>    
+                <h1 class="symbol">K</h1>
+                <h2 class="num">19</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">40,078</p>    
+                <h1 class="symbol">Ca</h1>
+                <h2 class="num">20</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">44,955908</p>    
+                <h1 class="symbol">Sc</h1>
+                <h2 class="num">21</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">47,867</p>    
+                <h1 class="symbol">Ti</h1>
+                <h2 class="num">22</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">50,9415</p>    
+                <h1 class="symbol">V</h1>
+                <h2 class="num">23</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">51,9961</p>    
+                <h1 class="symbol">Cr</h1>
+                <h2 class="num">24</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">54,938044</p>    
+                <h1 class="symbol">Mn</h1>
+                <h2 class="num">25</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">55,845</p>    
+                <h1 class="symbol">Fe</h1>
+                <h2 class="num">26</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">58.933194</p>    
+                <h1 class="symbol">Co</h1>
+                <h2 class="num">27</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">58.6934</p>    
+                <h1 class="symbol">Ni</h1>
+                <h2 class="num">28</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">63,546</p>    
+                <h1 class="symbol">Cu</h1>
+                <h2 class="num">29</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">65,38</p>    
+                <h1 class="symbol">Zn</h1>
+                <h2 class="num">30</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">69,723</p>    
+                <h1 class="symbol">Ga</h1>
+                <h2 class="num">31</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">72,630</p>    
+                <h1 class="symbol">Ge</h1>
+                <h2 class="num">32</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">74,92</p>    
+                <h1 class="symbol">As</h1>
+                <h2 class="num">33</h2>
+            </td>
+            <td class="no-metx">
+                <p class="masse">78,97</p>    
+                <h1 class="symbol">Se</h1>
+                <h2 class="num">34</h2>
+            </td>
+            <td class="halogenes">
+                <p class="masse">79,904</p>    
+                <h1 class="symbol">Br</h1>
+                <h2 class="num">35</h2>
+            </td>
+            <td class="gaz-noble">
+                <p class="masse">83,798</p>    
+                <h1 class="symbol">Kr</h1>
+                <h2 class="num">36</h2>
+            </td>
+        </tr>
+        <!-- Fifth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">85,4678</p>    
+                <h1 class="symbol">Rb</h1>
+                <h2 class="num">19</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">87,62</p>    
+                <h1 class="symbol">Sr</h1>
+                <h2 class="num">38</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">88,90584</p>    
+                <h1 class="symbol">Y</h1>
+                <h2 class="num">39</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">91,224</p>    
+                <h1 class="symbol">Zr</h1>
+                <h2 class="num">40</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">92,90637</p>    
+                <h1 class="symbol">Nb</h1>
+                <h2 class="num">41</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">95,95</p>    
+                <h1 class="symbol">Mo</h1>
+                <h2 class="num">42</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[98]</p>    
+                <h1 class="symbol">Tc</h1>
+                <h2 class="num">43</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">101,07</p>    
+                <h1 class="symbol">Ru</h1>
+                <h2 class="num">44</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">102,90550</p>    
+                <h1 class="symbol">Rh</h1>
+                <h2 class="num">45</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">106,42</p>    
+                <h1 class="symbol">Pd</h1>
+                <h2 class="num">46</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Ag</h1>
+                <h2 class="num">47</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">112,414</p>    
+                <h1 class="symbol">Cd</h1>
+                <h2 class="num">48</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">114,818</p>    
+                <h1 class="symbol">In</h1>
+                <h2 class="num">49</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">118,710</p>    
+                <h1 class="symbol">Sn</h1>
+                <h2 class="num">50</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">121,760</p>    
+                <h1 class="symbol">Sb</h1>
+                <h2 class="num">51</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">127,60</p>    
+                <h1 class="symbol">Te</h1>
+                <h2 class="num">52</h2>
+            </td>
+            <td class="halogenes">
+                <p class="masse">126,904</p>    
+                <h1 class="symbol">I</h1>
+                <h2 class="num">53</h2>
+            </td>
+            <td class="gaz-noble">
+                <p class="masse">131,29</p>    
+                <h1 class="symbol">Xe</h1>
+                <h2 class="num">54</h2>
+            </td>
+        </tr>
+        <!-- sixth line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">1,007975</p>    
+                <h1 class="symbol">Cs</h1>
+                <h2 class="num">55</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">137,327</p>    
+                <h1 class="symbol">Ba</h1>
+                <h2 class="num">56</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">95,95</p>    
+                <h1 class="symbol">LU</h1>
+                <h2 class="num">71</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">101,07</p>    
+                <h1 class="symbol">Hf</h1>
+                <h2 class="num">72</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">102,90550</p>    
+                <h1 class="symbol">Rh</h1>
+                <h2 class="num">73</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">106,42</p>    
+                <h1 class="symbol">W</h1>
+                <h2 class="num">74</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Re</h1>
+                <h2 class="num">75</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">106,42</p>    
+                <h1 class="symbol">Os</h1>
+                <h2 class="num">76</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Ir</h1>
+                <h2 class="num">77</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Pt</h1>
+                <h2 class="num">78</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Au</h1>
+                <h2 class="num">79</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Hg</h1>
+                <h2 class="num">80</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">TI</h1>
+                <h2 class="num">81</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Pb</h1>
+                <h2 class="num">82</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Bi</h1>
+                <h2 class="num">83</h2>
+            </td>
+            <td class="metx-pauvre">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">At</h1>
+                <h2 class="num">84</h2>
+            </td>
+            <td class="metalloide">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">At</h1>
+                <h2 class="num">85</h2>
+            </td>
+            <td class="gaz-noble">
+                <p class="masse">107,8682</p>    
+                <h1 class="symbol">Rn</h1>
+                <h2 class="num">86</h2>
+            </td>
+        </tr>
+        <!-- Seventh line -->
+        <tr>
+            <td class="alcalins">
+                <p class="masse">[223]</p>    
+                <h1 class="symbol">Fr</h1>
+                <h2 class="num">87</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">[226]</p>    
+                <h1 class="symbol">Ra</h1>
+                <h2 class="num">88</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[226]</p>    
+                <h1 class="symbol">Lr</h1>
+                <h2 class="num">103</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[267]</p>    
+                <h1 class="symbol">Rf</h1>
+                <h2 class="num">104</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[268]</p>    
+                <h1 class="symbol">Db</h1>
+                <h2 class="num">105</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[269]</p>    
+                <h1 class="symbol">Sg</h1>
+                <h2 class="num">106</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[270]</p>    
+                <h1 class="symbol">Bh</h1>
+                <h2 class="num">107</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[277]</p>    
+                <h1 class="symbol">Hs</h1>
+                <h2 class="num">108</h2>
+            </td>
+            <td>
+                <p class="masse">[278]</p>    
+                <h1 class="symbol">Mt</h1>
+                <h2 class="num">109</h2>
+            </td>
+            <td>
+                <p class="masse">[281]</p>    
+                <h1 class="symbol">Ds</h1>
+                <h2 class="num">110</h2>
+            </td>
+            <td>
+                <p class="masse">[282]</p>    
+                <h1 class="symbol">Rg</h1>
+                <h2 class="num">111</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[285]</p>    
+                <h1 class="symbol">Cn</h1>
+                <h2 class="num">112</h2>
+            </td>
+            <td>
+                <p class="masse">[286]</p>    
+                <h1 class="symbol">Nh</h1>
+                <h2 class="num">113</h2>
+            </td>
+            <td>
+                <p class="masse">[289]</p>    
+                <h1 class="symbol">FI</h1>
+                <h2 class="num">114</h2>
+            </td>
+            <td>
+                <p class="masse">[289]</p>    
+                <h1 class="symbol">Mc</h1>
+                <h2 class="num">115</h2>
+            </td>
+            <td>
+                <p class="masse">[293]</p>    
+                <h1 class="symbol">Lv</h1>
+                <h2 class="num">116</h2>
+            </td>
+            <td>
+                <p class="masse">[294]</p>    
+                <h1 class="symbol">Ts</h1>
+                <h2 class="num">117</h2>
+            </td>
+            <td>
+                <p class="masse">[294]</p>    
+                <h1 class="symbol">Og</h1>
+                <h2 class="num">118</h2>
+            </td>
+        </tr>
+        <tr>
+            <th colspan=2></th>
+            <td class="lanthanides">
+                <p class="masse">138,90547</p>    
+                <h1 class="symbol">La</h1>
+                <h2 class="num">57</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">140,116</p>    
+                <h1 class="symbol">Ce</h1>
+                <h2 class="num">58</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">140,90766</p>    
+                <h1 class="symbol">Pr</h1>
+                <h2 class="num">59</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">144,242</p>    
+                <h1 class="symbol">Nd</h1>
+                <h2 class="num">60</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">[145]</p>    
+                <h1 class="symbol">Pm</h1>
+                <h2 class="num">61</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">150,36</p>    
+                <h1 class="symbol">Sm</h1>
+                <h2 class="num">62</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">151,964 </p>    
+                <h1 class="symbol">Eu</h1>
+                <h2 class="num">63</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">157,25</p>    
+                <h1 class="symbol">Gd</h1>
+                <h2 class="num">64</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">158,92535</p>    
+                <h1 class="symbol">Tb</h1>
+                <h2 class="num">65</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">162,500</p>    
+                <h1 class="symbol">Dy</h1>
+                <h2 class="num">66</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">164,93033</p>    
+                <h1 class="symbol">Ho</h1>
+                <h2 class="num">67</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">167,259 ⑶</p>    
+                <h1 class="symbol">Er</h1>
+                <h2 class="num">68</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">168,93422</p>    
+                <h1 class="symbol">Tm</h1>
+                <h2 class="num">69</h2>
+            </td>
+            <td class="lanthanides">
+                <p class="masse">174,9668</p>    
+                <h1 class="symbol">Yb</h1>
+                <h2 class="num">70</h2>
+            </td>
+        </tr>
+        <tr>
+            <th colspan=2></th>
+            <td class="alcalins">
+                <p class="masse">[227]</p>    
+                <h1 class="symbol">Ac</h1>
+                <h2 class="num">89</h2>
+            </td>
+            <td class="alcalino-terr">
+                <p class="masse">232,0358</p>    
+                <h1 class="symbol">Th</h1>
+                <h2 class="num">90</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">231.03588</p>    
+                <h1 class="symbol">Pa</h1>
+                <h2 class="num">91</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">238,02</p>    
+                <h1 class="symbol">U</h1>
+                <h2 class="num">92</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[244]</p>    
+                <h1 class="symbol">Np</h1>
+                <h2 class="num">93</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[243]</p>    
+                <h1 class="symbol">Pu</h1>
+                <h2 class="num">94</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[247]</p>    
+                <h1 class="symbol">Am</h1>
+                <h2 class="num">95</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[247]</p>    
+                <h1 class="symbol">Cm</h1>
+                <h2 class="num">96</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[251]</p>    
+                <h1 class="symbol">Bk</h1>
+                <h2 class="num">97</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[252]</p>    
+                <h1 class="symbol">Cf</h1>
+                <h2 class="num">98</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[257]</p>    
+                <h1 class="symbol">Es</h1>
+                <h2 class="num">99</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[258]</p>    
+                <h1 class="symbol">Fm</h1>
+                <h2 class="num">100</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[259]</p>    
+                <h1 class="symbol">Md</h1>
+                <h2 class="num">101</h2>
+            </td>
+            <td class="metx-transition">
+                <p class="masse">[266]</p>    
+                <h1 class="symbol">No</h1>
+                <h2 class="num">102</h2>
+            </td>
+        </tr>
+      </table>
+</body>
+</html>
