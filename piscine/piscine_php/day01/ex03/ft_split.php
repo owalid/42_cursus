@@ -2,8 +2,7 @@
 
 function ft_split($arv)
 {
-    $separator = ' ';
-    $elmts = explode(' ', $arv);
+    $elmts = preg_split("/[\s]+/", trim($arv));
     sort($elmts);
-    print_r($elmts);
+    return($elmts);
 }

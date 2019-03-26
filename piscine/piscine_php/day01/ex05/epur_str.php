@@ -1,10 +1,12 @@
 #!/usr/bin/php
 <?php
-$elmt = $argv[1];
-$elmts = preg_split("/[\s,]+/", $elmt);
+if ($argc == 1)
+    exit();
+$elmts = preg_split("/[\s]+/", trim($argv[1]));
 foreach ($elmts as $e) {
     echo $e;
-    if ($e != end($elmts))
+    if ($e != end($elmts) && $e != $elmts[0])
         echo ' ';
+    if ($e == end($elmts))
+        echo "\n";
 }
-echo "\n";
