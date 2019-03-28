@@ -1,15 +1,11 @@
 <?php
 $action = $_GET['action'];
-$cookie = $_COOKIE[$_GET['name']];
-if ($action == 'set')
-{
-    setcookie($_GET['name'], $_GET['value'], time() + (3600 * 30));
-}
-else if ($action == 'del')
-{
-    setcookie($_GET['name'], '', time() - 3600);
-}
+$name = $_GET['name'];
+$value = $_GET['value'];
+$cookie = $_COOKIE[$name];
+if ($action == 'set' && isset($name) && isset($value))
+    setcookie($name, $value);
+else if ($action == 'del' && isset($name) && isset($value))
+    setcookie($name, '', -1);
 else if ($action == 'get')
-{
-    echo $cookie;
-}
+    echo $cookie . "\n";
