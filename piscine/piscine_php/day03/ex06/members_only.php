@@ -11,3 +11,10 @@ else
 <html><body>Cette zone est accessible uniquement aux membres du site</body></html>
     <?php
 }
+?>
+<html>
+    <body>
+    Bonjour Zaz<br/>
+        <img src="data:image/png;base64,<?= base64_encode(file_get_contents("../img/42.png")) ?>">
+    </body>
+</html>
