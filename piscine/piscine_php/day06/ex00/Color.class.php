@@ -1,8 +1,8 @@
 <?php
 class Color {
-    public $red;
-    public $green;
-    public $blue;
+    private $red;
+    private $green;
+    private $blue;
     public $verbose = FALSE;
 
     public function __construct(array $rgb) {
