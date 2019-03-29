@@ -1,4 +1,3 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
-?>
-<html><body>Hello</body></html><?php echo "\n" ?>
+header('Content-Type: text/plain;');
+echo "<html><body>Hello</body></html>\n" ?>
