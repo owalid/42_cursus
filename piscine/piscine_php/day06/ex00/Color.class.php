@@ -6,10 +6,19 @@ class Color {
     public $verbose = FALSE;
 
     public function __construct(array $rgb) {
-        if ($argc == 1)
-        $this->red = $rgb['red'];
-        $this->green = $rgb['green'];
-        $this->blue = $rbg['blue'];
+        if (sizeof($rgb) === 1)
+        {
+            list($r, $g, $b) = sscanf($rbg['rgb'], "%02x%02x%02x");
+            $this->red = $r;
+            $this->green = $g;
+            $this->blue = $b;
+        }
+        else
+        {
+            $this->red = $rgb['red'];
+            $this->green = $rgb['green'];
+            $this->blue = $rbg['blue'];
+        }
     }
 
     public function __destruct() {

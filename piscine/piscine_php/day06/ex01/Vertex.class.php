@@ -1,7 +1,6 @@
 <?php
 require_once('../ex00/Color.class.php');
 class Vertex {
-
     private $_x;
     private $_y;
     private $_z;
@@ -9,7 +8,7 @@ class Vertex {
     private $_color;
     public static $verbose = False;
 
-    public function __construct(array $argv )
+    public function __construct(array $argv)
     {
         $this->_w = 1.00;
         if ($argv['x'] !== NULL && $argv['y'] !== NULL && $argv['z'] !== NULL)
@@ -66,5 +65,9 @@ class Vertex {
     {
         return $this->_Color = $color;
     }
-
+    public static function	doc()
+    {
+        $file = file_get_contents('Vertex.doc.txt');
+        return ($file);
+    }
 }
