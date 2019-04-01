@@ -1,7 +1,6 @@
-CREATE TABLE ft_table
-(
-    id INT PRIMARY KEY NOT NULL,
-    login varhcar(9) DEFAULT 'toto',
-    groupe ENUM('staff', 'student', 'other') NOT NULL,
-    date_de_creation DATE NOT NULL,
-)
+CREATE TABLE ft_table ( 
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    login varchar(8) NOT NULL DEFAULT 'toto', 
+    `group` ENUM('staff', 'student', 'other') NOT NULL, 
+    creation_date DATE NOT NULL
+);

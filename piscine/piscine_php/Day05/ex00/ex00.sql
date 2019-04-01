@@ -1,1 +1,1 @@
-CREATE DATABASE db_oel-ayad
+CREATE DATABASE `db_oel-ayad`;
