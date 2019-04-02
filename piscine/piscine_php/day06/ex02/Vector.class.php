@@ -47,7 +47,7 @@ class Vector
     }
     
     /** retourne la longueur (ou "norme") du vecteur */
-    public  function float_magnitude() {
+    public  function magnitude() {
         return (sqrt(
 			$this->_x * $this->_x + 
 			$this->_y * $this->_y + 
@@ -130,7 +130,9 @@ class Vector
 
     /** retourne le produit en croix de deux vecteurs (repère main droite !) */
     public function vector_crossProduct(Vector $rhs) {
-
+        return new Vector(array("x" =>	$this->_y * $rhs->_z - $this->_z * $rhs->_y,
+                                    "y" =>	$this->_z * $rhs->_x - $this->_x * $rhs->_z,
+                                    "z" =>	$this->_x * $rhs->_y - $this->_y * $rhs->_x));
     }
 
 /** accessor */

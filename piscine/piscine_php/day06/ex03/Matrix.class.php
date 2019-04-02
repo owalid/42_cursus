@@ -11,10 +11,10 @@ class Matrix {
     const RX =              'RX';
     const RY =              'RY';
     const RZ =              'RZ';
-    private $_vtcX;
-    private $_vtcY;
-    private $_vtcZ;
-    private $_vtcW;
+    private $_vtcX; //vertex
+    private $_vtcY; //vertex
+    private $_vtcZ; //vertex
+    private $_vtcW; //vertex
     public static $verbose = FALSE;
 
     public function __construct(array $vtcs)
@@ -45,13 +45,23 @@ class Matrix {
             $affichage .= "Z | " . $this->_vtcX->getZ() . "|" . $this->_vtcY->getZ() . "|" . $this->_vtcZ->getZ() . "|" . $this->_vtcW->getZ() . "\n"; 
             $affichage .= "W | " . $this->_vtcX->getW() . "|" . $this->_vtcY->getW() . "|" . $this->_vtcZ->getW() . "|" . $this->_vtcW->getW() . "\n"; 
         }
-        else
-        {
-            $this->$_vtcX = (new Vector ([ 'dest' => $vtcs['vtcX']] ));
-            $this->$_vtcY = (new Vector ([ 'dest' => $vtcs['vtcY']] ));
-            $this->$_vtcZ = (new Vector ([ 'dest' => $vtcs['vtcZ']] ));
-            $this->$_vtcW = (new Vector ([ 'dest' => $vtcs['vtcW']] ));
-        }
+        //create vertex
+        if (isset($vtcs['x']) && is_a($vtcs['x'], Vertex))
+				$this->_vtcX = $vtcs['x'];
+			else
+				$this->_vtcX = new Vertex(['x' => 0, 'y' => 0, 'z' => 0, 'w' => 0]);
+			if (isset($vtcs['y']) && is_a($vtcs['y'], Vertex))
+				$this->_vtcY = $vtcs['y'];
+			else
+				$this->_vtcY = new Vertex(['x' => 0, 'y' => 0, 'z' => 0, 'w' => 0]);
+			if (isset($vtcs['z']) && is_a($vtcs['z'], Vertex))
+				$this->_vtcZ = $vtcs['z'];
+			else
+				$this->_vtcZ = new Vertex(['x' => 0, 'y' => 0, 'z' => 0, 'w' => 0]);
+			if (isset($vtcs['w']) && is_a($vtcs['w'], Vertex))
+				$this->_vtcW = $vtcs['w'];
+			else
+				$this->_vtcW = new Vertex(['x' => 0, 'y' => 0, 'z' => 0, 'w' => 0]);
     }
 
     private function scaling($factor)
@@ -307,7 +317,32 @@ class Matrix {
 
     public function matrix_mult(Matrix $rhs)
     {
-
+        return (new Matrix([
+			'x' => new Vertex([
+				'x' => self::dotProduct($this->_x, $rhs->getvtcX()),
+				'y' => self::dotProduct($this->_x, $rhs->getvtcY()),
+				'z' => self::dotProduct($this->_x, $rhs->getvtcZ()),
+				'w' => self::dotProduct($this->_x, $rhs->getvtcW())
+			]),
+			'y' => new Vertex([
+				'x' => self::dotProduct($this->_y, $rhs->getvtcX()),
+				'y' => self::dotProduct($this->_y, $rhs->getvtcY()),
+				'z' => self::dotProduct($this->_y, $rhs->getvtcZ()),
+				'w' => self::dotProduct($this->_y, $rhs->getvtcW())
+			]),
+			'z' => new Vertex([
+				'x' => self::dotProduct($this->_z, $rhs->getvtcX()),
+				'y' => self::dotProduct($this->_z, $rhs->getvtcY()),
+				'z' => self::dotProduct($this->_z, $rhs->getvtcZ()),
+				'w' => self::dotProduct($this->_z, $rhs->getvtcW())
+			]),
+			'w' => new Vertex([
+				'x' => self::dotProduct($this->_w, $rhs->getvtcX()),
+				'y' => self::dotProduct($this->_w, $rhs->getvtcY()),
+				'z' => self::dotProduct($this->_w, $rhs->getvtcZ()),
+				'w' => self::dotProduct($this->_w, $rhs->getvtcW())
+			])
+		]));
     } 
 /** Accessor */
     public function getVtcX()

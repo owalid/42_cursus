@@ -1,5 +1,6 @@
 <?php
 require_once('../ex00/Color.class.php');
+
 class Vertex {
     private $_x;
     private $_y;
@@ -25,8 +26,19 @@ class Vertex {
                 $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
             if (self::$verbose === TRUE)
             {
-                echo "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z . ", w: " . $this->_w . ", " . $this->_color->__toString() . " ) constructed"; 
+                echo "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z . ", w: " . $this->_w . ", " . $this->_color->__toString() . " ) constructed\n"; 
             }
+        }
+    }
+
+    public function __toString() {
+        return ( "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z . ", w: " . $this->_w . ", " . $this->_color->__toString() . " )");
+    }
+
+    public function __destruct() {
+        if (self::$verbose === TRUE)
+        {
+            echo "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z . ", w: " . $this->_w . ", " . $this->_color->__toString() . " ) constructed\n";
         }
     }
 
