@@ -1,3 +1,4 @@
-SELECT COUNT(id_film) AS 'nb_court-metrage'
+SELECT COUNT(id_film) AS 'nb_short-films'
 FROM film
-WHERE duree_min <= 42
+WHERE duration <= 42
+/*25*/

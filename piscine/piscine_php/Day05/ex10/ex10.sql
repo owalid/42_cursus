@@ -1,5 +1,6 @@
-SELECT film.tite as 'Titre', film.resum as 'Resume'
+SELECT film.title AS 'Title', film.summary AS 'Summary'
 FROM film
-INNER JOIN genre ON film.id_genre = genre.id_genre
-WHERE genre.nom = 'erotic'
-ORDER BY film.annee_prod DESC
+JOIN genre 
+WHERE genre.id_genre = film.id_genre
+AND genre.name = 'erotic'
+ORDER BY film.prod_year DESC
