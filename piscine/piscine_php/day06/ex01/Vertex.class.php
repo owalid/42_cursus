@@ -10,7 +10,6 @@ class Vertex {
 
     public function __construct(array $argv)
     {
-        $this->_w = 1.00;
         if ($argv['x'] !== NULL && $argv['y'] !== NULL && $argv['z'] !== NULL)
         {
             $this->_x = $argv['x'];
@@ -18,53 +17,70 @@ class Vertex {
             $this->_z = $argv['z'];
             if (array_key_exists('w', $argv))
                 $this->_w = $argv['w'];
-            if (array_key_exists('color', $argv))
+            else
+                $this->_w = 1.00;
+            if (is_a($argv['color'], Color))
                 $this->_color = $argv['color'];
+            else
+                $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
+            if (self::$verbose === TRUE)
+            {
+                echo "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z . ", w: " . $this->_w . ", " . $this->_color->__toString() . " ) constructed"; 
+            }
         }
-        else
-            $this->_color = $this->setColor(new Color(array( 'red' =>   255, 'green' =>   255, 'blue' => 255 )));
     }
 
+/** accessor */
     public function getX()
     {
         return ($this->_x);
     }
+
     public function getY()
     {
         return ($this->_y);
     }
+
     public function getZ()
     {
         return $this->_z;
     }
+
     public function getW()
     {
         return $this->_w;
     }
+
     public function getColor()
     {
         return $this->_color;
     }
+
     public function setX($x_values)
     {
         return $this->_x = $x_values;
     }
+
     public function setY($y_values)
     {
         return $this->_y = $y_values;
     }
+
     public function setZ($z_values)
     {
         return $this->_z = $z_values;
     }
+
     public function setW($w)
     {
         return $this->_w = $w;
     }
+
     public function setColor($color)
     {
         return $this->_Color = $color;
     }
+
     public static function	doc()
     {
         $file = file_get_contents('Vertex.doc.txt');

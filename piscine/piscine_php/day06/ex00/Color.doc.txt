@@ -1,0 +1,10 @@
+<- Color ----------------------------------------------------------------------
+Cette classe permet de représenter des couleurs et de faire quelques operations simples sur ses composantes.
+
+Color posséder trois attributs publiques entiers $red, $green et $blue
+
+Le constructeur de la classe attend un tableau. Une instance doit pouvoir être construite, soit:
+
+    -en passant une valeur pour la clef ’rgb'en hexa
+    -soit en passant une valeur pour les clefs ’red’, ’green’ et ’blue’
+---------------------------------------------------------------------- Color ->

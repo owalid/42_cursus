@@ -10,18 +10,34 @@ class Vector
 
     public function	__construct(array $elmts)
     {
-        if (is_a($elmts['dest'], Vertex) && is_a($elmts['orig'], Vertex))
+        if (is_a($elmts['dest'], Vertex))
         {
-            $this->_x = $elmts['dest']->getX() - $elmts['orig']->getX();
-            $this->_y = $elmts['dest']->getY() - $elmts['orig']->getY();
-            $this->_z = $elmts['dest']->getZ() - $elmts['orig']->getZ();
-            $this->_w = $elmts['dest']->getW() - $elmts['orig']->getW();
+            if (is_a($elmts['orig'], Vertex))
+            {
+                $this->_x = $elmts['dest']->getX() - $elmts['orig']->getX();
+                $this->_y = $elmts['dest']->getY() - $elmts['orig']->getY();
+                $this->_z = $elmts['dest']->getZ() - $elmts['orig']->getZ();
+                $this->_w = $elmts['dest']->getW() - $elmts['orig']->getW();
+            }
+            else
+            {
+                $default_vertex = new Vertex(['x' => 0, 'y' => 0, 'z' => 0]);
+                $this->_x = $elmts['dest']->getX() - $default_vertex->getX();
+                $this->_y = $elmts['dest']->getY() - $default_vertex->getY();
+                $this->_z = $elmts['dest']->getZ() - $default_vertex->getZ();
+                $this->_w = $elmts['dest']->getW() - $default_vertex->getW();
+            }
+            if (self::$verbose === TRUE)
+            {
+                echo "Vertex ( x:". $this->_x . ", y: " . $this->_y . ", z: " . $this->_z 
+                . ", w: " . $this->_w . " )";
+            }
         }
     }
 
     public function __destruct() {
 		if ($self::$verbose === TRUE)
-			echo ($this." destructed\n");
+			echo ($this . " destructed\n");
 	}
 
     
@@ -43,10 +59,10 @@ class Vector
     public function vector_normalize() {
         $magnitude = abs($this->magnitude());
         return (new Vector([
-			    'dest' => new Vertex([
-				'x' => $this->_x / $magnitude,
-				'y' => $this->_y / $magnitude,
-				'z' => $this->_z / $magnitude,
+			'dest' => new Vertex([
+			'x' => $this->_x / $magnitude,
+			'y' => $this->_y / $magnitude,
+			'z' => $this->_z / $magnitude,
 			])
 		]));
     }
@@ -64,12 +80,24 @@ class Vector
 
     /** retourne le vecteur difference des deux vecteurs. */
     public function vector_sub(Vector $rhs) {
-
+        return (new Vector([
+            'dest' => new Vertex([
+                'x' => $this->_x - $rhs->_x,
+				'y' => $this->_y - $rhs->_y,
+				'z' => $this->_z - $rhs->_z,
+            ])
+        ]));
     }
 
     /** retourne le vecteur opposé. */
     public function vector_opposite() {
-
+        return (new Vector([
+            'dest' => new Vertex([
+                'x' => -$this->_x,
+				'y' => -$this->_y,
+				'z' => -$this->_z,
+            ])
+        ]));
     }
 
     /** retourne le produit du vecteur avec un scalaire. */
@@ -86,7 +114,13 @@ class Vector
 
     /** retourne le produit scalaire de deux vecteurs */
     public function float_dotProduct(Vector $rhs) {
-
+        return (new Vector([
+            'dest' => new Vertex([
+                'x' => -$this->_x * $rhs->_x,
+				'y' => -$this->_y * $rhs->_y,
+				'z' => -$this->_z * $rhs->_z,
+            ])
+        ]));
     }
 
     /** retourne le cosinus de l’angle entre deux vecteurs. */
@@ -99,6 +133,7 @@ class Vector
 
     }
 
+/** accessor */
     public function getX() {
         return ($this->_x);
     }
