@@ -1,0 +1,19 @@
+<- Vertex ----------------------------------------------------------------------
+Cette classe permet de représenter des Vextex 
+
+un vertex c'est un consituteé selon cinq caractéristiques :
+
+Son abscisse x
+Son ordonnée y
+Sa profondeur z
+Une coordonnée  w
+Une couleur représentée sous la forme d’une instance de la classe Color
+
+Le constructeur de la classe attend un tableau. 
+Les clefs attendues sont les sui-vantes :
+        ’x’ :l’abscisse du vertex, obligatoire.
+        ’y’ :l’abscisse du vertex, obligatoire.
+        ’z’ :l’abscisse du vertex, obligatoire.
+        ’w’ :optionnel, vaut1.0par defaut.
+        ’color’ :optionnel, vaut une instance fraiche de la couleur blanche par défaut.
+---------------------------------------------------------------------- Vertex ->

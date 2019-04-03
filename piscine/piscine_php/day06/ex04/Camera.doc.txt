@@ -1,0 +1,20 @@
+<- Camera ----------------------------------------------------------------------
+Cette classe permet de représenter la position de la camera
+
+La position de la caméra dans le monde nous permet de calculer une matrice de trans-lation. 
+Nous avons donc une caméra définie par une matrice de translation et une matrice de rotation qui permettent de situer la caméra dans le repère "monde". 
+
+
+Le constructeur de la classe attend un tableau. 
+
+Les clefs attendues sont les sui-vantes :
+’origin’        :       Vertex positionnant la caméra dans le repère monde. Grâce à ce vertex,on peut calculer un vecteur puis une matrice de translation.
+’orientation’   :       Matrice de rotation orientant la caméra dans le repère monde.
+’width’         :       Largeur en pixels de l’image voulue. Sert à calculer le ratio. Incompa-tible avec la clef ’ratio’.
+’height’        :       Hauteur en pixels de l’image voulue. Sert à calculer le ratio. Incompa-tible avec la clef ’ratio’.
+’ratio’         :       Ratio de l’image. Incompatible avec les clefs ’width’ et ’height’.
+’fov’           :       Le champ de vision de l’image projetée en degrés.’
+near’           :       Le plan de clipping proche.
+’far’           :       Le plan de clipping éloigné
+
+---------------------------------------------------------------------- Camera ->

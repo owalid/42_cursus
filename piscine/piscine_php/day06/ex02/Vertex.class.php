@@ -20,33 +20,28 @@ class Vertex {
                 (float) $this->_w = $argv['w'];
             else
                 (float) $this->_w = 1.00;
-            if ($argv['color'] !== NULL && is_a($argv['color'], Color))
-            {
+            if (is_a($argv['color'], Color))
                 $this->_color = $argv['color'];
-                if (self::$verbose === TRUE)
-                {
-                    printf("Vertex( x: %.2f, y: %.2f, z: %.2f, w: %.2f, ", $this->_x, $this->_y, $this->_z, $this->_w);
-                    echo $this->_color->__toString() . " ) constructed\n"; 
-                }
-            }
             else
-            $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
+                $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
+            if (self::$verbose === TRUE)
+            {
+                printf("Vertex( x: %.1f, y: %.1f, z: %.1f, w: %.1f, ", $this->_x, $this->_y, $this->_z, $this->_w);
+                echo $this->_color->__toString() . " ) constructed\n"; 
+            }
         }
     }
 
     public function __toString() {
-        $return = sprintf("Vertex( x: %.2f, y: %.2f, z: %.2f, w: %.2f", $this->_x, $this->_y, $this->_z, $this->_w);
-        if (self::$verbose === TRUE)
-            $return .= ", " . $this->_color->__toString() . " )";
-        else 
-            $return .= ")";
+        $return = sprintf("Vertex( x: %.1f, y: %.1f, z: %.1f, w: %.1f, ", $this->_x, $this->_y, $this->_z, $this->_w);
+        $return .= $this->_color->__toString() . " )"; 
         return ($return);
     }
 
     public function __destruct() {
         if (self::$verbose === TRUE)
         {
-            printf("Vertex( x: %.2f, y: %.2f, z: %.2f, w: %.2f, ", $this->_x, $this->_y, $this->_z, $this->_w);
+            printf("Vertex( x: %.1f, y: %.1f, z: %.1f, w: %.1f, ", $this->_x, $this->_y, $this->_z, $this->_w);
             echo $this->_color->__toString() . " ) destructed\n"; 
         }
     }

@@ -30,16 +30,16 @@ class Vertex {
                 }
             }
             else
-            $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
+                $this->_color = new Color(["red" => 255, "green" => 255, "blue" => 255]);
         }
     }
 
     public function __toString() {
         $return = sprintf("Vertex( x: %.2f, y: %.2f, z: %.2f, w: %.2f", $this->_x, $this->_y, $this->_z, $this->_w);
         if (self::$verbose === TRUE)
-            $return .= ", " . $this->_color->__toString() . " )";
+            $return .= $this->_color->__toString() . " )";
         else 
-            $return .= ")";
+            $return .= " )";
         return ($return);
     }
 

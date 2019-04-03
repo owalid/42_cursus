@@ -1,0 +1,16 @@
+<- Vector ----------------------------------------------------------------------
+Cette classe permet de représenter des Vecteurs 
+
+Maintenant qu’on a des vertices, on peut placer des points dans l’espace et même leur donner une couleur simple.
+pour représenter des directions ou des déplacements.
+
+Un vecteur est représenté par les caractéristiques suivantes :
+•Sa magnitude en x
+•Sa magnitude en y
+•Sa magnitude en z
+•La coordonnée   w
+
+Le constructeur de la classe attend un tableau. 
+Les clefs attendues sont les sui-vantes :
+
+---------------------------------------------------------------------- Vector ->

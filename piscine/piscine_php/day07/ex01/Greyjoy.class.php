@@ -1,6 +1,10 @@
 <?php
-class Euron {
-    protected function announceMotto() {
-        echo "We do not sow";
+class Greyjoy {
+
+    protected $familyMotto;
+
+    public function __construct()
+    {
+        $this->familyMotto = "We do not sow";
     }
 }
