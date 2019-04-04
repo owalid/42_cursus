@@ -4,14 +4,17 @@ include_once('IFighter.class.php');
 
 class NightsWatch implements IFighter {
 
+    private $fighter;
+    
     public function fight(){
-        echo "";
+        foreach ($this->fighter as $key => $value)
+            $value->fight();
     }
 
     public function recruit($people){
         $interfaces = class_implements($people);
 
         if (isset($interfaces['IFighter']))
-            $people->fight(); 
+            $this->fighter[] = $people; 
     }
 }

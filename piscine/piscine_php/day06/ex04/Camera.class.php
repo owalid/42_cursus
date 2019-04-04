@@ -5,7 +5,7 @@ require_once 'Matrix.class.php';
 
 class Camera {
 
-    public static $verbose = FALSE;
+    private static $verbose = FALSE;
     private $_result_mult;
     private $_oppo_origin;
     private $_proj;
