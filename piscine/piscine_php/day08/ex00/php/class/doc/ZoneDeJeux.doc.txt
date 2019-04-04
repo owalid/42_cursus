@@ -1,0 +1,6 @@
+<--------ZoneDeJeux---------------------------------------------------------------------------------------------------------------------
+Classe creant la zone de jeux, attend en parametre du constructeur un tableau contenant deux instances de Joueur
+
+La fonction place_gamers permet de placer les joueurs dans la zone de jeux, attend deux instances de Joueur
+
+--------------------------------------------------------------------------------------------------------------ZoneDeJeux-------------->
