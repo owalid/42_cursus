@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="left">
+    <select id="operation">
+        <option value="add">+</option>
+        <option value="minus">-</option>
+        <option value="mult">*</option>
+        <option value="div">/</option>
+        <option value="modulo">%</option>
+    </select>
+    <input id="right" type="text">
+    <input id="button" type="button" value="Try me">
+</body>
+<script>
+    var button = document.getElementById('button');
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    var operation = document.getElementById('operation');
+    button.addEventListener("click", () => {
+        clearInterval(interval);
+        if (left.value < 0)
+            alert('Error :(');
+        else if (right.value == "0" && (operation.value == "div" || operation.value === "modulo")) 
+            alert("It’s over 9000!");
+        else {
+            let a = parseInt(left.value);
+            let b = parseInt(right.value);
+            if (operation.value === "add")
+                alert(a + b)
+            if (operation.value === "minus")
+                alert(a - b)
+            if (operation.value === "mult")
+                alert(a * b)
+            if (operation.value === "div")
+                alert(a / b)
+            if (operation.value === "modulo")
+                alert(a % b)
+        }
+    });
+
+    var interval = window.setInterval(() => {
+        alert('Please, use me...');
+    }
+    , 30000);
+
+</script>
+</html>

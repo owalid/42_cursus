@@ -1,0 +1,4 @@
+<--------Vaisseaux---------------------------------------------------------------------------------------------------------------------
+Une class vaisseaux permettant de cree un vaisseaux 
+C'est la classe mere de plusieurs classe decrivant des vaisseaux plus precis
+---------------------------------------------------------------------------------------------------------------->

@@ -1,4 +1,10 @@
 <?php
+define('INC_PATH', 'php/class/');
+
+require_once(INC_PATH . 'Vaisseaux.class.php');
+require_once(INC_PATH . 'vaisseaux/CuirasseImperial.class.php');
+require_once(INC_PATH . 'vaisseaux/VessoAttackRavajeur.class.php');
+require_once(INC_PATH . 'vaisseaux/FregateImperial.class.php');
 
 Class VaisseauxFactory {
     private $_vaisseauxJ1 = [];
@@ -15,13 +21,16 @@ Class VaisseauxFactory {
         }
     }
 
-    public function fabricateJ1($vaisseaux) {
+    public function fabricateJ1($vaisseaux, $preset) {
         if (array_key_exists($vaisseaux, $this->_vaisseauxJ1))
-            return new $this->_vaisseauxJ1[$vaisseaux];
+        {
+            // var_dump($preset);die();
+            return new $this->_vaisseauxJ1[$vaisseaux]($preset);
+        }
     }
 
-    public function fabricateJ2($vaisseaux) {
+    public function fabricateJ2($vaisseaux, $preset) {
         if (array_key_exists($vaisseaux, $this->_vaisseauxJ2))
-            return new $this->_vaisseauxJ2[$vaisseaux];
+            return new $this->_vaisseauxJ2[$vaisseaux]($preset);
     }
 }

@@ -1,13 +1,13 @@
 <?php
+define('INC_PATH', 'php/class/');
 
-require_once('Arme.class.php');
+require_once(INC_PATH . 'Arme.class.php');
 
 Class Vaisseaux {
     private $_positionX;
     private $_isactive = false;
     private $_positionY;
     private $_orientation;
-    private $_nom;
     private $_taille;
     private $_sprite;
     private $_pointcoque;
@@ -15,29 +15,25 @@ Class Vaisseaux {
     private $_vitesse;
     private $_manoeuvre;
     private $_bouclier;
-    private $_armes;
     private $_type;
 
     public function __construct($argv)
     {
-        if (isset($argv['positionX']) && isset($argv['positionY']) && isset($argv['nom']) 
-            && isset($argv['taille']) && isset($argv['sprite']) 
-            && isset($argv['pointcoque']) && isset($argv['puissancemot'])
-            && isset($argv['vitesse']) && isset($argv['manoeuvre'])
-            && isset($argv['bouclier']) && isset($argv['armes'])
-            && is_a($argv['armes'], Arme) && isset($argv['orientation']))
+        if (isset($argv['positionX']) && isset($argv['positionY']) 
+        && isset($argv['taille']) && isset($argv['sprite']) 
+        && isset($argv['pointcoque']) && isset($argv['puissancemot'])
+        && isset($argv['vitesse'])
+        && isset($argv['bouclier']) && isset($argv['orientation']))
         {
-            $this->$_positionX = $argv['positionX'];
-            $this->$_positionY = $argv['positionY'];
-            $this->$_orientation = $argv['orientation'];
-            $this->$_nom = $argv['nom'];
-            $this->$_taille = $argv['taille'];
-            $this->$_sprite = $argv['_prite'];
-            $this->$_pointcoque = $argv['pointcoque'];
-            $this->$_puissancemot = $argv['puissancemot'];
-            $this->$_vitesse = $argv['vitesse'];
-            $this->$_bouclier = $argv['bouclier'];
-            $this->$_armes = $argv['armes'];
+            $this->_positionX = $argv['positionX'];
+            $this->_positionY = $argv['positionY'];
+            $this->_orientation = $argv['orientation'];
+            $this->_taille = $argv['taille'];
+            $this->_sprite = $argv['_prite'];
+            $this->_pointcoque = $argv['pointcoque'];
+            $this->_puissancemot = $argv['puissancemot'];
+            $this->_vitesse = $argv['vitesse'];
+            $this->_bouclier = $argv['bouclier'];
         }
     }
 
@@ -46,7 +42,15 @@ Class Vaisseaux {
         $this->$_isactive = true;
     }
 
-    
+    public function ordre($argv)
+    {
+        if ($argv['ordre'] === "VITESSE")
+            $this->_vitesse = $argv['des'];
+        else if ($argv['ordre'] === "BOUCLIER")
+            $this->bouclier += 1;
+        else if ($argv['ordre'] ===  "TIR")
+            $this->tirer($argv['zone']);
+    }  
 
     public function tirer(ZonedeJeux $zone)
     {   
@@ -66,21 +70,11 @@ Class Vaisseaux {
         }
     }
 
-    public function ordre($ordre, $result_des)
-    {
-        if ($ordre === "vitesse")
-            $this->_vitesse = $result_des;
-        else if ($ordre === "bouclier")
-            $this->$bouclier += 1;
-        else if ($ordre ===  "tirer")
-            $this->tirer();
-    }
-
 /* Mouvement */
-    public function mouvement($deplacement, $vitesse)
+    public function mouvement($deplacement, $vitesse, $zone, $joueur)
     {
         /* Gauche */
-        if ($deplacement === "GA")
+        if ($deplacement === "GAUCHE")
         {
             if ($this->_oritentation === 4)
                 $this->_orientation = 1;
@@ -89,7 +83,7 @@ Class Vaisseaux {
             return true;
         }
         /* Droite */
-        else if ($deplacement === "DR")
+        else if ($deplacement === "DROITE")
         {
             if ($this->_oritentation === 1)
                 $this->_orientation = 4;
@@ -98,40 +92,56 @@ Class Vaisseaux {
             return true;
         }
         /* Avancer */
-        else if ($deplacement === "AV")
+        else if ($deplacement === "AVANCER")
         {
             if ($this->_orientation === 1)
             {
                 if ($this->_positionY === 0)
-                    return false;
+                return false;
                 else
+                {
+                    $zone->setZone($this->_positionX, $this->_positionY, 0);
+                    $zone->setZone($this->_positionX, $this->_positionY + $vitesse, $joueur);
                     $this->_positionY += $vitesse;
+                }
             }
             if ($this->_orientation === 2)
             {
                 if ($this->_positionX === 120)
-                    return false;
+                return false;
                 else
-                    $this->_positionX += $vitesse;
+                {
+                    $zone->setZone($this->_positionX, $this->_positionY, 0);
+                    $zone->setZone($this->_positionX - $vitesse, $this->_positionY, $joueur);
+                    $this->_positionX -= $vitesse;
+                }
             }
             if ($this->_orientation === 3)
             {
                 if ($this->_positionY === 100)
                     return false;
                 else
-                    $this->_positionY -= $vitesse;
+                {
+                    $zone->setZone($this->_positionX, $this->_positionY, 0);
+                    $zone->setZone($this->_positionX, $this->_positionY + $vitesse, $joueur);
+                    $this->_positionY += $vitesse;
+                }
             }
             if ($this->_orientation === 4)
             {
                 if ($this->_positionY === 0)
                     return false;
                 else
-                    $this->_positionX -= $vitesse;
+                {
+                    $zone->setZone($this->_positionX, $this->_positionY, 0);
+                    $zone->setZone($this->_positionX + $vitesse, $this->_positionY, $joueur);
+                    $this->_positionX += $vitesse;
+                }
             }
             return true;
         }
         /* Reculer */
-        else if ($deplacement === "AV")
+        else if ($deplacement === "RECULER")
         {
             if ($this->_orientation === 1)
             {
@@ -163,5 +173,16 @@ Class Vaisseaux {
             }
             return true;
         }
+    }
+
+/* Accessor */
+    public function getPositionX()
+    {
+        return ($this->_positionX);
+    }
+
+    public function getPositionY()
+    {
+        return ($this->_positionY);
     }
 }

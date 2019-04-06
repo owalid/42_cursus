@@ -1,18 +1,18 @@
 <?php 
+define('INC_PATH', 'php/class/');
 
-require_once('../Vaisseaux.class.php');
-require_once('../armes/BatterieLaser.class.php');
-
+require_once(INC_PATH . 'Vaisseaux.class.php');
+require_once(INC_PATH . 'armes/BatterieLaser.class.php');
 Class CuirasseImperial extends Vaisseaux {
     private $_armes;
     private $_type;
 
     public function __construct($argv)
     {
+        // var_dump($argv);die();
         parent::__construct($argv);
-        $this->_armes = new BaterieLaser(["charge" => 0, 
+        $this->_armes = new BaterieLaser(["charge" => 1, 
                                             "portcourte" => 10,
-                                            "portlong" => 20,
                                             "zoneeffet" => $argv['taille']]);
         $this->_type = "CuirasseImperial";
     }

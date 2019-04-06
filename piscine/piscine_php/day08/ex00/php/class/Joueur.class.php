@@ -9,27 +9,13 @@ Class Joueur {
 
     public function __construct($nom, $vaisseaux)
     {
-        $this->$_nom = $nom;
+        $this->_nom = $nom;
         $this->_vaisseaux[] = $vaisseaux;
     }
 
     public function lancerDes()
     {
         return (rand(1, 6));
-    }
-
-    public function action($name_action, $vaisseaux_name, $options)
-    {
-        if ($this->_pP > 3)
-        {
-            if ($name_action === "TIR")
-                $_vaisseaux[$vaisseaux_name]->tir();
-            else if ($name_action === "ORDRE")
-                $_vaisseaux[$vaisseaux_name]->ordre($options['ordre'], $options['resultdes']);
-            else if ($name_action === "mouvement")
-                $_vaisseaux[$vaisseaux_name]->mouvement($option['deplacement'], $option['vitesse']);
-            $this->_pP--;
-        }
     }
 
     public function setpP($newpP)
@@ -45,5 +31,23 @@ Class Joueur {
     public function getGame()
     {
         return ($this->_game);
+    }
+
+    public function getName()
+    {
+        return ($this->_nom);
+    }
+
+    public function getpP()
+    {
+        return ($this->_pP);
+    }
+    public function getVaisseaux()
+    {
+        return ($this->_vaisseaux);
+    }
+    public function setVaisseaux($vaisseaux)
+    {
+        $this->_vaisseaux = $vaisseaux;
     }
 }

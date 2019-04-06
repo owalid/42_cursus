@@ -1,6 +1,7 @@
 <?php
+define('INC_PATH', 'php/class/');
 
-require_once('Joueur.class.php');
+require_once(INC_PATH . 'Joueur.class.php');
 
 Class ZonedeJeux {
     private $_joueur1;
@@ -14,14 +15,28 @@ Class ZonedeJeux {
         {
             $this->_joueur1 = $argv['joueur1'];
             $this->_joueur2 = $argv['joueur2'];
-            for ($i = 0; $i < 120 ; $i++)
+
+            for ($i = 0; $i < 150 ; $i++)
+            {
+                for ($j = 0; $j < 100; $j++)
+                    $this->_zone[$i][$j] = 0;
+            }
+            for ($i = 0; $i < 150 ; $i++)
             {
                 for ($j = 0; $j < 100; $j++)
                 {
-                    if (($j === 5 && $i === 10) || ($j === 50 && $i === 15) || ($j === 90 && $i === 55))
-                        $this->$zone[$i][$j] = 1;
-                    else
-                        $this->$_zone[$i][$j] = 0;
+                    foreach($argv['joueur1']->getVaisseaux()[0] as $v1)
+                    {
+                        if (($j === $v1->getPositionY() && $i === $v1->getPositionX()))
+                            $this->_zone[$i][$j] = 1;
+                    }
+                    foreach($argv['joueur2']->getVaisseaux()[0] as $v2)
+                    {
+                        if (($j === $v2->getPositionY() && $i === $v2->getPositionX()))
+                            $this->_zone[$i][$j] = 2;
+                    }
+                    if (($j === 30 && $i === 30) || ($j === 50 && $i === 50) || ($j === 30 && $i === 90))
+                        $this->_zone[$i][$j] = 3;
                 }
             }
             if (self::$verbose == TRUE)
@@ -45,11 +60,11 @@ Class ZonedeJeux {
 
     public function getZone()
     {
-        return (json_encode($this->$_zone));
+        return (json_encode($this->_zone));
     }
 
     public function setZone($char, $i, $j)
     {
-        $this->$_zone[$i][$j] = $char;
+        $this->_zone[$i][$j] = $char;
     }
 }

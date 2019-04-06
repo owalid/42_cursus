@@ -8,8 +8,6 @@
 </head>
 <style>
     .balloon {
-       
-      
         border-radius: 50%;
         position: absolute; 
         top: 50%;
@@ -20,36 +18,42 @@
     <div class="balloon" id="balloon" style=" width: 200px; height: 200px; background-color: red;"></div>
 </body>
 <script>
-    document.getElementById("balloon").addEventListener("click", function(){
-        var balloon = document.getElementById("balloon");
-        balloon.style.width = parseInt(balloon.style.width) + 10 + "px";
-        balloon.style.height = parseInt(balloon.style.height) + 10 + "px";
-        if (balloon.style.backgroundColor === "red")
-            balloon.style.backgroundColor = 'green';
-        else if (balloon.style.backgroundColor === "green")
-            balloon.style.backgroundColor = 'blue';
+    document.getElementById("balloon").addEventListener("click", () => {
+        var balloon = document.getElementById("balloon").style;
+        balloon.width = parseInt(balloon.width) + 10 + "px";
+        balloon.height = parseInt(balloon.height) + 10 + "px";
+        if (balloon.backgroundColor === "red")
+            balloon.backgroundColor = 'green';
+        else if (balloon.backgroundColor === "green")
+            balloon.backgroundColor = 'blue';
         else
-            balloon.style.backgroundColor = "red";
-        if (parseInt(balloon.style.width) > "420px")
+            balloon.backgroundColor = "red";
+        if (parseInt(balloon.width) > 420)
         {
-            balloon.style.width = 0 + "px";
-            balloon.style.height = 0 + "px";
+            balloon.width = 0 + "px";
+            balloon.height = 0 + "px";
+            var interval = setInterval(() => {
+                if (parseInt(balloon.width) === 200)
+                    clearInterval(interval);
+                balloon.width = parseInt(balloon.width) + 10 + "px";
+                balloon.height = parseInt(balloon.height) + 10 + "px";
+                console.log(balloon.width)
+            }, 50);
         }
     });
 
-    document.getElementById("balloon").addEventListener("mouseout", function(){
-        var balloon = document.getElementById("balloon");
-       
-        if (balloon.style.backgroundColor === "red")
-            balloon.style.backgroundColor = 'blue';
-        else if (balloon.style.backgroundColor === "blue")
-            balloon.style.backgroundColor = 'green';
+    document.getElementById("balloon").addEventListener("mouseout", () => {
+        var balloon = document.getElementById("balloon").style;
+        if (balloon.backgroundColor === "red")
+            balloon.backgroundColor = 'blue';
+        else if (balloon.backgroundColor === "blue")
+            balloon.backgroundColor = 'green';
         else
-            balloon.style.backgroundColor = "red";
-        if (parseInt(balloon.style.width) > 200)
+            balloon.backgroundColor = "red";
+        if (parseInt(balloon.width) > 200)
         {
-            balloon.style.width = parseInt(balloon.style.width) - 5 + "px";
-        balloon.style.height = parseInt(balloon.style.height) - 5 + "px";
+            balloon.width = parseInt(balloon.width) - 5 + "px";
+            balloon.height = parseInt(balloon.height) - 5 + "px";
         }
     });
     

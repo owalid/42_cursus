@@ -1,6 +1,7 @@
 <?php
+define('INC_PATH', 'php/class/');
 
-require_once('../Arme.class.php');
+require_once(INC_PATH . 'Arme.class.php');
 
 Class LanceNaval extends Arme {
     public function __construct($argv)
