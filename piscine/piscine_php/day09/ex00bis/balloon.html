@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 <style>
     .balloon {
@@ -18,43 +22,40 @@
     <div class="balloon" id="balloon" style=" width: 200px; height: 200px; background-color: red;"></div>
 </body>
 <script>
-    document.getElementById("balloon").addEventListener("click", function(){
-        var balloon = document.getElementById("balloon");
-        balloon.style.width = parseInt(balloon.style.width) + 10 + "px";
-        balloon.style.height = parseInt(balloon.style.height) + 10 + "px";
-        if (balloon.style.backgroundColor === "red")
-            balloon.style.backgroundColor = 'green';
-        else if (balloon.style.backgroundColor === "green")
-            balloon.style.backgroundColor = 'blue';
+    var balloon = $("#balloon");
+    balloon.click(() => {
+        balloon.width( balloon.width() + 10);
+        balloon.height( balloon.height() + 10);
+        if (balloon.css( "background-color" ) === "rgb(255, 0, 0)")
+        balloon.css( "background-color", "green");
+        else if (balloon.css( "background-color" ) === "rgb(0, 128, 0)")
+            balloon.css( "background-color", 'blue' );
         else
-            balloon.style.backgroundColor = "red";
-        if (parseInt(balloon.style.width) > "420px")
+            balloon.css( "background-color", "red" );
+        if (balloon.width() > 420)
         {
-            balloon.style.width = 0 + "px";
-            balloon.style.height = 0 + "px";
+            balloon.width(0);
+            balloon.height(0);
             var interval = setInterval(() => {
-                if (ballon.style.width == "200px");
+                if (balloon.width() >= 200)
                     clearInterval(interval);
-                balloon.style.width = parseInt(balloon.style.width) + 5 + "px";
-                balloon.style.height = parseInt(balloon.style.height) + 5 + "px";
-            }, 300)
+                balloon.width(balloon.width() + 5);
+                balloon.height(balloon.height() + 5);
+            }, 100)
         }
     });
-
-    document.getElementById("balloon").addEventListener("mouseout", function(){
-        var balloon = document.getElementById("balloon");
-        if (balloon.style.backgroundColor === "red")
-            balloon.style.backgroundColor = 'blue';
-        else if (balloon.style.backgroundColor === "blue")
-            balloon.style.backgroundColor = 'green';
+    balloon.mouseout(() => {
+        if (balloon.css( "background-color" ) === "rgb(0, 128, 0)")
+            balloon.css( "background-color", 'blue' );
+        else if (balloon.css( "background-color" ) === "rgb(255, 0, 0)")
+            balloon.css( "background-color", "green");
         else
-            balloon.style.backgroundColor = "red";
-        if (parseInt(balloon.style.width) > 200)
+            balloon.css( "background-color", "red" );
+        if (balloon.width() > 200)
         {
-            balloon.style.width = parseInt(balloon.style.width) - 5 + "px";
-        balloon.style.height = parseInt(balloon.style.height) - 5 + "px";
+                balloon.width(balloon.width() - 5);
+                balloon.height(balloon.height() - 5);
         }
     });
-    
 </script>
 </html>

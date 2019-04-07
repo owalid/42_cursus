@@ -7,11 +7,16 @@
     <title>Document</title>
 </head>
 <style>
+    body {
+        background: rgb(221,2,98);
+        background: linear-gradient(60deg, rgba(221,2,98,0.73) 0%, rgba(117,113,231,1) 100%);
+    }
     .balloon {
         border-radius: 50%;
         position: absolute; 
         top: 50%;
         left: 50%;
+        box-shadow: 10px 10px 8px black;
     }
 </style>
 <body>
@@ -37,7 +42,6 @@
                     clearInterval(interval);
                 balloon.width = parseInt(balloon.width) + 10 + "px";
                 balloon.height = parseInt(balloon.height) + 10 + "px";
-                console.log(balloon.width)
             }, 50);
         }
     });

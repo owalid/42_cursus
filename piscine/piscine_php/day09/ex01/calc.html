@@ -28,20 +28,20 @@
         if (left.value < 0)
             alert('Error :(');
         else if (right.value == "0" && (operation.value == "div" || operation.value === "modulo")) 
-            alert("It’s over 9000!");
+            display("It’s over 9000!");
         else {
             let a = parseInt(left.value);
             let b = parseInt(right.value);
             if (operation.value === "add")
-                alert(a + b)
+                display(a + b)
             if (operation.value === "minus")
-                alert(a - b)
+                display(a - b)
             if (operation.value === "mult")
-                alert(a * b)
+                display(a * b)
             if (operation.value === "div")
-                alert(a / b)
+                display(a / b)
             if (operation.value === "modulo")
-                alert(a % b)
+                display(a % b)
         }
     });
 
@@ -49,6 +49,12 @@
         alert('Please, use me...');
     }
     , 30000);
+
+    function display(nb)
+    {
+        alert(nb);
+        console.log(nb);
+    }
 
 </script>
 </html>

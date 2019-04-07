@@ -5,9 +5,7 @@ var del = document.getElementById('del');
 newNote.addEventListener("click", () => {
     let prompt = window.prompt();
     if (prompt != null)
-    {
         addElement(prompt, parentElmt);
-    }
 })
 
 function addElement (text, parentElmt) { 
@@ -15,7 +13,10 @@ function addElement (text, parentElmt) {
     newDiv.setAttribute("class", "del");
     newDiv.textContent = text;
     newDiv.addEventListener("click", () => {
-        newDiv.remove();
+        var rep = confirm("T sur ?!");
+        if (rep == true) newDiv.remove();
     });
-    parentElmt.parentNode.insertBefore(newDiv, parentElmt.nextSibling);
+    parentElmt.prepend(newDiv);
 }
+
+

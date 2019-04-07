@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: rgb(221,2,98);
+        background: linear-gradient(60deg, rgba(221,2,98,0.73) 0%, rgba(117,113,231,1) 100%);
+    }
+</style>
+<body>
+    <input type="text" id="left">
+    <select id="operation">
+        <option value="add">+</option>
+        <option value="minus">-</option>
+        <option value="mult">*</option>
+        <option value="div">/</option>
+        <option value="modulo">%</option>
+    </select>
+    <input id="right" type="text">
+    <input id="button" type="button" value="Try me">
+</body>
+<script>
+    var button = $('#button');
+    var left = $('#left');
+    var right = $('#right');
+    var operation = $('#operation');
+    button.click( () => {
+        clearInterval(interval);
+        if (left.val() < 0)
+            alert('Error :(');
+        else if (right.val() == "0" && (operation.val() == "div" || operation.val() === "modulo")) 
+            display("It’s over 9000!");
+        else {
+            if (operation.val() === "add")
+                display(left.val() + right.val())
+            if (operation.val() === "minus")
+                display(left.val() - right.val())
+            if (operation.val() === "mult")
+                display(left.val() * right.val())
+            if (operation.val() === "div")
+                display(left.val() / right.val())
+            if (operation.val() === "modulo")
+                display(left.val() % right.val())
+        }
+    });
+
+    var interval = window.setInterval(() => {
+        alert('Please, use me...');
+    }
+    , 30000);
+
+    function display(nb)
+    {
+        alert(nb);
+        console.log(nb);
+    }
+</script>
+</html>
