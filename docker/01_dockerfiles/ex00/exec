@@ -1,0 +1,2 @@
+docker build -t lol .
+docker run -it --rm lol 
